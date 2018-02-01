@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import api from '../services/api'
+import { adapter } from '../services/adapter'
 
 
 class SongInput extends React.Component {
@@ -19,7 +19,7 @@ class SongInput extends React.Component {
     // console.log(api.songs.postNewSong)
     debugger
     this.setState({ fileToBeSent: file[0] })
-    api.songs.postNewSong(file[0])
+    // api.songs.postNewSong(file[0])
 
   }
 

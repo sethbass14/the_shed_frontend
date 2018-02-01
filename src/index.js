@@ -10,7 +10,7 @@ import App from './App';
 import 'semantic-ui-css/semantic.min.css'
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(rootReducer, applyMiddleware(reduxThunk), window.devToolsExtension() : f => f);
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <Router>

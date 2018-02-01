@@ -1,9 +1,13 @@
 import { API_ROOT, HEADERS } from '../constants'
 
 
-const loginUser = (user_data) => {
+const login = (user_data) => {
     console.log('in Log in user fuction', user_data)
-    return fetch(`${API_ROOT}/`)
+    return fetch(`${API_ROOT}/login`, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify(user_data)
+    }).then(resp => resp.json())
 }
 
 const postNewSong = (song_data) => {
@@ -16,6 +20,9 @@ const postNewSong = (song_data) => {
 }
 
 export default {
+  auth: {
+    login
+  },
   songs: {
     postNewSong
   }
