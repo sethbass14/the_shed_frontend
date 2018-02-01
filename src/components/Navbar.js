@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
       <div className={`ui menu`}>
         <div className={'item'}>
@@ -10,14 +11,29 @@ const Navbar = () => {
         </div>
         <div className={'right menu'}>
           <div className={'item'}>
-            <p>Login </p>
+            {props.loggedIn ? (
+              <p>Welcome {props.currentUser.username}!</p>
+            ) : (
+              <Link to="/login">
+                Log In
+              </Link>
+            )}
           </div>
           <div className={'item'}>
-            <p>Sign Up </p>
+            {props.loggedIn ? (
+              <p>Log Out</p>
+            ) : (
+              <p>Sign Up </p>
+            )}
           </div>
         </div>
       </div>
   )
 }
 
-export default Navbar
+const mapStateToProps = state => ({
+  loggedIn: !!state.auth.currentUser.id,
+  currentUser: state.auth.currentUser
+})
+
+export default connect(mapStateToProps)(Navbar)

@@ -19,7 +19,7 @@ class Login extends React.Component {
   onChange = (event) => {
     this.setState({
       fields: {...this.state.fields, [event.target.name]: event.target.value}
-    }, () => console.log(this.state.fields))
+    })
   }
 
   handleSubmit = (event) =>{

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import SongInput from './components/SongInput'
 import Navbar from './components/Navbar'
 import Home from './containers/Home'
@@ -27,5 +28,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;
