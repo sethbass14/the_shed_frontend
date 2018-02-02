@@ -23,3 +23,12 @@ export const logOutUser = (history) => {
   history.push('/')
   return { type: 'LOGOUT_USER' }
 }
+
+export const fetchUserData = (id) => dispatch => {
+  console.log('In fetchUserData')
+  dispatch({ type: 'AYSNC_START' })
+  adapter.auth.getUserData(id).then(userData => {
+    dispatch({ type: 'SET_USER_DATA', userData })
+    //Next step is to set up my reducer
+  })
+}

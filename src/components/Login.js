@@ -16,7 +16,9 @@ class Login extends React.Component {
     }
   }
 
+
   onChange = (event) => {
+
     this.setState({
       fields: {...this.state.fields, [event.target.name]: event.target.value}
     })
@@ -30,7 +32,7 @@ class Login extends React.Component {
   }
 
   render() {
-    return ( 
+    return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>Username</label>

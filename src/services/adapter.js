@@ -2,7 +2,6 @@ import { API_ROOT, HEADERS } from '../constants'
 
 
 const login = (user_data) => {
-    console.log('in Log in user fuction', user_data)
     return fetch(`${API_ROOT}/login`, {
       method: 'POST',
       headers: HEADERS,
@@ -12,7 +11,6 @@ const login = (user_data) => {
 
 const getWithToken = url => {
   const token = localStorage.getItem('token');
-  console.log(token)
   return fetch(url, {
     headers: { 'Authorization': token }
   }).then(res => res.json());
@@ -20,6 +18,13 @@ const getWithToken = url => {
 
 const getCurrentUser = () => {
   return getWithToken(`${API_ROOT}/current_user`)
+}
+
+const getUserData = (id) => {
+  console.log('In getUserData in the adapter')
+  return fetch(`${API_ROOT}/users/${id}`)
+          .then(resp => resp.json())
+
 }
 
 const postNewSong = (song_data) => {
@@ -34,7 +39,8 @@ const postNewSong = (song_data) => {
 export default {
   auth: {
     login,
-    getCurrentUser
+    getCurrentUser,
+    getUserData
   },
   songs: {
     postNewSong

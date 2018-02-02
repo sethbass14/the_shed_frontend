@@ -25,6 +25,7 @@ const withAuth = WrappedComponent => {
     }
 
     render() {
+      // console.log(this.props)
       if (this.state.authCompleted) {
         return this.props.loggedIn ? (
           <WrappedComponent {...this.props} />
@@ -36,6 +37,23 @@ const withAuth = WrappedComponent => {
       }
     }
   }
+
+  // render() {
+  //   if (this.state.authCompleted) {
+  //     if (this.props.loggedIn && (this.props.location.pathname === '/' || this.props.location.pathname === '/login' || this.props.location.pathname === '/signup') {
+  //       <Redirect to="/dashboard"/>
+  //     } else if {
+  //         return this.props.loggedIn ? (
+  //           <WrappedComponent {...this.props} />
+  //         ) : (
+  //           <Redirect to="/" />
+  //         );
+  //       } else {
+  //         return null
+  //       }
+  //     }
+  //   }
+  // }
 
   const mapStateToProps = state => ({
     loggedIn: !!state.auth.currentUser.id
