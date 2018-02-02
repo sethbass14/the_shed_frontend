@@ -5,6 +5,7 @@ import SongInput from './components/SongInput'
 import Navbar from './components/Navbar'
 import Home from './containers/Home'
 import Login from './components/Login'
+import Dashboard from './components/Dashboard'
 // import Audio from 'react-audioplayer'
 
 class App extends Component {
@@ -21,6 +22,10 @@ class App extends Component {
             <Route
               exact path="/login"
               component={Login}
+              />
+            <Route
+              exact path="/dashboard"
+              component={Dashboard}
               />
           </Switch>
         </div>

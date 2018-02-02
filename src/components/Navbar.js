@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import * as actions from '../actions';
 
 
 const Navbar = (props) => {
+  console.log(props)
   return (
       <div className={`ui menu`}>
         <div className={'item'}>
@@ -21,7 +23,11 @@ const Navbar = (props) => {
           </div>
           <div className={'item'}>
             {props.loggedIn ? (
-              <p>Log Out</p>
+              <a
+                onClick={event => {
+                  event.preventDefault();
+                  props.logOutUser(props.history);
+                }}>Log Out</a>
             ) : (
               <p>Sign Up </p>
             )}
@@ -36,4 +42,4 @@ const mapStateToProps = state => ({
   currentUser: state.auth.currentUser
 })
 
-export default connect(mapStateToProps)(Navbar)
+export default withRouter(connect(mapStateToProps, actions)(Navbar))

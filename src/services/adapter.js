@@ -10,6 +10,18 @@ const login = (user_data) => {
     }).then(resp => resp.json())
 }
 
+const getWithToken = url => {
+  const token = localStorage.getItem('token');
+  console.log(token)
+  return fetch(url, {
+    headers: { 'Authorization': token }
+  }).then(res => res.json());
+}
+
+const getCurrentUser = () => {
+  return getWithToken(`${API_ROOT}/current_user`)
+}
+
 const postNewSong = (song_data) => {
   // console.log(song_data)
   return fetch(`${API_ROOT}/songs`, {
@@ -21,7 +33,8 @@ const postNewSong = (song_data) => {
 
 export default {
   auth: {
-    login
+    login,
+    getCurrentUser
   },
   songs: {
     postNewSong
