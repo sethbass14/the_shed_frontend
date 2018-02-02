@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import * as actions from '../actions'
 
 
-const withAuth = WrappedComoponent => {
+const withAuth = WrappedComponent => {
   class AuthedComponent extends React.Component {
     state = {
       authCompleted: this.props.loggedIn
@@ -18,7 +18,7 @@ const withAuth = WrappedComoponent => {
       }
     }
 
-    componentWillRecieveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {
       if (nextProps.loggedIn) {
         this.setState({ authCompleted: true })
       }
@@ -26,10 +26,10 @@ const withAuth = WrappedComoponent => {
 
     render() {
       if (this.state.authCompleted) {
-        return ? (
+        return this.props.loggedIn ? (
           <WrappedComponent {...this.props} />
         ) : (
-          <Redirect to="/login">
+          <Redirect to="/" />
         );
       } else {
         return null

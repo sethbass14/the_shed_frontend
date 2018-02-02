@@ -30,7 +30,7 @@ class Login extends React.Component {
   }
 
   render() {
-    return (
+    return ( 
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>Username</label>
@@ -41,8 +41,13 @@ class Login extends React.Component {
           <input type='submit'/>
         </form>
       </div>
+
     )
   }
 }
+
+const mapStateToProps = state => (
+  { loggedIn : !!state.currentUser.id }
+)
 
 export default withRouter(connect(null, actions)(Login));

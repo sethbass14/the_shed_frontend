@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import withAuth from '../hocs/withAuth'
 
 class Dashboard extends React.Component {
 
@@ -20,4 +21,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(Dashboard)
+export default withAuth(connect(mapStateToProps)(Dashboard))

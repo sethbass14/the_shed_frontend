@@ -13,7 +13,8 @@ export const loginUser = (username, password, history) => dispatch => {
 export const fetchUser = () => dispatch => {
   dispatch({ type: 'AYSNC_START' })
   adapter.auth.getCurrentUser().then(user => {
-    dispatch({ type: 'SET_CURRENT_USER' })
+    dispatch({ type: 'SET_CURRENT_USER', user })
+    // history.push('/dashboard')
   });
 }
 
