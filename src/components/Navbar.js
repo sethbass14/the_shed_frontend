@@ -24,6 +24,7 @@ const Navbar = (props) => {
           <div className={'item'}>
             {props.loggedIn ? (
               <a
+                className={'logout'}
                 onClick={event => {
                   event.preventDefault();
                   props.logOutUser(props.history);
