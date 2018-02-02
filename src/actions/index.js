@@ -28,7 +28,8 @@ export const fetchUserData = (id) => dispatch => {
   console.log('In fetchUserData')
   dispatch({ type: 'AYSNC_START' })
   adapter.auth.getUserData(id).then(userData => {
+    // debugger
     dispatch({ type: 'SET_USER_DATA', userData })
-    //Next step is to set up my reducer
+    //Next step is to set up
   })
 }

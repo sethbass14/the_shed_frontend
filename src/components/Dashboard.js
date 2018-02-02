@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth'
 import * as actions from '../actions'
+import BandListContainer from '../containers/BandListContainer'
+import SongListContainer from '../containers/SongListContainer'
+
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -9,10 +12,11 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log('In the dashboard', this.props)
     return (
       <div>
         <h1>Welcome to your dashboard, {this.props.user.username} </h1>
+        <BandListContainer />
+        <SongListContainer />
       </div>
     )
   }

@@ -1,10 +1,26 @@
-import { bandsReducer } from './bands'
+import { bandsReducer } from './bands';
 
-export const userReducer = ( state = {}, action ) => {
+
+const initialState = {
+  'id': null,
+  'username': null,
+  'email': null,
+  'bands': [
+            {
+              'name': null,
+              'songs': [],
+              'setlists': []
+            }
+          ]
+}
+
+export const userReducer = ( state = initialState, action ) => {
   switch(action.type) {
     case 'SET_USER_DATA':
-      // return {...state, userData: {...action.userData, bands: bandsReducer(action.userData.bands, action)}}
-      return {...state, userData: action.userData }
+      // debugger
+      return { ...action.userData }
+    case 'LOGOUT_USER':
+      return initialState
     default:
       return state
   }
