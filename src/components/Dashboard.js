@@ -4,6 +4,7 @@ import withAuth from '../hocs/withAuth'
 import * as actions from '../actions'
 import BandListContainer from '../containers/BandListContainer'
 import SongListContainer from '../containers/SongListContainer'
+import SongInput from './SongInput'
 
 
 class Dashboard extends React.Component {
@@ -17,6 +18,7 @@ class Dashboard extends React.Component {
         <h1>Welcome to your dashboard, {this.props.user.username} </h1>
         <BandListContainer />
         <SongListContainer />
+        <SongInput />
       </div>
     )
   }

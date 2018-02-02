@@ -27,12 +27,11 @@ const getUserData = (id) => {
 
 }
 
-const postNewSong = (song_data) => {
+const postNewSong = (file) => {
   // console.log(song_data)
   return fetch(`${API_ROOT}/songs`, {
-    HEADERS,
     method: 'POST',
-    body: JSON.stringify({song_data})
+    body: file
   })
 }
 
