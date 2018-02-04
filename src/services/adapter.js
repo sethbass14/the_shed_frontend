@@ -21,7 +21,7 @@ const getCurrentUser = () => {
 }
 
 const getUserData = (id) => {
-  console.log('In getUserData in the adapter')
+  // console.log('In getUserData in the adapter')
   return fetch(`${API_ROOT}/users/${id}`)
           .then(resp => resp.json())
 

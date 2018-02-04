@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom'
 import withAuth from '../hocs/withAuth'
 import * as actions from '../actions'
-import BandListContainer from '../containers/BandListContainer'
-import SongListContainer from '../containers/SongListContainer'
-import SongInput from './SongInput'
+// import BandListContainer from '../containers/BandListContainer'
+// import SongListContainer from '../containers/SongListContainer'
+import DashboardShow from '../components/DashboardShow'
+
 
 
 class Dashboard extends React.Component {
@@ -15,10 +17,16 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome to your dashboard, {this.props.user.username} </h1>
-        <BandListContainer />
-        <SongListContainer />
-        <SongInput />
+        <Switch>
+          <Route
+            path="/dashboard"
+            render={ () => {
+              return (
+                <DashboardShow />
+              )
+            }}
+            />
+        </Switch>
       </div>
     )
   }
@@ -27,7 +35,6 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.auth.currentUser,
-    userData: state.userData
   }
 }
 

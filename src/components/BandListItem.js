@@ -1,10 +1,20 @@
 import React from 'react';
+import * as actions from '../actions';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 
 
 const BandListItem = props => (
   <div>
-    <a>{props.name}</a>
+    <Link
+      to={`/bands/${props.band.id}`}
+      onClick={() => props.changeActiveBandId(props.band.id)}
+      >
+      {props.band.name}
+    </Link>
   </div>
 )
 
-export default BandListItem
+
+
+export default connect(null, actions)(BandListItem)

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Navbar from './components/Navbar'
 import Home from './containers/Home'
 import Login from './components/Login'
-import Dashboard from './components/Dashboard'
+import DashboardContainer from './containers/DashboardContainer'
 // import Audio from 'react-audioplayer'
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
               />
             <Route
               exact path="/dashboard"
-              component={Dashboard}
+              component={DashboardContainer}
               />
           </Switch>
         </div>

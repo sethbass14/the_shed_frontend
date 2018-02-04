@@ -10,8 +10,6 @@ class SongInput extends React.Component {
 
     this.state = {
       title: '',
-      fileToBeSent: [],
-
     }
   }
 
@@ -22,14 +20,12 @@ class SongInput extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log("In the handleSubmit", this)
-    console.log("The state in handlesubmit", this.state)
     const audio_upload = document.getElementById('audio_upload')
     const file = audio_upload.files[0]
     const formData = new FormData()
     formData.append("audio", file)
-    // debugger
-    adapter.songs.postNewSong(formData)
+    formData.append("title", this.state.title)
+    adapter.songs.postNewSong(formData, this.state.title)
   }
 
   handleAudioChange = event => {

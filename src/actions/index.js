@@ -25,11 +25,16 @@ export const logOutUser = (history) => {
 }
 
 export const fetchUserData = (id) => dispatch => {
-  console.log('In fetchUserData')
+  // console.log('In fetchUserData')
   dispatch({ type: 'AYSNC_START' })
   adapter.auth.getUserData(id).then(userData => {
     // debugger
     dispatch({ type: 'SET_USER_DATA', userData })
     //Next step is to set up
   })
+}
+
+export const changeActiveBandId = bandId => dispatch => {
+  // debugger
+  return dispatch({type: "CHANGE_ACTIVE_BAND_ID", id: bandId})
 }

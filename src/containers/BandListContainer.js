@@ -5,8 +5,8 @@ import BandListItem from '../components/BandListItem'
 
 class BandListContainer extends React.Component {
   render() {
-    console.log('In band list container', this.props)
-    const bands = this.props.bands.map((band, index) => <BandListItem key={index} name={band.name}/>  )
+    // console.log('In band list container', this.props)
+    const bands = this.props.bands.map((band, index) => <BandListItem key={index} band={band}/>  )
     return (
       <div>
         <h2>Bands</h2>
