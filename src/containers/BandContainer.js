@@ -1,14 +1,21 @@
 import React from 'react';
-import { Switch, Router } from 'react-router-dom';
-import SongInput from '../components/SongInput'
-import withAuth from '../hocs/withAuth'
+import { Switch, Route } from 'react-router-dom';
+import SongInput from '../components/SongInput';
+import withAuth from '../hocs/withAuth';
+import BandsIndex from '../components/BandsIndex';
 
 
 class BandContainer extends React.Component {
   render() {
     return (
       <div>
-        In Bands Container
+        <h2> In Bands Container </h2>
+        <Switch>
+          <Route
+            path="/bands"
+            component={BandsIndex}
+            />
+        </Switch>
       </div>
     )
   }
