@@ -8,14 +8,15 @@ class BandShow extends React.Component {
     return (
       <div>
         <h1>In Band Show</h1>
-        <h1>{this.props.band.name}<h1>
+        <h1></h1>
       </div>
     )
   }
 }
 
-mapStateToProps = state => {
-  return { band = state.userData.bands.find(band => band.id === state.activeBandId) }
-}
+// const mapStateToProps = state => {
+//   return { band: state.userData.bands.find(band => band.id === state.activeBandId) }
+// }
 
-export default connect(mapStateToProps)(BandShow)
+// export default connect(mapStateToProps)(BandShow)
+export default BandShow

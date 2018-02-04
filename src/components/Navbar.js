@@ -10,6 +10,15 @@ const Navbar = (props) => {
         <div className={'item'}>
           <h1>The Shed Logo</h1>
         </div>
+          {props.loggedIn ? (
+              <a className="item back" onClick={() => window.history.back()}>
+                <i className="arrow circle left icon"></i>
+                <p>Go Back</p>
+              </a>
+            ) : (
+              null
+            )
+          }
         <div className={'right menu'}>
           <div className={'item'}>
             {props.loggedIn ? (

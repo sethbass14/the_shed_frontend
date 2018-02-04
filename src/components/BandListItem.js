@@ -8,7 +8,7 @@ const BandListItem = props => (
   <div>
     <Link
       to={`/bands/${props.band.id}`}
-      onClick={() => props.changeActiveBandId(props.band.id)}
+      onClick={ event => props.changeActiveBandId(props.band.id)}
       >
       {props.band.name}
     </Link>
