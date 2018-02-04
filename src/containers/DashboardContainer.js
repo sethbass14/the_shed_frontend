@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
       <div>
         <Switch>
           <Route
-            path="/dashboard"
+            exact path="/dashboard"
             render={ () => {
               return (
                 <DashboardShow />

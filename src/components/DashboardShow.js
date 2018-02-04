@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import BandListContainer from '../containers/BandListContainer'
 import SongListContainer from '../containers/SongListContainer'
 
+
 class DashboardShow extends React.Component {
   render() {
     return (
