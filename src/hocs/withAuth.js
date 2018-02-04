@@ -16,6 +16,7 @@ const withAuth = WrappedComponent => {
       } else {
         this.setState({ authCompleted: true })
       }
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -56,7 +57,9 @@ const withAuth = WrappedComponent => {
   // }
 
   const mapStateToProps = state => ({
-    loggedIn: !!state.auth.currentUser.id
+    loggedIn: !!state.auth.currentUser.id,
+    user: state.auth.currentUser
+
   })
 
   return connect(mapStateToProps, actions)(AuthedComponent)
