@@ -17,16 +17,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <Switch>
-          <Route
-            exact path="/dashboard"
-            render={ () => {
-              return (
-                <DashboardShow />
-              )
-            }}
-            />
-        </Switch>
+        <DashboardShow/>
       </div>
     )
   }
@@ -40,3 +31,15 @@ const mapStateToProps = state => {
 
 
 export default withAuth(connect(mapStateToProps, actions)(Dashboard))
+// <Switch>
+//   <Route
+//     exact path="/dashboard"
+//     component={DashboardShow}/>
+// </Switch>
+
+
+// render={ () => {
+//   return (
+//     <DashboardShow />
+//   )
+// }}

@@ -8,6 +8,7 @@ import Login from './components/Login'
 import DashboardContainer from './containers/DashboardContainer'
 // import Audio from 'react-audioplayer'
 import Landing from './containers/Landing'
+import BandContainer from './containers/BandContainer'
 
 
 //I would like a way to have a landing component to login and signup so that I can restrict access to those views in one container after a user has logged in.
@@ -28,6 +29,10 @@ class App extends Component {
           exact path="/"
           component={Home}
           />
+          <Route
+            path="/bands"
+            component={BandContainer}
+            />
       </div>
     );
   }

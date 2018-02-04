@@ -9,7 +9,6 @@ class BandListContainer extends React.Component {
     const bands = this.props.bands.map((band, index) => <BandListItem key={index} band={band}/>  )
     return (
       <div>
-        <h2>Bands</h2>
         In the Band List Container
         {bands}
       </div>
