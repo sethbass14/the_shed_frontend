@@ -7,7 +7,7 @@ export const songsReducer = (state = initialState, action) => {
       // debugger
       return [...action.userData.songs ]
     case 'ADD_SONG':
-      debugger
+      // debugger
       return [...state, action.songData]
     default:
       return state

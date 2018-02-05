@@ -37,7 +37,7 @@ export const fetchUserData = (id) => dispatch => {
 export const addSong = (form_data) => dispatch => {
   dispatch({ type: 'AYSNC_START' })
   adapter.songs.postNewSong(form_data).then(songData => {
-    debugger
+    // debugger
     dispatch({ type: 'ADD_SONG', songData })
   })
 }
