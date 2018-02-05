@@ -31,8 +31,8 @@ class SongInput extends React.Component {
 
   handleAudioChange = event => {
     // console.log(this.state)
-    const audio_upload = document.getElementById('audio_upload')
-    this.setState({ fileToBeSent: event.target.files[0] }, () => console.log(this.state))
+    // const audio_upload = document.getElementById('audio_upload')
+    // this.setState({ fileToBeSent: event.target.files[0] }, () => console.log(this.state))
     // const data = new FormData()
     // data.append("audio", audio_upload.files[0],
     // audio_upload.files[0].name)

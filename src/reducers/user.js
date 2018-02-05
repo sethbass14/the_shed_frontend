@@ -1,4 +1,4 @@
-import { bandsReducer } from './bands';
+// import { bandsReducer } from './bands';
 
 
 const initialState = {

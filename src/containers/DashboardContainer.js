@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom'
+// import { Switch, Route } from 'react-router-dom'
 import withAuth from '../hocs/withAuth'
 import * as actions from '../actions'
 // import BandListContainer from '../containers/BandListContainer'

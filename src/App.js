@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+// import { connect } from 'react-redux';
 // import SongInput from './components/SongInput'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Login from './components/Login'
 import DashboardContainer from './containers/DashboardContainer'
 // import Audio from 'react-audioplayer'
-import Landing from './containers/Landing'
+// import Landing from './containers/Landing'
 import BandContainer from './containers/BandContainer'
 // import * as actions from './actions';
 

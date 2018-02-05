@@ -16,4 +16,4 @@ const mapStateToProps = state => {
   songs: state.userData
 }
 
-export default connect(SongListContainer)(SongListContainer)
+export default connect(mapStateToProps)(SongListContainer)

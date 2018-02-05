@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BandListContainer from '../containers/BandListContainer';
-import SongListContainer from '../containers/SongListContainer';
-import BandContainer from '../containers/BandContainer';
+// import SongListContainer from '../containers/SongListContainer';
+// import BandContainer from '../containers/BandContainer';
 
 
 
@@ -16,7 +16,7 @@ class DashboardShow extends React.Component {
           <h2>Bands</h2>
         </Link>
         <BandListContainer />
-      
+
       </div>
     )
   }

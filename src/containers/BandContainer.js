@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import SongInput from '../components/SongInput';
+// import SongInput from '../components/SongInput';
 import withAuth from '../hocs/withAuth';
 import BandsIndex from '../components/BandsIndex';
 import BandShow from '../components/BandShow';

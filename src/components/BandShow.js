@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth'
-import SongListContainer from '../containers/SongListContainer'
+// import SongListContainer from '../containers/SongListContainer'
 import SongListItem from './SongListItem'
 import SongInput from './SongInput'
 
