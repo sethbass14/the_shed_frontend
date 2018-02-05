@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import BandCard from './BandCard'
 
 
@@ -18,6 +19,9 @@ const BandsIndex = props => {
   return (
     <div className="ui grid container">
       In the BandsIndex
+      <Link to="/bands/new">
+        Add a band
+      </Link>
       {allBands}
     </div>
   )

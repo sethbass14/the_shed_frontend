@@ -1,10 +1,11 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route , Link} from 'react-router-dom';
 // import SongInput from '../components/SongInput';
 import withAuth from '../hocs/withAuth';
 import BandsIndex from '../components/BandsIndex';
 import BandShow from '../components/BandShow';
-import SongShow from '../components/SongShow'
+import SongShow from '../components/SongShow';
+import BandInput from '../components/BandInput';
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 
@@ -24,6 +25,10 @@ class BandContainer extends React.Component {
           <Route
             path="/bands/:bandId/songs/:songId"
             component={SongShow}
+            />
+          <Route
+            path="/bands/new"
+            component={BandInput}
             />
           <Route
             path="/bands/:bandId"

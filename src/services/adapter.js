@@ -27,11 +27,21 @@ const getUserData = (id) => {
 
 }
 
+//Below is everything for a song
 const postNewSong = (file) => {
   // console.log(song_data)
   return fetch(`${API_ROOT}/songs`, {
     method: 'POST',
     body: file
+  }).then(resp => resp.json())
+}
+
+//Below is everything for a band
+const postNewBand = (band_data) => {
+  return fetch(`${API_ROOT}/bands`, {
+    headers: HEADERS,
+    method: 'POST',
+    body: JSON.stringify(band_data)
   }).then(resp => resp.json())
 }
 
@@ -43,5 +53,8 @@ export default {
   },
   songs: {
     postNewSong
+  },
+  bands: {
+    postNewBand
   }
 }

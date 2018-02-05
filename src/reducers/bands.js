@@ -1,9 +1,10 @@
 
-//
-// export const bandsReducer = (state = [], action) => {
-//   switch(action.type) {
-//     default:
-//       return state
-//   }
-//
-// }
+
+
+export const bandsReducer = (state = [], action) => {
+  switch(action.type) {
+    default:
+      return state
+  }
+
+}

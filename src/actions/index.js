@@ -14,7 +14,6 @@ export const fetchUser = () => dispatch => {
   dispatch({ type: 'AYSNC_START' })
   adapter.auth.getCurrentUser().then(user => {
     dispatch({ type: 'SET_CURRENT_USER', user })
-    // history.push('/dashboard')
   });
 }
 
@@ -25,20 +24,24 @@ export const logOutUser = (history) => {
 }
 
 export const fetchUserData = (id) => dispatch => {
-  // console.log('In fetchUserData')
   dispatch({ type: 'AYSNC_START' })
   adapter.auth.getUserData(id).then(userData => {
-    // debugger
     dispatch({ type: 'SET_USER_DATA', userData })
-    //Next step is to set up
   })
 }
 
 export const addSong = (form_data) => dispatch => {
   dispatch({ type: 'AYSNC_START' })
   adapter.songs.postNewSong(form_data).then(songData => {
-    // debugger
     dispatch({ type: 'ADD_SONG', songData })
+  })
+}
+
+export const addBand = (band_data) => dispatch => {
+  dispatch({ type: 'AYSNC_START' })
+  adapter.bands.postNewBand(band_data).then(bandData => {
+    debugger
+    dispatch({ type: 'ADD_BAND', bandData })
   })
 }
 
