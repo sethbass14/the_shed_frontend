@@ -25,6 +25,7 @@ class SongInput extends React.Component {
     const formData = new FormData()
     formData.append("audio", file)
     formData.append("title", this.state.title)
+    formData.append("band_id", this.props.bandId)
     adapter.songs.postNewSong(formData, this.state.title)
   }
 
@@ -63,6 +64,12 @@ class SongInput extends React.Component {
 
 }
 
+const mapStateToProps = state => {
+  return {
+    bandId : state.activeBandId
+  }
+}
 
 
-export default (SongInput)
+
+export default connect(mapStateToProps)(SongInput)
