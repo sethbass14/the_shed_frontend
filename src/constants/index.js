@@ -6,6 +6,8 @@ export const HEADERS = {
 
 //actions
 export const ASYNC_START = 'ASYNC_START'
-export const ADD_SONG = 'ADD_SONG'
+export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 export const SET_USER_DATA = 'SET_USER_DATA'
 export const LOGOUT_USER = 'LOGOUT_USER'
+export const ADD_SONG = 'ADD_SONG'
+export const ADD_BAND = 'ADD_BAND'

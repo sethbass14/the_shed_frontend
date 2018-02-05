@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import * as actions from '../actions'
 
 class BandInput extends React.Component {
@@ -18,12 +19,12 @@ class BandInput extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.addBand({ ...this.state, user_id: this.props.userId  })
+    this.props.addBand({ ...this.state, user_id: this.props.userId  }, this.props.history)
     // console.log(this.state)
   }
 
   render() {
-    // console.log('In band input', this.props)
+    console.log('In band input', this.props)
     return (
       <div className="new-band">
         <form onSubmit={this.handleSubmit}>
@@ -40,8 +41,11 @@ class BandInput extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { userId: state.userData.id}
+const mapStateToProps = (state, prevProps) => {
+  return {
+    userId: state.userData.id,
+    prevProps: prevProps
+  }
 }
 
-export default connect(mapStateToProps, actions)(BandInput)
+export default withRouter(connect(mapStateToProps, actions)(BandInput))
