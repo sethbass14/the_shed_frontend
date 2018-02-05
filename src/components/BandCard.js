@@ -7,6 +7,24 @@ import * as actions from '../actions'
 
 //This component inherits props from iteration in the parent
 // Right now, the parent is BandsIndex
+// const BandCard = props => {
+//   console.log("In BandCard", props)
+//   return (
+//     <div className="ui eight wide column">
+//       <div className="ui card">
+//         <h3>This is a band card</h3>
+//         <Link
+//           to={`/bands/${props.band.name}`}
+//           onClick={() =>
+//             props.changeActiveBandId(props.band.id)}
+//           >
+//           <h3>{props.band.name}</h3>
+//         </Link>
+//       </div>
+//     </div>
+//   )
+// }
+
 const BandCard = props => {
   console.log("In BandCard", props)
   return (
@@ -14,10 +32,7 @@ const BandCard = props => {
       <div className="ui card">
         <h3>This is a band card</h3>
         <Link
-          to={`/bands/${props.band.name}`}
-          onClick={() =>
-            props.changeActiveBandId(props.band.id)}
-          >
+          to={`/bands/${props.band.id}`} >
           <h3>{props.band.name}</h3>
         </Link>
       </div>

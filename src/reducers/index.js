@@ -6,7 +6,7 @@ import { activeBandIdReducer } from './activeBandIdReducer'
 export const rootReducer = combineReducers({
   auth: authReducer,
   userData : userReducer,
-  activeBandId: activeBandIdReducer
+  // activeBandId: activeBandIdReducer
 })
 
 // export default rootReducer

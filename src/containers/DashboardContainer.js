@@ -9,6 +9,7 @@ import DashboardShow from '../components/DashboardShow'
 
 
 
+
 class Dashboard extends React.Component {
   componentDidMount() {
     this.props.fetchUserData(this.props.user.id)
@@ -31,15 +32,3 @@ const mapStateToProps = state => {
 
 
 export default withAuth(connect(mapStateToProps, actions)(Dashboard))
-// <Switch>
-//   <Route
-//     exact path="/dashboard"
-//     component={DashboardShow}/>
-// </Switch>
-
-
-// render={ () => {
-//   return (
-//     <DashboardShow />
-//   )
-// }}
