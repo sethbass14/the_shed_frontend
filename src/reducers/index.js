@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { authReducer } from './auth'
 import { userReducer } from './user'
+import { songsReducer } from './songs'
 // import { activeBandIdReducer } from './activeBandIdReducer'
 
 export const rootReducer = combineReducers({

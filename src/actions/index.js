@@ -34,7 +34,15 @@ export const fetchUserData = (id) => dispatch => {
   })
 }
 
-export const changeActiveBandId = bandId => dispatch => {
-  // debugger
-  return dispatch({type: "CHANGE_ACTIVE_BAND_ID", id: bandId})
+export const addSong = (form_data) => dispatch => {
+  dispatch({ type: 'AYSNC_START' })
+  adapter.songs.postNewSong(form_data).then(songData => {
+    debugger
+    dispatch({ type: 'ADD_SONG', songData })
+  })
 }
+
+// export const changeActiveBandId = bandId => dispatch => {
+//   // debugger
+//   return dispatch({type: "CHANGE_ACTIVE_BAND_ID", id: bandId})
+// }

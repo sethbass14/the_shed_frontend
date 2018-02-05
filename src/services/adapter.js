@@ -32,7 +32,7 @@ const postNewSong = (file) => {
   return fetch(`${API_ROOT}/songs`, {
     method: 'POST',
     body: file
-  })
+  }).then(resp => resp.json())
 }
 
 export default {

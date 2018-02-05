@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AudioPlayer from './AudioPlayer';
+import withAuth from '../hocs/withAuth'
 
 
 
@@ -20,6 +21,7 @@ const SongShow = props => {
   )
 }
 
+//Check out this problem of refreshing not working down below
 const mapStateToProps = (state, prevProps) => {
   return {
     band: state.userData.bands.find(band => band.id === parseInt(prevProps.match.params.bandId)),
@@ -27,4 +29,4 @@ const mapStateToProps = (state, prevProps) => {
   }
 }
 
-export default connect(mapStateToProps)(SongShow)
+export default withAuth(connect(mapStateToProps)(SongShow))

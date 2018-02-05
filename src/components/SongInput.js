@@ -1,7 +1,8 @@
 import React from 'react';
 // import Dropzone from 'react-dropzone';
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import adapter  from '../services/adapter'
+import * as actions from '../actions'
 
 
 class SongInput extends React.Component {
@@ -26,7 +27,7 @@ class SongInput extends React.Component {
     formData.append("audio", file)
     formData.append("title", this.state.title)
     formData.append("band_id", this.props.bandId)
-    adapter.songs.postNewSong(formData, this.state.title)
+    this.props.addSong(formData)
   }
 
   handleAudioChange = event => {
@@ -40,7 +41,7 @@ class SongInput extends React.Component {
   }
 
   render() {
-    // console.log("Song Input", this.props)
+    console.log("Song Input", this.props)
     return (
       <div className='dropzone'>
         <h1>New Song</h1>
@@ -64,12 +65,12 @@ class SongInput extends React.Component {
 
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, prevProps) => {
   return {
-    bandId : state.activeBandId
+    bandId : parseInt(prevProps.match.params.bandId)
   }
 }
 
 
 
-export default connect(mapStateToProps)(SongInput)
+export default withRouter(connect(mapStateToProps, actions)(SongInput))
