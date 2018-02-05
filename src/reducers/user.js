@@ -1,4 +1,6 @@
 import { songsReducer } from './songs';
+import {  bandsReducer } from './bands';
+import { SET_USER_DATA, ADD_SONG, LOGOUT_USER } from '../constants'
 
 
 const initialState = {
@@ -16,13 +18,13 @@ const initialState = {
 
 export const userReducer = ( state = initialState, action ) => {
   switch(action.type) {
-    case 'SET_USER_DATA':
+    case SET_USER_DATA:
       // debugger
-      return { ...action.userData, songs: songsReducer(action.userData.songs, action)  }
-    case 'ADD_SONG':
+      return { ...action.userData, bands: bandsReducer(action.userData.bands, action) ,songs: songsReducer(action.userData.songs, action)  }
+    case ADD_SONG:
       // debugger
       return {...state, songs: songsReducer(state.songs, action)}
-    case 'LOGOUT_USER':
+    case LOGOUT_USER:
       return initialState
     default:
       return state
