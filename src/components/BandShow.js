@@ -51,7 +51,7 @@ class BandShow extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const band = state.userData.bands.find(band => band.id === parseInt(ownProps.match.params.id))
+  const band = state.userData.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
   if (band) {
     return {
       band: band,

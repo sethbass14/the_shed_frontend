@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import withAuth from '../hocs/withAuth';
 import BandsIndex from '../components/BandsIndex';
 import BandShow from '../components/BandShow';
+import SongShow from '../components/SongShow'
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 
@@ -21,7 +22,11 @@ class BandContainer extends React.Component {
         <h2> In Bands Container </h2>
         <Switch>
           <Route
-            path="/bands/:id"
+            path="/bands/:bandId/songs/:id"
+            component={SongShow}
+            />
+          <Route
+            path="/bands/:bandId"
             component={BandShow}
             />
           <Route
