@@ -9,10 +9,17 @@ import DashboardContainer from './containers/DashboardContainer'
 // import Audio from 'react-audioplayer'
 import Landing from './containers/Landing'
 import BandContainer from './containers/BandContainer'
+// import * as actions from './actions';
 
 
 //I would like a way to have a landing component to login and signup so that I can restrict access to those views in one container after a user has logged in.
 class App extends Component {
+  // componentWillMount() {
+  //   const token = localStorage.getItem('token')
+  //   if (token) {
+  //     this.props.fetchUser()
+  //   }
+  // }
   render() {
     return (
       <div className="App">
@@ -40,4 +47,5 @@ class App extends Component {
 
 
 
-export default App;
+// export default connect(null, actions)(App);
+export default App

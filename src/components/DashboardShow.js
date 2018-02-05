@@ -16,7 +16,7 @@ class DashboardShow extends React.Component {
           <h2>Bands</h2>
         </Link>
         <BandListContainer />
-        <SongListContainer />
+      
       </div>
     )
   }

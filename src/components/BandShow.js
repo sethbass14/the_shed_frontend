@@ -1,22 +1,65 @@
 import React from 'react';
-import { connect } from 'react';
+import { connect } from 'react-redux';
+import withAuth from '../hocs/withAuth'
+import SongListContainer from '../containers/SongListContainer'
+import SongListItem from './SongListItem'
+import SongInput from './SongInput'
 
 
 
 class BandShow extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      addSong: false
+    }
+
+  }
+
+  handleSongAdd = () => {
+    this.setState({ addSong: true })
+  }
+
+
   render() {
+    const bandSongs = this.props.band.songs.map((song, index) => { return <SongListItem key={index} song={song}/>})
+    // console.log('In the band show', this.props)
+    // console.log(bandSongs)
     return (
       <div>
-        <h1>In Band Show</h1>
-        <h1></h1>
-      </div>
+        <div>
+          <h1>{this.props.band.name}</h1>
+        </div>
+        <div>
+          <h2>Songs</h2>
+          {bandSongs}
+        </div>
+        <div>
+          <h3 onClick={() => this.handleSongAdd()}>Add A Song</h3>
+          {this.state.addSong? (
+            <SongInput />
+          ) : (
+            null
+          )
+        }
+        </div>
+    </div>
     )
   }
 }
 
-// const mapStateToProps = state => {
-//   return { band: state.userData.bands.find(band => band.id === state.activeBandId) }
-// }
+const mapStateToProps = state => {
+  const band = state.userData.bands.find(band => band.id === state.activeBandId)
+  if (band) {
+    return {
+      band: band,
+      bandId: state.activeBandId
+    }
+  } else {
+    return { band: { songs: [] } }
+  }
+}
 
-// export default connect(mapStateToProps)(BandShow)
-export default BandShow
+export default withAuth(connect(mapStateToProps)(BandShow))
+// export default BandShow

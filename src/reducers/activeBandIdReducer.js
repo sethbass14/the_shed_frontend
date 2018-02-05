@@ -1,4 +1,4 @@
-const initialState = null
+const initialState = 1
 
 export const activeBandIdReducer = (state = initialState, action) => {
   switch(action.type) {

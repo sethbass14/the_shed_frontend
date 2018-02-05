@@ -12,8 +12,8 @@ class SongListContainer extends React.Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   songs: state.userData
-// }
+const mapStateToProps = state => {
+  songs: state.userData
+}
 
-export default SongListContainer
+export default connect(SongListContainer)(SongListContainer)
