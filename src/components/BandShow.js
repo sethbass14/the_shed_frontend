@@ -23,7 +23,7 @@ class BandShow extends React.Component {
 
 
   render() {
-    const bandSongs = this.props.band.songs.map((song, index) => { return <SongListItem key={index} song={song}/>})
+    const bandSongs = this.props.songs.map((song, index) => { return <SongListItem key={index} song={song}/>})
     console.log('In the band show', this.props)
     // console.log(bandSongs)
     return (
@@ -55,10 +55,15 @@ const mapStateToProps = (state, ownProps) => {
   if (band) {
     return {
       band: band,
-      bandId: state.activeBandId
+      bandId: state.activeBandId,
+      songs: state.userData.songs.filter(song => song.band_id === parseInt(ownProps.match.params.bandId) )
     }
   } else {
-    return { band: { songs: [] } }
+    //I'm not sure if I need this code below
+    return {
+      band: {},
+      songs: []
+     }
   }
 }
 

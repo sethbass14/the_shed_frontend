@@ -5,6 +5,7 @@ const initialState = {
   'id': null,
   'username': null,
   'email': null,
+  'songs': [],
   'bands': [
             {
               'name': null,

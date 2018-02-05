@@ -22,7 +22,7 @@ class BandContainer extends React.Component {
         <h2> In Bands Container </h2>
         <Switch>
           <Route
-            path="/bands/:bandId/songs/:id"
+            path="/bands/:bandId/songs/:songId"
             component={SongShow}
             />
           <Route
