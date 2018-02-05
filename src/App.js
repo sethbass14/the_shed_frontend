@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 import DashboardContainer from './containers/DashboardContainer'
 // import Audio from 'react-audioplayer'
 // import Landing from './containers/Landing'
@@ -32,6 +33,9 @@ class App extends Component {
           exact path="/login"
           component={Login}
           />
+        <Route
+          exact path="/signup"
+          component={SignUp} />
         <Route
           exact path="/"
           component={Home}

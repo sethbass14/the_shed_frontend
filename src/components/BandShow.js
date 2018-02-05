@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth'
 // import SongListContainer from '../containers/SongListContainer'
+import * as actions from '../actions'
 import SongListItem from './SongListItem'
 import SongInput from './SongInput'
 
@@ -21,6 +22,11 @@ class BandShow extends React.Component {
     this.setState({ addSong: true })
   }
 
+  handleBandDelete = (bandId) => {
+    console.log('In handle Band Delete')
+    this.props.deleteBand(bandId)
+  }
+
 
   render() {
     const bandSongs = this.props.songs.map((song, index) => { return <SongListItem key={index} song={song}/>})
@@ -30,6 +36,10 @@ class BandShow extends React.Component {
       <div>
         <div>
           <h1>{this.props.band.name}</h1>
+        </div>
+        <div className='delet-band'>
+          <i onClick={() => this.handleBandDelete(this.props.band.id)}className="remove circle icon"></i>
+          <h3>Delete Band</h3>
         </div>
         <div>
           <h2>Songs</h2>
@@ -55,7 +65,6 @@ const mapStateToProps = (state, ownProps) => {
   if (band) {
     return {
       band: band,
-      bandId: state.activeBandId,
       songs: state.userData.songs.filter(song => song.band_id === parseInt(ownProps.match.params.bandId) )
     }
   } else {
@@ -67,5 +76,5 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default withAuth(connect(mapStateToProps)(BandShow))
+export default withAuth(connect(mapStateToProps, actions)(BandShow))
 // export default BandShow

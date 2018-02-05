@@ -38,7 +38,9 @@ const Navbar = (props) => {
                   props.logOutUser(props.history);
                 }}>Log Out</a>
             ) : (
-              <p>Sign Up </p>
+              <Link to="/signup">
+                Sign Up
+              </Link>
             )}
           </div>
         </div>

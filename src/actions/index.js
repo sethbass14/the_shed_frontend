@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG, ADD_BAND } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG, ADD_BAND, DELETE_BAND, ADD_USER } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -30,6 +30,18 @@ export const fetchUserData = (id) => dispatch => {
   })
 }
 
+export const addUser = (user_data, history) => dispatch => {
+  dispatch({ type: ASYNC_START })
+  adapter.users.postNewUser(user_data).then(userData => {
+    if (userData.error) {
+      alert("THERE IS AN ERROR")
+    } else {
+      dispatch({ type: ADD_USER, userData })
+      history.push('/login')
+    }
+  })
+}
+
 export const addSong = (form_data) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.songs.postNewSong(form_data).then(songData => {
@@ -43,6 +55,13 @@ export const addBand = (band_data, history) => dispatch => {
     dispatch({ type: ADD_BAND, bandData })
     debugger
     history.push(`/bands/${bandData.id}`)
+  })
+}
+
+export const deleteBand = (id, history) => dispatch => {
+  dispatch({ type: ASYNC_START })
+  adapter.bands.deleteBandServer(id).then(resp => {
+    dispatch({ type: DELETE_BAND, resp })
   })
 }
 

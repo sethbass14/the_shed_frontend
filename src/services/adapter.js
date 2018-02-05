@@ -24,7 +24,14 @@ const getUserData = (id) => {
   // console.log('In getUserData in the adapter')
   return fetch(`${API_ROOT}/users/${id}`)
           .then(resp => resp.json())
+}
 
+const postNewUser = (user_data) => {
+  return fetch(`${API_ROOT}/users`, {
+    method: 'POST',
+    headers: HEADERS,
+    body: JSON.stringify(user_data)
+  }).then(resp => resp.json())
 }
 
 //Below is everything for a song
@@ -45,16 +52,26 @@ const postNewBand = (band_data) => {
   }).then(resp => resp.json())
 }
 
+const deleteBandServer = id => {
+  return fetch(`${API_ROOT}/bands/${id}`, {
+    method: 'DELETE'
+  }).then(resp => resp.json())
+}
+
 export default {
   auth: {
     login,
     getCurrentUser,
     getUserData
   },
+  users: {
+    postNewUser
+  },
   songs: {
     postNewSong
   },
   bands: {
-    postNewBand
+    postNewBand,
+    deleteBandServer
   }
 }

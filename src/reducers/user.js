@@ -1,6 +1,6 @@
 import { songsReducer } from './songs';
 import {  bandsReducer } from './bands';
-import { SET_USER_DATA, ADD_SONG, LOGOUT_USER, ADD_BAND } from '../constants'
+import { SET_USER_DATA, ADD_SONG, LOGOUT_USER, ADD_USER, ADD_BAND } from '../constants'
 
 
 const initialState = {
