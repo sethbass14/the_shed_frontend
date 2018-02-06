@@ -5,26 +5,6 @@ import AudioPlayer from './AudioPlayer';
 import withAuth from '../hocs/withAuth';
 import * as actions from '../actions';
 
-
-
-// const SongShow = props => {
-//   console.log('In SongShow', props)
-//   return (
-//     <div>
-//       <div>
-//         {props.song.id? (
-//           <div>
-//             <h2>{props.song.title}</h2>
-//             <AudioPlayer song={props.song}/>
-//           </div>
-//         ) : (
-//           null
-//         )}
-//       </div>
-//     </div>
-//   )
-// }
-
 const SongShow = props => {
   console.log('In SongShow', props)
   return (
