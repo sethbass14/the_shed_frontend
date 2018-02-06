@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG, ADD_BAND, DELETE_BAND, ADD_USER } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -23,10 +23,11 @@ export const logOutUser = (history) => {
   return { type: LOGOUT_USER }
 }
 
-export const fetchUserData = (id) => dispatch => {
+export const fetchUserData = (id, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.auth.getUserData(id).then(userData => {
     dispatch({ type: SET_USER_DATA, userData })
+    // history.push("/dashboard")
   })
 }
 
@@ -49,11 +50,21 @@ export const addSong = (form_data) => dispatch => {
   })
 }
 
+export const deleteSong = (id, history) => dispatch => {
+  dispatch({ type: ASYNC_START })
+  adapter.songs.deleteSongServer(id).then(resp => {
+    if (resp.error) {
+      alert(`${resp.error}`)
+    } else {
+      dispatch({ type: DELETE_SONG, resp })
+    }
+  })
+}
+
 export const addBand = (band_data, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.bands.postNewBand(band_data).then(bandData => {
     dispatch({ type: ADD_BAND, bandData })
-    debugger
     history.push(`/bands/${bandData.id}`)
   })
 }

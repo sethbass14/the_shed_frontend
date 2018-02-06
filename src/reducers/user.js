@@ -1,8 +1,8 @@
 import { songsReducer } from './songs';
 import {  bandsReducer } from './bands';
-import { SET_USER_DATA, ADD_SONG, LOGOUT_USER, ADD_USER, ADD_BAND } from '../constants'
+import { SET_USER_DATA, ADD_SONG, LOGOUT_USER, ADD_USER, ADD_BAND, DELETE_BAND } from '../constants'
 
-
+//I think I can refactor this initial state
 const initialState = {
   'id': null,
   'username': null,
@@ -28,6 +28,7 @@ export const userReducer = ( state = initialState, action ) => {
       // debugger
       return {...state, songs: songsReducer(state.songs, action)}
     case ADD_BAND:
+    case DELETE_BAND:
       return {...state, bands: bandsReducer(state.bands, action)}
     case LOGOUT_USER:
       return initialState

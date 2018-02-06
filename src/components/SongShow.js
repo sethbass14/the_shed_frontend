@@ -23,6 +23,28 @@ const SongShow = props => {
   )
 }
 
+// const SongShow = props => {
+//   console.log('In SongShow', props)
+//   return (
+//     <div>
+//       <div>
+//         {props.song.id? (
+//           <div>
+//             <h2>{props.song.title}</h2>
+//               <div className='delete-band'>
+//                 <i onClick={() => props.deleteSong(this.props.song.id)}className="remove circle icon"></i>
+//                 <h3>Delete Band</h3>
+//               </div>
+//             <AudioPlayer song={props.song}/>
+//           </div>
+//         ) : (
+//           null
+//         )}
+//       </div>
+//     </div>
+//   )
+// }
+
 //Check out this problem of refreshing not working down below
 const mapStateToProps = (state, prevProps) => {
   if (state.userData.id) {

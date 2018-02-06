@@ -8,8 +8,6 @@ import * as actions from '../actions'
 import DashboardShow from '../components/DashboardShow'
 
 
-
-
 class Dashboard extends React.Component {
   componentDidMount() {
     this.props.fetchUserData(this.props.user.id)

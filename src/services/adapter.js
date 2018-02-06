@@ -43,6 +43,12 @@ const postNewSong = (file) => {
   }).then(resp => resp.json())
 }
 
+const deleteSongServer = id => {
+  return fetch(`${API_ROOT}/songs/${id}`, {
+    method: 'DELETE'
+  }).then(resp => resp.json())
+}
+
 //Below is everything for a band
 const postNewBand = (band_data) => {
   return fetch(`${API_ROOT}/bands`, {
@@ -68,7 +74,8 @@ export default {
     postNewUser
   },
   songs: {
-    postNewSong
+    postNewSong,
+    deleteSongServer
   },
   bands: {
     postNewBand,
