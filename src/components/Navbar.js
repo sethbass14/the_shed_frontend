@@ -5,22 +5,43 @@ import * as actions from '../actions';
 
 
 const Navbar = (props) => {
+  console.log('In the nav bar', props)
   return (
       <div className={`ui menu`}>
         <div className={'item'}>
-          <h1>The Shed Logo</h1>
+          <Link to="/">
+            <h1>The Shed Logo</h1>
+          </Link>
         </div>
           {props.loggedIn ? (
               <a className="item back" onClick={() => window.history.back()}>
                 <i className="arrow circle left icon"></i>
-                <p>Go Back</p>
+                <p>Back</p>
+              </a>
+            ) : (
+              null
+            )
+          }
+          {props.loggedIn ? (
+              <a className="item forward" onClick={() => window.history.forward()}>
+                <i className="arrow circle right icon"></i>
+                <p>Forward</p>
               </a>
             ) : (
               null
             )
           }
         <div className={'right menu'}>
-          <div className={'item'}>
+          {props.loggedIn ? (
+            <div className="item">
+              <Link to="/bands">
+                Bands
+              </Link>
+            </div>
+          ) : (
+            null
+          )}
+          <div className='item'>
             {props.loggedIn ? (
               <p>Welcome {props.currentUser.username}!</p>
             ) : (
