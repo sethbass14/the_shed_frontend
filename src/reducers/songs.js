@@ -12,6 +12,7 @@ export const songsReducer = (state = initialState, action) => {
       // debugger
       return [...state, action.songData]
     case DELETE_SONG:
+      // debugger
       return state.filter(song => song.id !== action.resp.id)
     default:
       return state

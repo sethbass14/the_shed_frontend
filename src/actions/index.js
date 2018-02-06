@@ -51,11 +51,13 @@ export const addSong = (form_data) => dispatch => {
 }
 
 export const deleteSong = (id, history) => dispatch => {
+  // debugger
   dispatch({ type: ASYNC_START })
   adapter.songs.deleteSongServer(id).then(resp => {
     if (resp.error) {
       alert(`${resp.error}`)
     } else {
+      history.push(`/bands/${resp.band_id}`)
       dispatch({ type: DELETE_SONG, resp })
     }
   })

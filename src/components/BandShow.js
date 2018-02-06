@@ -77,5 +77,5 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default withAuth(connect(mapStateToProps, actions)(BandShow))
+export default withAuth(withRouter(connect(mapStateToProps, actions)(BandShow)))
 // export default BandShow
