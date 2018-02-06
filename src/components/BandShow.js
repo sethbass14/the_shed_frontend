@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth'
+import { withRouter } from 'react-router-dom'
 // import SongListContainer from '../containers/SongListContainer'
 import * as actions from '../actions'
 import SongListItem from './SongListItem'
@@ -24,7 +25,7 @@ class BandShow extends React.Component {
 
   handleBandDelete = (bandId) => {
     console.log('In handle Band Delete')
-    this.props.deleteBand(bandId)
+    this.props.deleteBand(bandId, this.props.history)
   }
 
 
@@ -37,7 +38,7 @@ class BandShow extends React.Component {
         <div>
           <h1>{this.props.band.name}</h1>
         </div>
-        <div className='delet-band'>
+        <div className='delete-band'>
           <i onClick={() => this.handleBandDelete(this.props.band.id)}className="remove circle icon"></i>
           <h3>Delete Band</h3>
         </div>
