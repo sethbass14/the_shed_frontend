@@ -43,9 +43,11 @@ class SongInput extends React.Component {
   render() {
     console.log("Song Input", this.props)
     return (
-      <div className='dropzone'>
+      <div>
         <h1>New Song</h1>
-        <form id="new-song"
+        <form
+          className="ui form"
+          id="new-song"
           onSubmit={this.handleSubmit}>
           <label>Song Title</label>
           <input
@@ -56,7 +58,7 @@ class SongInput extends React.Component {
           <br></br>
           <input type="file" name="audio" accept="audio/*" id="audio_upload" onChange={this.handleAudioChange}/>
           <br></br>
-          <input type="submit"/>
+          <button className="ui button" type="submit">Submit</button>
         </form>
 
       </div>

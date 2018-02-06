@@ -36,23 +36,23 @@ class BandShow extends React.Component {
     // console.log(bandSongs)
     return (
       <div>
-      <div className="ui grid container">
-        <div className="four wide column">
-          <h3>Set List Placeholder</h3>
-        </div>
-        <div className="eight wide column">
-          <div>
-            {this.props.band.id ? <BandCard band={this.props.band}/> : null}
+        <div className="ui grid container">
+          <div className="four wide column">
+            <h3>Set List Placeholder</h3>
           </div>
+          <div className="eight wide column">
+            <div>
+              {this.props.band.id ? <BandCard band={this.props.band}/> : null}
+            </div>
 
-        </div>
-        <div className="four wide column">
-          <div>
-            <h2>Songs</h2>
-            {bandSongs}
+          </div>
+          <div className="four wide column">
+            <div>
+              <h2>Songs</h2>
+              {bandSongs}
+            </div>
           </div>
         </div>
-      </div>
 
       <div className="ui grid container">
         <div className="four wide column">
