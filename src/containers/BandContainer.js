@@ -19,7 +19,7 @@ class BandContainer extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="bands-container">
         <h2> In Bands Container </h2>
         <Switch>
           <Route

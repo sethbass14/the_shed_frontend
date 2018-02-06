@@ -10,9 +10,6 @@ class BandListContainer extends React.Component {
     return (
       <div>
         <div>
-          <h1>In the Band List Container</h1>
-        </div>
-        <div>
         {bands}
         </div>
       </div>

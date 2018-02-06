@@ -12,3 +12,13 @@ body {
 .logout:hover {
   cursor: pointer;
 }
+
+.page-title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.add-band {
+  margin-top: 100px;
+  text-align: center;
+}

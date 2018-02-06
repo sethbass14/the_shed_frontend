@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import * as actions from '../actions'
 import SongListItem from './SongListItem'
 import SongInput from './SongInput'
+import BandCard from './BandCard'
 
 
 
@@ -35,26 +36,46 @@ class BandShow extends React.Component {
     // console.log(bandSongs)
     return (
       <div>
-        <div>
-          <h1>{this.props.band.name}</h1>
+      <div className="ui grid container">
+        <div className="four wide column">
+          <h3>Set List Placeholder</h3>
         </div>
-        <div className='delete-band'>
-          <i onClick={() => this.handleBandDelete(this.props.band.id)}className="remove circle icon"></i>
-          <h3>Delete Band</h3>
+        <div className="eight wide column">
+          <div>
+            {this.props.band.id ? <BandCard band={this.props.band}/> : null}
+          </div>
+
         </div>
-        <div>
-          <h2>Songs</h2>
-          {bandSongs}
+        <div className="four wide column">
+          <div>
+            <h2>Songs</h2>
+            {bandSongs}
+          </div>
         </div>
-        <div>
-          <h3 onClick={() => this.handleSongAdd()}>Add A Song</h3>
-          {this.state.addSong? (
-            <SongInput />
-          ) : (
-            null
-          )
-        }
+      </div>
+
+      <div className="ui grid container">
+        <div className="four wide column">
         </div>
+        <div className="eight wide column">
+          <button
+            className="ui button"
+            onClick={() => this.handleBandDelete(this.props.band.id)}>
+            Delete Band
+          </button>
+        </div>
+        <div className="four wide column">
+          <div>
+            <h3 onClick={() => this.handleSongAdd()}>Add A Song</h3>
+            {this.state.addSong? (
+              <SongInput />
+              ) : (
+                null
+              )
+            }
+          </div>
+        </div>
+      </div>
     </div>
     )
   }

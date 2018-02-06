@@ -16,6 +16,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
+        <h1>In Dashboard Container</h1>
         <DashboardShow/>
       </div>
     )
