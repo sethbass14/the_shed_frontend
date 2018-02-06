@@ -43,6 +43,14 @@ const postNewSong = (file) => {
   }).then(resp => resp.json())
 }
 
+const updateNotes = (notes, songId) => {
+  return fetch(`${API_ROOT}/songs/${songId}`, {
+    method: 'PATCH',
+    headers: HEADERS,
+    body: JSON.stringify(notes)
+  }).then(resp => resp.json())
+}
+
 const deleteSongServer = id => {
   return fetch(`${API_ROOT}/songs/${id}`, {
     method: 'DELETE'
@@ -75,7 +83,8 @@ export default {
   },
   songs: {
     postNewSong,
-    deleteSongServer
+    deleteSongServer,
+    updateNotes
   },
   bands: {
     postNewBand,

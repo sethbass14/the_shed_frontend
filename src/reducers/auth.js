@@ -1,6 +1,6 @@
 
 const initialState = { currentUser: {} };
-
+// Import constants
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_CURRENT_USER':

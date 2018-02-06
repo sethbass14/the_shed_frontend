@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -50,6 +50,18 @@ export const addSong = (form_data) => dispatch => {
   })
 }
 
+export const addSongNotes = (notes, songId) => dispatch => {
+  dispatch({type: ASYNC_START })
+  adapter.songs.updateNotes(notes, songId).then(song => {
+    // debugger
+    if (song.error) {
+      alert(`${song.error}`)
+    } else {
+      dispatch({ type: ADD_SONG_NOTES, song })
+    }
+  })
+}
+
 export const deleteSong = (id, history) => dispatch => {
   // debugger
   dispatch({ type: ASYNC_START })
@@ -62,6 +74,7 @@ export const deleteSong = (id, history) => dispatch => {
     }
   })
 }
+
 
 export const addBand = (band_data, history) => dispatch => {
   dispatch({ type: ASYNC_START })

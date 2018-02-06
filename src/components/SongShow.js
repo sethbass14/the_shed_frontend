@@ -5,6 +5,7 @@ import AudioPlayer from './AudioPlayer';
 import withAuth from '../hocs/withAuth';
 import * as actions from '../actions';
 import SongCard from './SongCard'
+import SongNoteForm from './SongNoteForm'
 
 const SongShow = props => {
   console.log('In SongShow', props)
@@ -17,8 +18,7 @@ const SongShow = props => {
           <SongCard song={props.song}/>
         </div>
         <div className="four wide column">
-          <form>
-          </form>
+          {props.song.id? <SongNoteForm song={props.song} /> : null}
         </div>
 
       </div>
