@@ -15,7 +15,8 @@ class BandShow extends React.Component {
     super()
 
     this.state = {
-      addSong: false
+      addSong: false,
+      deleteClick: 0
     }
 
   }
@@ -24,9 +25,18 @@ class BandShow extends React.Component {
     this.setState({ addSong: true })
   }
 
+  deleteConfirmation = (bandId) => {
+    if (this.state.deleteClick > 1) {
+      this.props.deleteBand(bandId, this.props.history)
+      this.setState({ ...this.state, deleteClick: 0 })
+    } else {
+      alert('Are you sure you want to delete this band, all of its songs and setlists? Click delete again to END this band.')
+    }
+  }
+
   handleBandDelete = (bandId) => {
     console.log('In handle Band Delete')
-    this.props.deleteBand(bandId, this.props.history)
+    this.setState({ ...this.state, deleteClick: this.state.deleteClick + 1 }, () => this.deleteConfirmation(bandId))
   }
 
 
