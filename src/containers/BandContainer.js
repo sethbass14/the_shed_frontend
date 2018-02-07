@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Link} from 'react-router-dom';
 import BandsIndex from '../components/Band/BandsIndex';
 import BandShow from '../components/Band/BandShow';
-import SongShow from '../components/SongShow';
+import SongShow from '../components/Song/SongShow';
 import BandInput from '../components/Band/BandInput';
 
 

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 // import SongListContainer from '../containers/SongListContainer'
 import * as actions from '../../actions'
-import SongListItem from '../SongListItem'
-import SongInput from '../SongInput'
+import SongListItem from '../Song/SongListItem'
+import SongInput from '../Song/SongInput'
 import BandCard from './BandCard'
 
 

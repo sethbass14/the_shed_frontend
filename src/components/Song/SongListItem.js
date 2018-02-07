@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-// import { connect } from 'react-redux';
-
 
 const SongListItem = props => {
   console.log('In Song List Item', props)
@@ -12,12 +10,6 @@ const SongListItem = props => {
       </Link>
     </div>
   )
-}
-
-const mapStateToProps = (state, prevProps) => {
-  return {
-
-  }
 }
 
 export default withRouter(SongListItem)

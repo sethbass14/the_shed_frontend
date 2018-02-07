@@ -1,8 +1,7 @@
 import React from 'react';
-// import Dropzone from 'react-dropzone';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import * as actions from '../actions'
+import * as actions from '../../actions'
 
 
 class SongInput extends React.Component {

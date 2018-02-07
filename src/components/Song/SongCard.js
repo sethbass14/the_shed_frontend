@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
-import AudioPlayer from './AudioPlayer'
-import * as actions from '../actions'
+import AudioPlayer from '../AudioPlayer'
+import * as actions from '../../actions'
 
 
 

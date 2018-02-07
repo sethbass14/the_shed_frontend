@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import AudioPlayer from './AudioPlayer';
+import AudioPlayer from '../AudioPlayer';
 import SongCard from './SongCard'
 import SongNoteForm from './SongNoteForm'
 
