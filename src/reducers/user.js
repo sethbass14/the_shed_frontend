@@ -31,7 +31,7 @@ export const userReducer = ( state = initialState, action ) => {
       return {...state, songs: songsReducer(state.songs, action)}
     case ADD_BAND:
     case DELETE_BAND:
-      return {...state, bands: bandsReducer(state.bands, action)}
+      return {...state, bands: bandsReducer(state.bands, action), songs: songsReducer(state.songs, action)}
     case LOGOUT_USER:
       return initialState
     default:

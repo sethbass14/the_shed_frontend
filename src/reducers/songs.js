@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_SONG, DELETE_SONG, ADD_SONG_NOTES} from '../constants'
+import { SET_USER_DATA, ADD_SONG, DELETE_SONG, ADD_SONG_NOTES, DELETE_BAND } from '../constants'
 
 const initialState = []
 
@@ -19,6 +19,8 @@ export const songsReducer = (state = initialState, action) => {
       const index = state.indexOf(song)
       // debugger
       return [...state.slice(0, index), action.song, ...state.slice(index + 1)]
+      case DELETE_BAND:
+        return state.filter(song => song.band_id !== action.resp.band_id)
     default:
       return state
   }

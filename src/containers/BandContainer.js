@@ -11,12 +11,6 @@ import * as actions from '../actions'
 
 
 class BandContainer extends React.Component {
-  // This fetch request seems way unnecessary. There must be a way for this to live within a container that makes a fetch request on mount, so that on refresh, the fetch request gets made further up the tree.
-  // componentDidMount() {
-  //   if (this.props.loggedIn) {
-  //     this.props.fetchUserData(this.props.user.id)
-  //   }
-  // }
   render() {
     console.log('In Bands Container', this.props)
     return (
