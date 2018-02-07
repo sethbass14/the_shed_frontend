@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER, ADD_SONG_CLICK } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER, ADD_SONG_CLICK, ADD_SET_LIST } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -101,6 +101,18 @@ export const deleteBand = (id, history) => dispatch => {
     } else {
       dispatch({ type: DELETE_BAND, resp })
       history.push('/bands')
+    }
+  })
+}
+
+//Below are set list actions
+export const addSetList = (set_list_data) => dispatch => {
+  dispatch({ type: ASYNC_START })
+  adapter.setLists.postNewSetList(set_list_data).then(setList => {
+    if (setList.error) {
+      alert(`${setList.error}`)
+    } else {
+      dispatch({ type: ADD_SET_LIST, setList })
     }
   })
 }

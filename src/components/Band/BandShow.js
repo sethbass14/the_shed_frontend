@@ -74,7 +74,10 @@ class BandShow extends React.Component {
         <div className="four wide column">
           <h3 onClick={() => this.handleAddSetListClick()}>Add a Set List</h3>
           {this.state.addSetListClick ? (
-            <SetListInput handleAddSetListClick={this.handleAddSetListClick}/>
+            <SetListInput
+              handleAddSetListClick={this.handleAddSetListClick}
+              band={this.props.band}
+              />
           ) : (
             null
           )}

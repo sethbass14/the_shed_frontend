@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions'
 
 
 class SetListInput extends React.Component {
@@ -11,6 +13,19 @@ class SetListInput extends React.Component {
     }
   }
 
+  handleChange = event => {
+    this.setState({ ...this.state, [event.target.name]: event.target.value })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    if (!this.state.date) {
+      alert('A set list must have a date!')
+    } else {
+      alert(`Write some routes, dispatch an action, and write an adapter method`)
+    }
+  }
+//Prop of band is passed down from the parent in this case.
   render() {
     return (
       <div>
@@ -22,12 +37,18 @@ class SetListInput extends React.Component {
           <label>Set List Title</label>
           <input
             type="text"
+            name="name"
             value={this.state.title}
             onChange={this.handleChange}
             />
           <br></br>
           <label>Set List Date</label>
-          <h2>Find a calendar picker</h2>
+          <input
+            type="date"
+            name="date"
+            value={this.state.date}
+            onChange={this.handleChange}
+            />
           <br></br>
             <button className="ui button" type="submit">Submit</button>
         </form>
@@ -37,4 +58,4 @@ class SetListInput extends React.Component {
   }
 }
 
-export default SetListInput
+export default connect(null, actions)(SetListInput)

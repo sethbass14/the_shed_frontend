@@ -72,6 +72,15 @@ const deleteBandServer = id => {
   }).then(resp => resp.json())
 }
 
+//Below is everything about a set list
+const postNewSetList = (set_list_data) => {
+  return fetch(`${API_ROOT}/set_lists`, {
+    method: 'POST',
+    headers: HEADERS,
+    body: JSON.stringify(set_list_data)
+  }).then(resp => resp.json())
+}
+
 export default {
   auth: {
     login,
@@ -89,5 +98,8 @@ export default {
   bands: {
     postNewBand,
     deleteBandServer
+  },
+  setLists: {
+    postNewSetList
   }
 }
