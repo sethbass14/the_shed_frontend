@@ -66,8 +66,8 @@ class BandShow extends React.Component {
         </div>
         <div className="four wide column">
           <div>
-            <h3 onClick={() => this.handleSongAdd()}>Add A Song</h3>
-            {this.state.addSong? (
+            <h3 onClick={() => this.props.addSongClick()}>Add A Song</h3>
+            {this.props.addSongClickState ? (
               <SongInput />
               ) : (
                 null
@@ -87,7 +87,8 @@ const mapStateToProps = (state, ownProps) => {
   if (band) {
     return {
       band: band,
-      songs: state.userData.songs.filter(song => song.band_id === parseInt(ownProps.match.params.bandId) )
+      songs: state.userData.songs.filter(song => song.band_id === parseInt(ownProps.match.params.bandId) ),
+      addSongClickState: state.addSong
     }
   } else {
     //I'm not sure if I need this code below

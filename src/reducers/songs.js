@@ -17,7 +17,7 @@ export const songsReducer = (state = initialState, action) => {
     case ADD_SONG_NOTES:
       const song = state.find(song => song.id === action.song.id)
       const index = state.indexOf(song)
-      debugger
+      // debugger
       return [...state.slice(0, index), action.song, ...state.slice(index + 1)]
     default:
       return state

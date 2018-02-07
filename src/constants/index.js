@@ -11,7 +11,12 @@ export const SET_USER_DATA = 'SET_USER_DATA'
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const ADD_USER = 'ADD_USER'
 export const ADD_SONG = 'ADD_SONG'
+export const ADD_SONG_START = 'ADD_SONG_START'
 export const DELETE_SONG = 'DELETE_SONG'
 export const ADD_SONG_NOTES = 'ADD_SONG_NOTES'
 export const ADD_BAND = 'ADD_BAND'
 export const DELETE_BAND = 'DELETE_BAND'
+
+//non-backend actions
+
+export const ADD_SONG_CLICK = 'ADD_SONG_CLICK'

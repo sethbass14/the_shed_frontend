@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER, ADD_SONG_CLICK } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -47,10 +47,11 @@ export const addUser = (user_data, history) => dispatch => {
   })
 }
 
-export const addSong = (form_data) => dispatch => {
-  dispatch({ type: ASYNC_START })
+export const addSong = (form_data, history) => dispatch => {
+  dispatch({ type: ADD_SONG_START })
   adapter.songs.postNewSong(form_data).then(songData => {
     dispatch({ type: ADD_SONG, songData })
+    history.push(`/bands/${songData.band_id}/songs/${songData.id}`)
   })
 }
 
@@ -98,4 +99,9 @@ export const deleteBand = (id, history) => dispatch => {
       history.push('/bands')
     }
   })
+}
+
+//Below are non-crud actions
+export const addSongClick = () => dispatch => {
+  dispatch({ type: ADD_SONG_CLICK, action: true})
 }

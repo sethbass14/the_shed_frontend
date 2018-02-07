@@ -27,7 +27,7 @@ class SongInput extends React.Component {
     formData.append("audio", file)
     formData.append("title", this.state.title)
     formData.append("band_id", this.props.bandId)
-    this.props.addSong(formData)
+    this.props.addSong(formData, this.props.history)
   }
 
   handleAudioChange = event => {
@@ -58,7 +58,11 @@ class SongInput extends React.Component {
           <br></br>
           <input type="file" name="audio" accept="audio/*" id="audio_upload" onChange={this.handleAudioChange}/>
           <br></br>
-          <button className="ui button" type="submit">Submit</button>
+          {this.props.songLoading ? (
+            <button className="ui loading button" type="submit">Submit</button>
+          ) : (
+            <button className="ui button" type="submit">Submit</button>
+          )}
         </form>
 
       </div>
@@ -69,7 +73,8 @@ class SongInput extends React.Component {
 
 const mapStateToProps = (state, prevProps) => {
   return {
-    bandId : parseInt(prevProps.match.params.bandId)
+    bandId: parseInt(prevProps.match.params.bandId),
+    songLoading: state.songLoading
   }
 }
 
