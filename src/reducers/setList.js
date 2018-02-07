@@ -1,10 +1,10 @@
-import { ADD_SET_LIST } from '../constant'
+import { ADD_SET_LIST } from '../constants'
 
 const initialState = []
-export const setListReducer = (state = initialState, action  ) {
+export const setListReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_SET_LIST:
-      return [...state, action.setList] 
+      return [...state, action.setList]
     default:
       return state
   }

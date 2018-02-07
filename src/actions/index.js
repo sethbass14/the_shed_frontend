@@ -106,13 +106,14 @@ export const deleteBand = (id, history) => dispatch => {
 }
 
 //Below are set list actions
-export const addSetList = (set_list_data) => dispatch => {
+export const addNewSetList = (set_list_data) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.setLists.postNewSetList(set_list_data).then(setList => {
     if (setList.error) {
       alert(`${setList.error}`)
     } else {
       dispatch({ type: ADD_SET_LIST, setList })
+      alert(`Got the response! setList id: ${setList.id}`)
     }
   })
 }
