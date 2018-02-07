@@ -7,6 +7,7 @@ import * as actions from '../../actions'
 import SongListItem from '../Song/SongListItem'
 import SongInput from '../Song/SongInput'
 import BandCard from './BandCard'
+import SetListInput from '../SetList/SetListInput'
 
 
 
@@ -16,13 +17,18 @@ class BandShow extends React.Component {
 
     this.state = {
       addSong: false,
-      deleteClick: 0
+      deleteClick: 0,
+      addSetListClick: false
     }
 
   }
 
   handleSongAdd = () => {
-    this.setState({ addSong: true })
+    this.setState({ ...this.state, addSong: true })
+  }
+
+  handleAddSetListClick = () => {
+    this.setState({ ...this.state, addSetListClick: !this.state.addSetListClick })
   }
 
   deleteConfirmation = (bandId) => {
@@ -66,6 +72,12 @@ class BandShow extends React.Component {
 
       <div className="ui grid container">
         <div className="four wide column">
+          <h3 onClick={() => this.handleAddSetListClick()}>Add a Set List</h3>
+          {this.state.addSetListClick ? (
+            <SetListInput handleAddSetListClick={this.handleAddSetListClick}/>
+          ) : (
+            null
+          )}
         </div>
         <div className="eight wide column">
           <button
@@ -76,7 +88,7 @@ class BandShow extends React.Component {
         </div>
         <div className="four wide column">
           <div>
-            <h3 onClick={() => this.props.addSongClick()}>Add A Song</h3>
+            <h3 onClick={() => this.props.addSongClick()}>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
             {this.props.addSongClickState ? (
               <SongInput />
               ) : (
