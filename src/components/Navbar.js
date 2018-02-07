@@ -9,16 +9,22 @@ const Navbar = (props) => {
   return (
       <div className={`ui menu`}>
         <div className={'item'}>
-          <Link to="/">
-            <h1>The Shed Logo</h1>
-          </Link>
+          {props.loggedIn ? (
+            <Link to="/dashboard">
+              <h1>The Shed Logo</h1>
+            </Link>
+          ) : (
+            <Link to="/">
+              <h1>The Shed Logo</h1>
+            </Link>
+          )}
         </div>
           {props.loggedIn ? (
               <a className="item back" onClick={() => {
                   if (window.location.pathname === "/dashboard") {
                     return null
                   } else {
-                    window.history.back()  
+                    window.history.back()
                   }
                 }
               }>
