@@ -1,38 +1,58 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
-import withAuth from '../hocs/withAuth'
-import BandCard from './BandCard'
+import { Link } from 'react-router-dom';
+import withAuth from '../hocs/withAuth';
+import BandCard from './BandCard';
+import BandInput from './BandInput';
 
 
 
 // This needs to be an index of all the user's bands
-const BandsIndex = props => {
-  console.log("In the bands index", props)
-  const allBands = props.bands.map((band, index) => {
+class BandsIndex extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      addBandClick: false
+    }
+
+  }
+
+  addBandClick = () => {
+    this.setState({ addBandClick: !this.state.addBandClick })
+  }
+
+  render() {
+    console.log("In the bands index", this.props)
+    const allBands = this.props.bands.map((band, index) => {
+      return (
+        <BandCard
+          key={index}
+          band={band}
+          />
+      )
+    })
     return (
-      <BandCard
-        key={index}
-        band={band}
-        />
+      <div className="band-Index">
+        <div className="page-title">
+          <h1>Your Bands</h1>
+        </div>
+        <div className="add-band">
+          {this.state.addBandClick ? (
+            <BandInput addBandClick={this.addBandClick}/>
+          ) : (
+            <a onClick={() => this.addBandClick()}>Add a band</a>
+          )}
+        </div>
+        <div className="ui grid container">
+          {allBands}
+        </div>
+      </div>
+
     )
-  })
-  return (
-    <div className="band-Index">
-      <div className="page-title">
-        <h1>Your Bands</h1>
-      </div>
-      <div className="add-band">
-        <Link to="/bands/new">
-          Add a band
-        </Link>
-      </div>
-      <div className="ui grid container">
-        {allBands}
-      </div>
-    </div>
-  )
+  }
 }
+
 
 const mapStateToProps = state => {
   return {
