@@ -10,32 +10,23 @@ import SongNoteForm from './SongNoteForm'
 const SongShow = props => {
   console.log('In SongShow', props)
   return (
-    <div>
-      <div className="ui grid container">
-        <div className="four wide column">
+    <div className='ui grid container'>
+        <div className="five wide column">
+          <h1>Some Space</h1>
         </div>
-        <div className="eight wide column">
-          <SongCard song={props.song}/>
+        <div className=" five wide column">
+          <SongCard song={props.song} />
         </div>
-        <div className="four wide column">
+        <div className="six wide column">
           {props.song.id? <SongNoteForm song={props.song} /> : null}
         </div>
-
-      </div>
-      <div className="ui grid container">
-        <div className="six wide column">
+        <div className="five wide column">
+        </div>
           {props.song.id? <AudioPlayer song={props.song}/> : null}
-        </div>
-        <div className="four wide column">
-          <button
-            className="ui button"
-            onClick={() => props.deleteSong(props.song.id, props.history)}>
-            Delete Song
-          </button>
-        </div>
         <div className="four wide column">
         </div>
-      </div>
+        <div className="column">
+        </div>
     </div>
   )
 }

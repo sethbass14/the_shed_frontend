@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import AudioPlayer from './AudioPlayer'
+import * as actions from '../actions'
 
 
 
@@ -11,9 +12,14 @@ const SongCard = props => {
       <div className="ui card">
         <div className="content">
           <h3>{props.song.title}</h3>
+          <h4>band:</h4> <Link to={`/bands/${props.song.band_id}`}>{props.band ? props.band.name : null}</Link>
         </div>
         <div className="extra content">
-          band: <Link to={`/bands/${props.song.band_id}`}>{props.band ? props.band.name : null}</Link>
+          <button
+            className="ui button"
+            onClick={() => props.deleteSong(props.song.id, props.history)}>
+            Delete Song
+          </button>
         </div>
       </div>
   )
@@ -28,4 +34,4 @@ const mapStateToProps = (state, prevProps) => {
   }
 }
 
-export default connect(mapStateToProps)(SongCard)
+export default withRouter(connect(mapStateToProps, actions)(SongCard))
