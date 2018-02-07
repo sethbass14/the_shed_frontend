@@ -12,24 +12,24 @@ class SongNoteForm extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({ notes: this.props.song.notes })
   }
 
   handleChange = event => {
-    this.setState({ notes: event.target.value }, () => console.log(this.state.notes))
+    this.setState({ notes: event.target.value })
   }
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log('In Song Note Form handleSubmit')
+    // console.log('In Song Note Form handleSubmit')
     this.props.addSongNotes(this.state, this.props.song.id )
 
 
   }
 
   render() {
-    console.log('In Song Note Form', this.props)
+    // console.log('In Song Note Form', this.props)
     return (
       <div>
         <form className="ui form" onSubmit={this.handleSubmit}>
