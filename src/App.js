@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import SongInput from './components/SongInput'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import DashboardContainer from './containers/DashboardContainer'
-// import Audio from 'react-audioplayer'
-// import Landing from './containers/Landing'
 import BandContainer from './containers/BandContainer'
 import * as actions from './actions';
 
@@ -25,25 +22,27 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
-        <Route
-          path="/dashboard"
-          component={DashboardContainer}
-          />
-        <Route
-          exact path="/login"
-          component={Login}
-          />
-        <Route
-          exact path="/signup"
-          component={SignUp} />
-        <Route
-          exact path="/"
-          component={Home}
-          />
+        <Switch>
+          <Route
+            path="/dashboard"
+            component={DashboardContainer}
+            />
+          <Route
+            exact path="/login"
+            component={Login}
+            />
+          <Route
+            exact path="/signup"
+            component={SignUp} />
+          <Route
+            exact path="/"
+            component={Home}
+            />
           <Route
             path="/bands"
             component={BandContainer}
             />
+        </Switch >
       </div>
     );
   }
