@@ -21,13 +21,17 @@ class SongInput extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const audio_upload = document.getElementById('audio_upload')
-    const file = audio_upload.files[0]
-    const formData = new FormData()
-    formData.append("audio", file)
-    formData.append("title", this.state.title)
-    formData.append("band_id", this.props.bandId)
-    this.props.addSong(formData, this.props.history)
+      const audio_upload = document.getElementById('audio_upload')
+      const file = audio_upload.files[0]
+      const formData = new FormData()
+    if (this.state.title && file) {
+      formData.append("audio", file)
+      formData.append("title", this.state.title)
+      formData.append("band_id", this.props.bandId)
+      this.props.addSong(formData, this.props.history)
+    } else {
+      alert('Please select a file to upload and enter a title.')
+    }
   }
 
   handleAudioChange = event => {

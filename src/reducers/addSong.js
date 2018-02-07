@@ -6,7 +6,7 @@ export const addSongReducer = (state = false, action) => {
     case ADD_SONG:
       return false
     case ADD_SONG_CLICK:
-      return action.action
+      return !state
     default:
       return state
   }
