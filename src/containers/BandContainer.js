@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, Link} from 'react-router-dom';
-import BandsIndex from '../components/BandsIndex';
-import BandShow from '../components/BandShow';
+import BandsIndex from '../components/Band/BandsIndex';
+import BandShow from '../components/Band/BandShow';
 import SongShow from '../components/SongShow';
-import BandInput from '../components/BandInput';
+import BandInput from '../components/Band/BandInput';
 
 
 class BandContainer extends React.Component {

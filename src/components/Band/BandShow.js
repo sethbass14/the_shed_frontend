@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import withAuth from '../hocs/withAuth'
+// import withAuth from '../hocs/withAuth'
 import { withRouter } from 'react-router-dom'
 // import SongListContainer from '../containers/SongListContainer'
-import * as actions from '../actions'
-import SongListItem from './SongListItem'
-import SongInput from './SongInput'
+import * as actions from '../../actions'
+import SongListItem from '../SongListItem'
+import SongInput from '../SongInput'
 import BandCard from './BandCard'
 
 
@@ -109,5 +109,5 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default withAuth(withRouter(connect(mapStateToProps, actions)(BandShow)))
+export default withRouter(connect(mapStateToProps, actions)(BandShow))
 // export default BandShow

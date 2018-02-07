@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import * as actions from '../actions'
+import * as actions from '../../actions'
 
 class BandInput extends React.Component {
   constructor() {
@@ -13,7 +13,6 @@ class BandInput extends React.Component {
   }
 
   handleChange = event => {
-    // debugger
     this.setState({ name:  event.target.value })
   }
 
@@ -27,7 +26,7 @@ class BandInput extends React.Component {
   }
 
   render() {
-    console.log('In band input', this.props)
+    // console.log('In band input', this.props)
     return (
       <div className="ui form">
         <form onSubmit={this.handleSubmit}>
@@ -45,10 +44,9 @@ class BandInput extends React.Component {
   }
 }
 
-const mapStateToProps = (state, prevProps) => {
+const mapStateToProps = (state) => {
   return {
     userId: state.userData.id,
-    prevProps: prevProps
   }
 }
 
