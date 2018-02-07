@@ -22,8 +22,6 @@ class LandingContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>In Landing container</h1>
         <Switch>
           <Route
             exact path="/login"
@@ -41,7 +39,6 @@ class LandingContainer extends React.Component {
             component={MainContainer}
             />
         </Switch>
-      </div>
     )
   }
 }

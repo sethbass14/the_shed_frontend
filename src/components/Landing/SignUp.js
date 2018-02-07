@@ -23,7 +23,6 @@ class SignUp extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log('In the handle submit')
     this.props.addUser(this.state.fields, this.props.history)
   }
 

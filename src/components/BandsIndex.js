@@ -22,14 +22,14 @@ const BandsIndex = props => {
       <div className="page-title">
         <h1>Your Bands</h1>
       </div>
+      <div className="add-band">
+        <Link to="/bands/new">
+          Add a band
+        </Link>
+      </div>
       <div className="ui grid container">
         {allBands}
       </div>
-      <div className="add-band">
-      <Link to="/bands/new">
-        Add a band
-      </Link>
-    </div>
     </div>
   )
 }
