@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 
 class Home extends React.Component {
-  componentDidMount() {
-    if (localStorage.getItem('token')) {
-      this.props.fetchUser()
-      this.props.history.push("/dashboard")
-    }
-  }
+  // componentDidMount() {
+  //   if (localStorage.getItem('token')) {
+  //     this.props.fetchUser()
+  //     this.props.history.push("/dashboard")
+  //   }
+  // }
   render() {
     return (
       <div className='home'>

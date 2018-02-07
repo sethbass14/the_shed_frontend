@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import withAuth from '../hocs/withAuth';
 import * as actions from '../actions'
 
 
@@ -45,4 +46,4 @@ const BandCard = props => {
 }
 
 
-export default connect(null, actions)(BandCard)
+export default withAuth(connect(null, actions)(BandCard))

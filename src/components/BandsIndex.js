@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import withAuth from '../hocs/withAuth'
 import BandCard from './BandCard'
 
 
@@ -39,4 +40,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(BandsIndex)
+export default withAuth(connect(mapStateToProps)(BandsIndex))

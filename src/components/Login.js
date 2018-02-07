@@ -18,7 +18,7 @@ class Login extends React.Component {
 
   componentDidMount() {
     if (localStorage.getItem('token')) {
-      this.props.fetchUser()
+      // this.props.fetchUser()
       this.props.history.push("/dashboard")
     }
   }

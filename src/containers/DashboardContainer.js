@@ -9,9 +9,9 @@ import DashboardShow from '../components/DashboardShow'
 
 
 class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.fetchUserData(this.props.user.id)
-  }
+  // componentDidMount() {
+  //   this.props.fetchUserData(this.props.user.id)
+  // }
 
   render() {
     return (

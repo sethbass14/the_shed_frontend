@@ -5,7 +5,7 @@ import * as actions from '../actions';
 
 
 const Navbar = (props) => {
-  console.log('In the nav bar', props)
+  // console.log('In the nav bar', props)
   return (
       <div className={`ui menu`}>
         <div className={'item'}>
