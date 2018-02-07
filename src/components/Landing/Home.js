@@ -23,5 +23,4 @@ class Home extends React.Component {
   }
 }
 
-
-export default connect(null, actions)(Home)
+export default Home

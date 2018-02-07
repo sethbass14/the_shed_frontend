@@ -16,16 +16,7 @@ class Login extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   if (localStorage.getItem('token')) {
-  //     // this.props.fetchUser()
-  //     this.props.history.push("/dashboard")
-  //   }
-  // }
-
-
   onChange = (event) => {
-
     this.setState({
       fields: {...this.state.fields, [event.target.name]: event.target.value}
     })
@@ -35,7 +26,6 @@ class Login extends React.Component {
     event.preventDefault()
     const { fields: { username, password } } = this.state
     this.props.loginUser(username, password, this.props.history)
-
   }
 
   render() {
@@ -54,9 +44,5 @@ class Login extends React.Component {
     )
   }
 }
-
-const mapStateToProps = state => (
-  { loggedIn : !!state.currentUser.id }
-)
 
 export default withRouter(connect(null, actions)(Login));
