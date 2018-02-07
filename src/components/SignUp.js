@@ -31,7 +31,7 @@ class SignUp extends React.Component {
     return (
       <div>
         <h1>Create a username and password</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="ui form">
           <label>Username</label>
           <input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange}/>
           <br></br>
@@ -41,7 +41,7 @@ class SignUp extends React.Component {
           <label>Password</label>
           <input type="text" name="password" value={this.state.fields.password} onChange={this.handleChange}/>
           <br></br>
-          <input type="submit"/>
+          <button type="submit" className="ui button">Submit</button>
       </form>
       </div>
     )
