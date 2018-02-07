@@ -12,7 +12,7 @@ import * as actions from '../actions'
 
 class BandContainer extends React.Component {
   render() {
-    console.log('In Bands Container', this.props)
+    // console.log('In Bands Container', this.props)
     return (
       <div className="bands-container">
         <h2> In Bands Container </h2>

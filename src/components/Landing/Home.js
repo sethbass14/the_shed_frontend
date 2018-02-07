@@ -1,15 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import * as actions from '../actions'
+import * as actions from '../../actions'
 
 class Home extends React.Component {
-  // componentDidMount() {
-  //   if (localStorage.getItem('token')) {
-  //     this.props.fetchUser()
-  //     this.props.history.push("/dashboard")
-  //   }
-  // }
   render() {
     return (
       <div className='home'>
@@ -20,7 +14,9 @@ class Home extends React.Component {
             login
           </Link>
             <p>or</p>
-
+          <Link to="/signup">
+            sign up
+          </Link>
         </div>
       </div>
     )

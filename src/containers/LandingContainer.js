@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import Login from '../components/Login';
-import SignUp from '../components/SignUp';
-import Home from '../components/Home';
+import SignUp from '../components/Landing/SignUp';
+import Login from '../components/Landing/Login';
+import Home from '../components/Landing/Home';
 import MainContainer from './MainContainer';
 
 

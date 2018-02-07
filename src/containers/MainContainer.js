@@ -3,12 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth'
 import DashboardContainer from './DashboardContainer';
-import BandContainer from './BandContainer'
-import BandsIndex from '../components/BandsIndex';
-import BandShow from '../components/BandShow';
-import SongShow from '../components/SongShow';
-import BandInput from '../components/BandInput';
-import * as actions from '../actions'
+import DashboardShow from '../components/DashboardShow';
+import BandContainer from './BandContainer';
+import * as actions from '../actions';
 
 class MainContainer extends React.Component {
 
@@ -19,18 +16,17 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    // console.log('In Main Container', this.props)
     return (
       <div>
         <h1>In Main Container</h1>
         <Switch>
           <Route
-            path="/dashboard"
-            component={DashboardContainer}
-            />
-          <Route
             path="/bands"
             component={BandContainer}
+            />
+          <Route
+            path="/:dashboard"
+            component={DashboardShow}
             />
         </Switch>
       </div>
@@ -38,29 +34,4 @@ class MainContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.auth.currentUser
-  }
-}
-
-
-export default withAuth(connect(mapStateToProps, actions)(MainContainer))
-
-
-// <Route
-//   path="/bands/:bandId/songs/:songId"
-//   component={SongShow}
-//   />
-// <Route
-//   path="/bands/new"
-//   component={BandInput}
-//   />
-// <Route
-//   path="/bands/:bandId"
-//   component={BandShow}
-//   />
-// <Route
-//   path="/bands"
-//   component={BandsIndex}
-//   />
+export default withAuth(connect(null, actions)(MainContainer))
