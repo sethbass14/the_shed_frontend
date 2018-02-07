@@ -12,7 +12,7 @@ class SongNoteForm extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({ notes: this.props.song.notes })
   }
 

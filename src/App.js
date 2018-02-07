@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Navbar from './components/Navbar'
-import Home from './components/Home'
-import Login from './components/Login'
-import SignUp from './components/SignUp'
-import DashboardContainer from './containers/DashboardContainer'
-import BandContainer from './containers/BandContainer'
-import MainContainer from './containers/MainContainer'
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import DashboardContainer from './containers/DashboardContainer';
+import BandContainer from './containers/BandContainer';
+import MainContainer from './containers/MainContainer';
+import LandingContainer from './containers/LandingContainer';
 import * as actions from './actions';
 
 
@@ -27,19 +28,12 @@ class App extends Component {
         <Navbar/>
         <Switch>
           <Route
-            exact path="/login"
-            component={Login}
+            path="/"
+            component={LandingContainer}
             />
           <Route
-            exact path="/signup"
-            component={SignUp} />
-          <Route
-            exact path="/"
-            component={Home}
-            />
-          <Route
-            path="/:dashboard"
-            component={MainContainer}
+            path="/dashboard"
+            render= {MainContainer}
             />
         </Switch >
       </div>
@@ -58,3 +52,16 @@ const mapStateToProps = state => {
 
 export default withRouter(connect(mapStateToProps, actions)(App));
 // export default App
+
+// <Route
+//   exact path="/login"
+//   component={Login}
+//   />
+// <Route
+//   exact path="/signup"
+//   component={SignUp} />
+
+// <Route
+//   path="/dashboard"
+//   component={MainContainer}
+//   />

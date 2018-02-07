@@ -14,7 +14,14 @@ const Navbar = (props) => {
           </Link>
         </div>
           {props.loggedIn ? (
-              <a className="item back" onClick={() => window.history.back()}>
+              <a className="item back" onClick={() => {
+                  if (window.location.pathname === "/dashboard") {
+                    return null
+                  } else {
+                    window.history.back()  
+                  }
+                }
+              }>
                 <i className="arrow circle left icon"></i>
                 <p>Back</p>
               </a>

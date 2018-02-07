@@ -10,10 +10,7 @@ const SongCard = props => {
   return (
       <div className="ui card">
         <div className="content">
-          <Link
-            to={`/bands/${props.song.id}`} >
-            <h3>{props.song.title}</h3>
-          </Link>
+          <h3>{props.song.title}</h3>
         </div>
         <div className="extra content">
           band: <Link to={`/bands/${props.song.band_id}`}>{props.band ? props.band.name : null}</Link>
