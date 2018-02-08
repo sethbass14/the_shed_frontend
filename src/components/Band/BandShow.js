@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import withAuth from '../hocs/withAuth'
 import { withRouter } from 'react-router-dom'
-// import SongListContainer from '../containers/SongListContainer'
-import * as actions from '../../actions'
-import SongListItem from '../Song/SongListItem'
-import SongInput from '../Song/SongInput'
-import BandCard from './BandCard'
-import SetListInput from '../SetList/SetListInput'
+import * as actions from '../../actions';
+import SongListItem from '../Song/SongListItem';
+import SetListListItem from '../SetList/SetListListItem';
+import SongInput from '../Song/SongInput';
+import BandCard from './BandCard';
+import SetListInput from '../SetList/SetListInput';
 
 
 
@@ -48,13 +47,14 @@ class BandShow extends React.Component {
 
   render() {
     const bandSongs = this.props.songs.map((song, index) => { return <SongListItem key={index} song={song}/>})
+    const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
     console.log('In the band show', this.props)
-    // console.log(bandSongs)
     return (
       <div>
         <div className="ui grid container">
           <div className="four wide column">
-            <h3>Set List Placeholder</h3>
+            <h2>Set List Placeholder</h2>
+            {bandSetLists}
           </div>
           <div className="eight wide column">
             <div>
@@ -112,14 +112,16 @@ const mapStateToProps = (state, ownProps) => {
   if (band) {
     return {
       band: band,
-      songs: state.userData.songs.filter(song => song.band_id === parseInt(ownProps.match.params.bandId) ),
-      addSongClickState: state.addSong
+      songs: state.userData.songs.filter(song => song.band_id === parseInt(ownProps.match.params.bandId)),
+      addSongClickState: state.addSong,
+      setLists: band.set_lists
     }
   } else {
     //I'm not sure if I need this code below
     return {
       band: {},
-      songs: []
+      songs: [],
+      setLists: []
      }
   }
 }
