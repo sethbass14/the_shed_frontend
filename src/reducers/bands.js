@@ -28,14 +28,17 @@ export const bandsReducer = (state = initialState, action) => {
       band = {...band, songs: band.songs.filter(song => song.id !== action.resp.id)}
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     case ADD_SET_LIST:
-      debugger
+      // debugger
       band = state.find(band => band.id === action.setList.band_id)
       index = state.indexOf(band)
       band = {...band, set_lists: setListReducer(band.set_lists, action)}
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     case ADD_SET_SONG:
-      // debugger
-      // band = state.find(band => band.id === action)
+      debugger
+      band = state.find(band => band.id === action.setSong.band_id)
+      index = state.indexOf(band)
+      band = {...band, set_lists: setListReducer(band.set_lists, action)}
+      return [...state.slice(0, index), band, ...state.slice(index + 1)]
     default:
       return state
   }

@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_SONG, DELETE_SONG, ADD_SONG_NOTES, DELETE_BAND, ADD_SET_SONG } from '../constants'
+import { SET_USER_DATA, ADD_SONG, DELETE_SONG, ADD_SONG_NOTES, DELETE_BAND, ADD_SET_SONG, DELETE_SET_SONG } from '../constants'
 
 const initialState = []
 
@@ -22,11 +22,16 @@ export const songsReducer = (state = initialState, action) => {
       case DELETE_BAND:
         return state.filter(song => song.band_id !== action.resp.band_id)
       case ADD_SET_SONG:
-        song = state.find(song => song.id === action.setSong.song_id)
+        song = state.find(song => song.id === action.setSong.payload.song_id)
         index = state.indexOf(song)
-        song.set_list_ids = [...song.set_list_ids, action.setSong.id]
+        song.set_list_ids = [...song.set_list_ids, action.setSong.payload.set_list_id]
         return [...state.slice(0, index), song, ...state.slice(index + 1)]
-    default:
+      case DELETE_SET_SONG:
+        song = state.find(song => song.id === action.setSong.payload.song_id)
+        index = state.indexOf(song)
+        song.set_list_ids = song.set_list_ids.filter(id => id !== action.setSong.payload.set_list_id)
+        return [...state.slice(0, index), song, ...state.slice(index + 1)]
+      default:
       return state
   }
 }

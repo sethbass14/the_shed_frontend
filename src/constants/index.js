@@ -19,6 +19,7 @@ export const ADD_BAND = 'ADD_BAND'
 export const DELETE_BAND = 'DELETE_BAND'
 export const ADD_SET_LIST = 'ADD_SET_LIST'
 export const ADD_SET_SONG = 'ADD_SET_SONG'
+export const DELETE_SET_SONG = 'DELETE_SET_SONG'
 
 //non-backend actions
 
