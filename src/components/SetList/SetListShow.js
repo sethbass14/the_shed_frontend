@@ -15,7 +15,7 @@ class SetListShow extends React.Component {
   render() {
     console.log('In Set List Show', this.props)
     const bandSongCards = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
-    const setSongCards = this.props.setSongs.map((song, index) => <SongCard key={index} song={song} setSong={true} />)
+    const setSongCards = this.props.setSongs.map((song, index) => <SongCard key={index} song={song} setSong={true} setList={this.props.setList}/>)
     // debugger
     return (
       <div className="ui grid container">

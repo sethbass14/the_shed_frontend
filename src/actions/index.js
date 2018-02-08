@@ -120,13 +120,25 @@ export const addNewSetList = (set_list_data) => dispatch => {
 
 export const addSetSong = (set_song_data) => dispatch => {
   adapter.setSongs.postNewSetSong(set_song_data).then(setSong => {
-    if (`${setSong.error}`) {
+    if (setSong.error) {
       alert(`${setSong.error}`)
     } else {
       dispatch({ type: ADD_SET_SONG, setSong })
     }
   })
 }
+
+export const deleteSetSong = id => dispatch => {
+  adapter.setSongs.deleteSetSongServer(id).then(setSong => {
+    if (setSong.error) {
+      alert(`${setSong.error}`)
+    } else {
+      alert('No Error! Write a dispatch action!')
+    }
+  })
+}
+
+
 
 
 //Below are non-crud actions

@@ -89,6 +89,12 @@ const postNewSetSong = (set_song_data) => {
   }).then(resp => resp.json())
 }
 
+const deleteSetSongServer = id => {
+  return fetch(`${API_ROOT}/set_songs/${id}`, {
+    method: 'DELETE'
+  }).then(resp => resp.json())
+}
+
 export default {
   auth: {
     login,
@@ -111,6 +117,7 @@ export default {
     postNewSetList
   },
   setSongs: {
-    postNewSetSong
+    postNewSetSong,
+    deleteSetSongServer
   }
 }

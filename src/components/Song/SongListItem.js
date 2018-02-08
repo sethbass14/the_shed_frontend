@@ -12,7 +12,7 @@ const SongListItem = props => {
       </Link>
       {props.setList ? (
         <i class="add circle icon"
-          onClick={() => props.addSetSong({song_id: props.song_id, set_list_id: props.setList.id})}>
+          onClick={() => props.addSetSong({song_id: props.song.id, set_list_id: props.setList.id})}>
         </i>
       ) : (
         null

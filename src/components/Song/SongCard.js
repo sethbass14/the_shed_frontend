@@ -20,6 +20,7 @@ const SongCard = props => {
           {props.setSong? (
             <button
               className="ui button"
+              onClick={() => props.deleteSetSong(props.setList.set_songs.find(setSong => setSong.song_id === props.song.id).id)}
             >
               Remove From Set
             </button>
@@ -36,9 +37,11 @@ const SongCard = props => {
 }
 
 const mapStateToProps = (state, prevProps) => {
-  // console.log('in map State To Props PrevProps:', prevProps)
+  console.log('in map State To Props PrevProps:', prevProps)
   if (state.userData.id) {
-    return { band: state.userData.bands.find(band => band.id === prevProps.song.band_id) }
+    return {
+      band: state.userData.bands.find(band => band.id === prevProps.song.band_id)
+     }
   } else {
     return { band: {} }
   }
