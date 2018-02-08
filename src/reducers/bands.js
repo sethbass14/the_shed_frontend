@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_BAND, DELETE_BAND, ADD_SET_LIST, ADD_SONG, DELETE_SONG, ADD_SET_SONG } from '../constants'
+import { SET_USER_DATA, ADD_BAND, DELETE_BAND, ADD_SET_LIST, ADD_SONG, DELETE_SONG, ADD_SET_SONG, DELETE_SET_SONG } from '../constants'
 import { setListReducer } from './setList';
 const initialState = [
                       {
@@ -17,7 +17,7 @@ export const bandsReducer = (state = initialState, action) => {
     case DELETE_BAND:
       return state.filter(band => band.id !== action.resp.band_id)
     case ADD_SONG:
-      debugger
+      // debugger
       let band = state.find(band => band.id === action.songData.band_id)
       let index = state.indexOf(band)
       band = {...band, songs: [...band.songs, action.songData] }
@@ -34,7 +34,13 @@ export const bandsReducer = (state = initialState, action) => {
       band = {...band, set_lists: setListReducer(band.set_lists, action)}
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     case ADD_SET_SONG:
-      debugger
+      // debugger
+      band = state.find(band => band.id === action.setSong.band_id)
+      index = state.indexOf(band)
+      band = {...band, set_lists: setListReducer(band.set_lists, action)}
+      return [...state.slice(0, index), band, ...state.slice(index + 1)]
+    case DELETE_SET_SONG:
+      // debugger
       band = state.find(band => band.id === action.setSong.band_id)
       index = state.indexOf(band)
       band = {...band, set_lists: setListReducer(band.set_lists, action)}

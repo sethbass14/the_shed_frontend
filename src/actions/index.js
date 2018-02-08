@@ -129,6 +129,7 @@ export const addSetSong = (set_song_data) => dispatch => {
 }
 
 export const deleteSetSong = id => dispatch => {
+  // debugger
   adapter.setSongs.deleteSetSongServer(id).then(setSong => {
     if (setSong.error) {
       alert(`${setSong.error}`)
