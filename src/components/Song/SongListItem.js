@@ -5,7 +5,7 @@ const SongListItem = props => {
   // console.log('In Song List Item', props)
   return (
     <div>
-      <Link to={`${props.match.url}/songs/${props.song.id}`}>
+      <Link to={`/bands/${props.song.band_id}/songs/${props.song.id}`}>
         {props.song.title}
       </Link>
     </div>
