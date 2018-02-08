@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 const SetListListItem = props => {
-  console.log('In SetList List Item', props)
+  // console.log('In SetList List Item', props)
   return (
     <div>
-      <Link to={`${props.match.url}/songs/${props.setList.id}`}>
+      <Link to={`${props.match.url}/setlists/${props.setList.id}`}>
         {props.setList.name}
         {props.setList.date}
       </Link>

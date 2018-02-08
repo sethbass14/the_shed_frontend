@@ -6,7 +6,7 @@ import SongCard from './SongCard'
 import SongNoteForm from './SongNoteForm'
 
 const SongShow = props => {
-  // console.log('In SongShow', props)
+  console.log('In SongShow', props)
   return (
     <div className='ui grid container'>
         <div className="five wide column">
