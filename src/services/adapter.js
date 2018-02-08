@@ -81,6 +81,14 @@ const postNewSetList = (set_list_data) => {
   }).then(resp => resp.json())
 }
 
+const postNewSetSong = (set_song_data) => {
+  return fetch(`${API_ROOT}/set_songs`, {
+    method: 'POST',
+    headers: HEADERS,
+    body: JSON.stringify(set_song_data)
+  }).then(resp => resp.json())
+}
+
 export default {
   auth: {
     login,
@@ -101,5 +109,8 @@ export default {
   },
   setLists: {
     postNewSetList
+  },
+  setSongs: {
+    postNewSetSong
   }
 }

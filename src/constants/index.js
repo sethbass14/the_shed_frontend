@@ -18,6 +18,7 @@ export const ADD_SONG_NOTES = 'ADD_SONG_NOTES'
 export const ADD_BAND = 'ADD_BAND'
 export const DELETE_BAND = 'DELETE_BAND'
 export const ADD_SET_LIST = 'ADD_SET_LIST'
+export const ADD_SET_SONG = 'ADD_SET_SONG'
 
 //non-backend actions
 

@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER, ADD_SONG_CLICK, ADD_SET_LIST } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_USER, ADD_SONG_CLICK, ADD_SET_LIST, ADD_SET_SONG } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -113,10 +113,21 @@ export const addNewSetList = (set_list_data) => dispatch => {
       alert(`${setList.error}`)
     } else {
       dispatch({ type: ADD_SET_LIST, setList })
-      alert(`Got the response! setList id: ${setList.id}`)
+      // alert(`Got the response! setList id: ${setList.id}`)
     }
   })
 }
+
+export const addSetSong = (set_song_data) => dispatch => {
+  adapter.setSongs.postNewSetSong(set_song_data).then(setSong => {
+    if (`${setSong.error}`) {
+      alert(`${setSong.error}`)
+    } else {
+      dispatch({ type: ADD_SET_SONG, setSong })
+    }
+  })
+}
+
 
 //Below are non-crud actions
 export const addSongClick = () => dispatch => {

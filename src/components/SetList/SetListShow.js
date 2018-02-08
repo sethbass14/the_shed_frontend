@@ -14,8 +14,8 @@ class SetListShow extends React.Component {
 
   render() {
     console.log('In Set List Show', this.props)
-    const bandSongs = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setSong={true}/>)
-    const setSongs = this.props.setSongs.map((song, index) => <SongCard key={index} song={song} setSong={true} />)
+    const bandSongCards = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
+    const setSongCards = this.props.setSongs.map((song, index) => <SongCard key={index} song={song} setSong={true} />)
     // debugger
     return (
       <div className="ui grid container">
@@ -24,11 +24,11 @@ class SetListShow extends React.Component {
         </div>
         <div className="four wide column">
           <h2>Repertoire</h2>
-          {bandSongs}
+          {bandSongCards}
         </div>
         <div className="eight wide column">
           <h2>Song Cards</h2>
-          {setSongs}
+          {setSongCards}
         </div>
         <div className="four wide column">
           <h2>Ability to add a new song to the set list</h2>
@@ -42,8 +42,9 @@ const mapStateToProps = (state, ownProps) => {
   const band = state.userData.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
   if (band) {
     const setList = band.set_lists.find(setList => setList.id === parseInt(ownProps.match.params.setListId))
-    const bandSongs = state.userData.songs.filter(song => song.band_id === band.id)
+    let bandSongs = state.userData.songs.filter(song => song.band_id === band.id)
     const setSongs = bandSongs.filter(song => song.set_list_ids.includes(setList.id))
+    bandSongs = bandSongs.filter(song => !song.set_list_ids.includes(setList.id))
     return {
       band,
       bandSongs,
