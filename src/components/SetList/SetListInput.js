@@ -22,7 +22,6 @@ class SetListInput extends React.Component {
     if (!this.state.date) {
       alert('A set list must have a date!')
     } else {
-      alert(`Write some routes, dispatch an action, and write an adapter method`)
       this.props.addNewSetList({...this.state, band_id: this.props.band.id})
       this.props.handleAddSetListClick()
     }

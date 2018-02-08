@@ -39,7 +39,7 @@ export const addUser = (user_data, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.users.postNewUser(user_data).then(userData => {
     if (userData.error) {
-      alert("THERE IS AN ERROR")
+      alert(`${userData.error}`)
     } else {
       dispatch({ type: ADD_USER, userData })
       history.push('/login')

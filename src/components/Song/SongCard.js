@@ -7,7 +7,7 @@ import * as actions from '../../actions'
 
 
 const SongCard = props => {
-  console.log("In SongCard", props, "Set Song id:", props.setList.set_songs.find(setSong => setSong.song_id === props.song.id).id)
+  // console.log("In SongCard", props, "Set Song id:", props.setList.set_songs.find(setSong => setSong.song_id === props.song.id).id)
   return (
       <div className="ui card">
         <div className="content">
