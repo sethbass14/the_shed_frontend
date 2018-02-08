@@ -38,10 +38,13 @@ const mapStateToProps = (state, ownProps) => {
   const band = state.userData.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
   if (band) {
     const setList = band.set_lists.find(setList => setList.id === parseInt(ownProps.match.params.setListId))
+    const bandSongs = state.userData.songs.filter(song => song.band_id === band.id)
+    const setSongs = bandSongs.filter(song => song.set_list_ids.includes(setList.id))
     return {
       band,
-      bandSongs: state.userData.songs.filter(song => song.band_id === band.id),
-      setList
+      bandSongs,
+      setList,
+      setSongs
     }
   } else {
       return {
