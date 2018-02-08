@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import SongListItem from '../Song/SongListItem'
+import SongCard from '../Song/SongCard'
 import * as actions from '../../actions';
 
 //Make this a class to add a search bar functionality in the future
@@ -13,7 +14,9 @@ class SetListShow extends React.Component {
 
   render() {
     console.log('In Set List Show', this.props)
-    const bandSongs = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song}/>)
+    const bandSongs = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setSong={true}/>)
+    const setSongs = this.props.setSongs.map((song, index) => <SongCard key={index} song={song} setSong={true} />)
+    // debugger
     return (
       <div className="ui grid container">
         <div className="sixteen wide column">
@@ -25,6 +28,7 @@ class SetListShow extends React.Component {
         </div>
         <div className="eight wide column">
           <h2>Song Cards</h2>
+          {setSongs}
         </div>
         <div className="four wide column">
           <h2>Ability to add a new song to the set list</h2>
@@ -50,7 +54,8 @@ const mapStateToProps = (state, ownProps) => {
       return {
         band: {},
         bandSongs: [],
-        setList: {}
+        setList: {},
+        setSongs: []
       }
   }
 }

@@ -8,6 +8,11 @@ const SongListItem = props => {
       <Link to={`/bands/${props.song.band_id}/songs/${props.song.id}`}>
         {props.song.title}
       </Link>
+      {props.setSong ? (
+        <i class="add circle icon"></i>
+      ) : (
+        null
+      )}
     </div>
   )
 }
