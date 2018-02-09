@@ -92,8 +92,12 @@ export const deleteSong = (id, history) => dispatch => {
 export const addBand = (band_data, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.bands.postNewBand(band_data).then(bandData => {
-    dispatch({ type: ADD_BAND, bandData })
-    history.push(`/bands/${bandData.id}`)
+    if (bandData.error) {
+      alert(`${bandData.error}`)
+    } else {
+      dispatch({ type: ADD_BAND, bandData })
+      history.push(`/bands/${bandData.id}`)
+    }
   })
 }
 

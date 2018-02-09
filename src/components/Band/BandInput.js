@@ -46,7 +46,7 @@ class BandInput extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    userId: state.userData.id,
+    userId: state.user.id,
   }
 }
 
