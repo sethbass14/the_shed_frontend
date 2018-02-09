@@ -41,8 +41,12 @@ export const addUser = (user_data, history) => dispatch => {
     if (userData.error) {
       alert(`${userData.error}`)
     } else {
-      dispatch({ type: ADD_USER, userData })
-      history.push('/login')
+      debugger
+      localStorage.setItem('token', userData.jwt)
+      dispatch({ type: SET_CURRENT_USER , user: userData.user})
+      history.push('/dashboard')
+      // dispatch({ type: ADD_USER, userData })
+      // history.push('/login')
     }
   })
 }
