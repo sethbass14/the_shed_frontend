@@ -103,11 +103,11 @@ export const addBand = (band_data, history) => dispatch => {
 
 export const deleteBand = (id, history) => dispatch => {
   dispatch({ type: ASYNC_START })
-  adapter.bands.deleteBandServer(id).then(resp => {
-    if (resp.error) {
-      alert(`${resp.error}`)
+  adapter.bands.deleteBandServer(id).then(bandData => {
+    if (bandData.error) {
+      alert(`${bandData.error}`)
     } else {
-      dispatch({ type: DELETE_BAND, resp })
+      dispatch({ type: DELETE_BAND, bandData })
       history.push('/bands')
     }
   })

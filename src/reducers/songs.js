@@ -6,6 +6,10 @@ export const songsReducer = ( state = initialState, action) => {
   switch(action.type) {
     case SET_USER_DATA:
       return [...action.userData.songs]
+    case ADD_SONG: 
+      return [...state, action.songData]
+    case DELETE_BAND:
+      return state.songs.filter(song => song.band_id !== action.bandData.id)
     default:
       return state
   }
