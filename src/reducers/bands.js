@@ -18,6 +18,7 @@ export const bandsReducer = ( state = initialState, action) => {
     case DELETE_SONG:
       band = state.find(band => band.id === action.songData.band_id)
       index = state.indexOf(band)
+      debugger
       band.song_ids = band.song_ids.filter(id => id !== action.songData.id)
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     default:
