@@ -1,5 +1,5 @@
 import { SET_USER_DATA, ADD_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, DELETE_BAND } from '../constants'
-import setSongReducer from './setSong'
+// import setSongReducer from './setSong'
 
 const initialState = []
 export const setListReducer = ( state = initialState, action) => {
@@ -11,9 +11,11 @@ export const setListReducer = ( state = initialState, action) => {
     case ADD_SET_LIST:
       return [...state, action.setList]
     case ADD_SET_SONG:
+      // debugger
       let setList = state.find(setList => setList.id === action.setSong.set_list_id)
       let index = state.indexOf(setList)
-      setList.set_song_ids = [...setList.set_song_ids, action.setSong]
+      setList.set_song_ids = [...setList.set_song_ids, action.setSong.id]
+      return [...state.slice(0, index), setList, ...state.slice(index + 1)]
     default:
       return state
   }
