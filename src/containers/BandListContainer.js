@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import BandListItem from '../components/Band/BandListItem'
 
 
-class BandListContainer extends React.Component {
-  render() {
+const BandListContainer = props => {
     // console.log('In band list container', this.props)
-    const bands = this.props.bands.map((band, index) => <BandListItem key={index} band={band}/>  )
+    const bands = props.bands.map((band, index) => <BandListItem key={index} band={band}/>  )
     return (
       <div>
         <div>
@@ -14,12 +13,11 @@ class BandListContainer extends React.Component {
         </div>
       </div>
     )
-  }
 }
 
 const mapStateToProps = state => {
   return {
-    bands: state.userData.bands
+    bands: state.bands
   }
 }
 

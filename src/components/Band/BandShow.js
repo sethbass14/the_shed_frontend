@@ -46,7 +46,7 @@ class BandShow extends React.Component {
 
 
   render() {
-    const bandSongs = this.props.songs.map((song, index) => { return <SongListItem key={index} song={song}/>})
+    const bandSongs = this.props.songs.map((song, index) => <SongListItem key={index} song={song}/>)
     const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
     console.log('In the band show', this.props)
     return (
@@ -108,13 +108,13 @@ class BandShow extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const band = state.userData.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
+  const band = state.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
   if (band) {
     return {
       band: band,
-      songs: state.userData.songs.filter(song => song.band_id === parseInt(ownProps.match.params.bandId)),
+      songs: state.songs.filter(song => song.band_id === band.id),
+      setLists: state.setLists.filter(setList => setList.band_id === band.id),
       addSongClickState: state.addSong,
-      setLists: band.set_lists
     }
   } else {
     //I'm not sure if I need this code below

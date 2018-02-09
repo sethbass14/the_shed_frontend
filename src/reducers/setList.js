@@ -1,4 +1,4 @@
-import { ADD_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG } from '../constants'
+import { SET_USER_DATA, ADD_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG } from '../constants'
 import setSongReducer from './setSong'
 
 const initialState = []

@@ -7,23 +7,13 @@ const initialState = {
   'id': null,
   'username': null,
   'email': null,
-  'bands': [
-            {
-              'name': null,
-              'songs': [],
-              'setlists': []
-            }
-          ]
 }
 
 export const userReducer = ( state = initialState, action ) => {
   switch(action.type) {
     case SET_USER_DATA:
       // debugger
-      return { ...action.userData,
-        bands: bandsReducer(action.userData.bands, action),
-        songs: songsReducer(action.userData.songs, action)
-       }
+      return {id: action.userData.id, username: action.userData.username, email: action.userData.email}
     case ADD_SONG_NOTES:
       return {...state, songs: songsReducer(state.songs, action)}
     case ADD_SONG:

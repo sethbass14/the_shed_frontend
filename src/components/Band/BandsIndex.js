@@ -21,7 +21,7 @@ class BandsIndex extends React.Component {
   }
 
   render() {
-    console.log("In the bands index", this.props)
+    // console.log("In the bands index", this.props)
     const allBands = this.props.bands.map((band, index) => {
       return (
         <BandCard
@@ -54,7 +54,7 @@ class BandsIndex extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    bands: state.userData.bands
+    bands: state.bands
   }
 }
 

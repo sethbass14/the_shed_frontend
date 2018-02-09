@@ -38,9 +38,9 @@ const SongCard = props => {
 
 const mapStateToProps = (state, prevProps) => {
   console.log('in map State To Props PrevProps:', prevProps)
-  if (state.userData.id) {
+  if (state.user.id) {
     return {
-      band: state.userData.bands.find(band => band.id === prevProps.song.band_id)
+      band: state.bands.find(band => band.id === prevProps.song.band_id)
      }
   } else {
     return { band: {} }

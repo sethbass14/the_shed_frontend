@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, ADD_SET_SONG } from '../constants'
+import { SET_USER_DATA, ADD_SET_SONG } from '../constants'
 
 
 const initialState = []

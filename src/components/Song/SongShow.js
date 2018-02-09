@@ -31,9 +31,10 @@ const SongShow = props => {
 
 //Check out this problem of refreshing not working down below
 const mapStateToProps = (state, prevProps) => {
-  if (state.userData.songs) {
+  const song = state.songs.find(song => song.id === parseInt(prevProps.match.params.songId))
+  if (song) {
     return {
-      song: state.userData.songs.find(song => song.id === parseInt(prevProps.match.params.songId))
+      song
     }
   } else {
     return {

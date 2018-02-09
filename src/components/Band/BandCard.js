@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 //This component is in inheriting a band from Band Index. Check this out if you want to reuse it.
 const BandCard = props => {
-  // console.log("In BandCard", props)
+  console.log("In BandCard", props)
   return (
     <div className="ui eight wide column">
       <div className="ui card">
@@ -16,7 +16,7 @@ const BandCard = props => {
           </Link>
         </div>
         <div className="extra content">
-          {`${props.band.songs.length} songs`}
+          {`${props.band.song_ids.length} songs`}
         </div>
       </div>
     </div>
