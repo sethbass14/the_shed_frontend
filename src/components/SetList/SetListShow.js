@@ -40,8 +40,9 @@ class SetListShow extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const band = state.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
+  const setList = state.setLists.find(setList => setList.id === parseInt(ownProps.match.params.setListId))
   if (band) {
-    const setList = state.setLists.find(setList => setList.band_id === band.id)
+    // debugger
     let bandSongs = state.songs.filter(song => song.band_id === band.id)
     const setSongs = bandSongs.filter(song => song.set_list_ids.includes(setList.id))
     bandSongs = bandSongs.filter(song => !song.set_list_ids.includes(setList.id))

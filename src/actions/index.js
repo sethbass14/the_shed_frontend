@@ -78,12 +78,12 @@ export const addSongNotes = (notes, songId) => dispatch => {
 export const deleteSong = (id, history) => dispatch => {
   // debugger
   dispatch({ type: ASYNC_START })
-  adapter.songs.deleteSongServer(id).then(resp => {
-    if (resp.error) {
-      alert(`${resp.error}`)
+  adapter.songs.deleteSongServer(id).then(songData => {
+    if (songData.error) {
+      alert(`${songData.error}`)
     } else {
-      history.push(`/bands/${resp.band_id}`)
-      dispatch({ type: DELETE_SONG, resp })
+      history.push(`/bands/${songData.band_id}`)
+      dispatch({ type: DELETE_SONG, songData })
     }
   })
 }
