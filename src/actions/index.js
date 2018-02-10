@@ -65,12 +65,12 @@ export const addSong = (form_data, history) => dispatch => {
 
 export const addSongNotes = (notes, songId) => dispatch => {
   dispatch({type: ASYNC_START })
-  adapter.songs.updateNotes(notes, songId).then(song => {
+  adapter.songs.updateNotes(notes, songId).then(songData => {
     // debugger
-    if (song.error) {
-      alert(`${song.error}`)
+    if (songData.error) {
+      alert(`${songData.error}`)
     } else {
-      dispatch({ type: ADD_SONG_NOTES, song })
+      dispatch({ type: ADD_SONG_NOTES, songData })
     }
   })
 }
