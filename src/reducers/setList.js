@@ -16,6 +16,11 @@ export const setListReducer = ( state = initialState, action) => {
       let index = state.indexOf(setList)
       setList.set_song_ids = [...setList.set_song_ids, action.setSong.id]
       return [...state.slice(0, index), setList, ...state.slice(index + 1)]
+    case DELETE_SET_SONG:
+      setList = state.find(setList => setList.id === action.setSong.set_list_id)
+      index = state.indexOf(setList)
+      setList.set_song_ids = setList.set_song_ids.filter(setSongId => setSongId !== action.setSong.id)
+      return [...state.slice(0, index), setList, ...state.slice(index + 1)]
     default:
       return state
   }

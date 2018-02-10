@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_SET_SONG, DELETE_SONG } from '../constants'
+import { SET_USER_DATA, ADD_SET_SONG, DELETE_SONG, DELETE_SET_SONG } from '../constants'
 
 
 const initialState = []
@@ -12,6 +12,8 @@ export const setSongsReducer = ( state = initialState, action) => {
     case ADD_SET_SONG:
       // debugger
       return [...state, action.setSong]
+    case DELETE_SET_SONG:
+      return state.filter(setSong => setSong.id !== action.setSong.id)
     default:
       return state
   }

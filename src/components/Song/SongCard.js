@@ -7,7 +7,8 @@ import * as actions from '../../actions'
 
 
 const SongCard = props => {
-  // console.log("In SongCard", props, "Set Song id:", props.setList.set_songs.find(setSong => setSong.song_id === props.song.id).id)
+  // console.log("In SongCard", props, "Set Song id:", props.setList.set_song_ids.find(setSong => setSong.song_id === props.song.id).id)
+  console.log('In SongCard props:', props)
   return (
       <div className="ui card">
         <div className="content">
@@ -20,7 +21,7 @@ const SongCard = props => {
           {props.setSong? (
             <button
               className="ui button"
-              onClick={() => props.deleteSetSong(props.setList.set_songs.find(setSong => setSong.song_id === props.song.id).id)}
+              onClick={() => props.deleteSetSong(props.setSong.id)}
             >
               Remove From Set
             </button>
@@ -38,9 +39,11 @@ const SongCard = props => {
 
 const mapStateToProps = (state, prevProps) => {
   console.log('in map State To Props PrevProps:', prevProps)
-  if (state.user.id) {
+  if (prevProps.setSong) {
+    // debugger
     return {
-      band: state.bands.find(band => band.id === prevProps.song.band_id)
+      band: state.bands.find(band => band.id === prevProps.song.band_id),
+      setSong: state.setSongs.find(setSong => setSong.set_list_id === prevProps.setList.id && setSong.song_id === prevProps.song.id )
      }
   } else {
     return { band: {} }
