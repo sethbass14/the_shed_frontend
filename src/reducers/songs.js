@@ -5,6 +5,7 @@ const initialState = []
 export const songsReducer = ( state = initialState, action) => {
   switch(action.type) {
     case SET_USER_DATA:
+      // debugger
       return [...action.userData.songs]
     case ADD_SONG:
       return [...state, action.songData]
@@ -15,7 +16,7 @@ export const songsReducer = ( state = initialState, action) => {
       return state.filter(song => song.band_id !== action.bandData.id)
     case ADD_SET_SONG:
       // debugger
-      let song = state.find(song => song.id = action.setSong.song_id)
+      let song = state.find(song => song.id === action.setSong.song_id)
       let index = state.indexOf(song)
       song.set_list_ids = [...song.set_list_ids, action.setSong.set_list_id]
       return [...state.slice(0, index), song, ...state.slice(index + 1)]

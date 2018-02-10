@@ -7,7 +7,7 @@ export const setSongsReducer = ( state = initialState, action) => {
     case SET_USER_DATA:
       return [...action.userData.set_songs]
     case DELETE_SONG:
-      debugger
+      // debugger
       return state.filter(setSong => setSong.song_id !== action.songData.id)
     case ADD_SET_SONG:
       // debugger
