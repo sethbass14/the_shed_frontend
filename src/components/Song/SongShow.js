@@ -13,7 +13,7 @@ const SongShow = props => {
           <h1>Some Space</h1>
         </div>
         <div className=" five wide column">
-          <SongCard song={props.song} />
+          <SongCard song={props.song} band={props.band} />
         </div>
         <div className="six wide column">
           {props.song.id? <SongNoteForm song={props.song} /> : null}
@@ -34,7 +34,8 @@ const mapStateToProps = (state, prevProps) => {
   const song = state.songs.find(song => song.id === parseInt(prevProps.match.params.songId))
   if (song) {
     return {
-      song
+      song,
+      band: state.bands.find(band => band.id === song.band_id)
     }
   } else {
     return {

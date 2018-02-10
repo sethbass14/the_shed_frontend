@@ -45,7 +45,7 @@ const mapStateToProps = (state, prevProps) => {
       band: state.bands.find(band => band.id === prevProps.song.band_id),
       setSong: state.setSongs.find(setSong => setSong.set_list_id === prevProps.setList.id && setSong.song_id === prevProps.song.id )
      }
-  } else {
+  } else if (!state.user.id) {
     return { band: {} }
   }
 }
