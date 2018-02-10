@@ -10,22 +10,27 @@ export const bandsReducer = ( state = initialState, action) => {
     case DELETE_BAND:
       return state.filter(band => band.id !== action.bandData.id)
     case ADD_SONG:
-      // debugger
+    case DELETE_SONG:
       let band = state.find(band => band.id === action.songData.band_id)
       let index = state.indexOf(band)
-      band.song_ids = [...band.song_ids, action.songData.id]
-      return [...state.slice(0, index), band, ...state.slice(index + 1)]
-    case DELETE_SONG:
-      band = state.find(band => band.id === action.songData.band_id)
-      index = state.indexOf(band)
-      debugger
-      band.song_ids = band.song_ids.filter(id => id !== action.songData.id)
+      band.song_ids = bandSongIdsReducer(band.song_ids, action)
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     case ADD_SET_LIST:
       band = state.find(band => band.id === action.setList.band_id)
       index = state.indexOf(band)
       band.set_list_ids = [...band.set_list_ids, action.setList.id]
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
+    default:
+      return state
+  }
+}
+
+const bandSongIdsReducer = (state = [], action) => {
+  switch(action.type) {
+    case ADD_SONG:
+      return [...state, action.songData.id]
+    case DELETE_SONG:
+      return state.filter(songId => songId !== action.songData.id)
     default:
       return state
   }

@@ -10,21 +10,32 @@ export const setListReducer = ( state = initialState, action) => {
       return state.filter(setList => setList.band_id !== action.bandData.id)
     case ADD_SET_LIST:
       return [...state, action.setList]
-    case ADD_SET_SONG:
-      // debugger
-      let setList = state.find(setList => setList.id === action.setSong.set_list_id)
-      let index = state.indexOf(setList)
-      setList.set_song_ids = [...setList.set_song_ids, action.setSong.id]
-      return [...state.slice(0, index), setList, ...state.slice(index + 1)]
-    case DELETE_SET_SONG:
-      setList = state.find(setList => setList.id === action.setSong.set_list_id)
-      index = state.indexOf(setList)
-      setList.set_song_ids = setList.set_song_ids.filter(setSongId => setSongId !== action.setSong.id)
-      return [...state.slice(0, index), setList, ...state.slice(index + 1)]
+    // case ADD_SET_SONG:
+    //   // debugger
+    //   let setList = state.find(setList => setList.id === action.setSong.set_list_id)
+    //   let index = state.indexOf(setList)
+    //   setList.set_song_ids = [...setList.set_song_ids, action.setSong.id]
+    //   return [...state.slice(0, index), setList, ...state.slice(index + 1)]
+    // case DELETE_SET_SONG:
+    //   setList = state.find(setList => setList.id === action.setSong.set_list_id)
+    //   index = state.indexOf(setList)
+    //   setList.set_song_ids = setList.set_song_ids.filter(setSongId => setSongId !== action.setSong.id)
+    //   return [...state.slice(0, index), setList, ...state.slice(index + 1)]
     default:
       return state
   }
 }
+
+// const setListSetSongIdReducer = (state = [], action) => {
+//   switch(action.type) {
+//     case ADD_SET_SONG:
+//       return [...state, action.secSong.id]
+//     case DELETE_SET_SONG:
+//       return state.filter(setSongId => setSongId !== action.setSong.id)
+//     default:
+//       return state
+//   }
+//  }
 
 // const initialState = []
 // export const setListReducer = (state = initialState, action) => {
