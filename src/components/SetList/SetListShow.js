@@ -10,6 +10,18 @@ class SetListShow extends React.Component {
   constructor(){
     super()
 
+    this.state = {
+      deleteClick: false
+    }
+  }
+
+  handleDeleteClick = () => {
+    if (!this.state.deleteClick) {
+      alert('Are you sure you want to delete this set list? There is no turning back. Click again if you are sure.')
+      this.setState({ deleteClick: !this.state.deleteClick })
+    } else {
+      this.props.deleteSetList(this.props.setList.id, this.props.history)
+    }
   }
 
   render() {
@@ -19,8 +31,11 @@ class SetListShow extends React.Component {
     // debugger
     return (
       <div className="ui grid container">
-        <div className="sixteen wide column">
+        <div className="twelve wide column">
           <h1>{this.props.band.id? `${this.props.band.name} Set: ${this.props.setList.name} ${this.props.setList.date}` : null}</h1>
+        </div>
+        <div className="four wide column">
+          <button className="ui button" onClick={() => this.handleDeleteClick()}>Delete Set List</button>
         </div>
         <div className="four wide column">
           <h2>Repertoire</h2>

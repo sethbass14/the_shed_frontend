@@ -81,6 +81,12 @@ const postNewSetList = (set_list_data) => {
   }).then(resp => resp.json())
 }
 
+const deleteSetListServer = (id) => {
+  return fetch(`${API_ROOT}/set_lists/${id}`, {
+    method: 'DELETE'
+  }).then(resp => resp.json())
+}
+
 const postNewSetSong = (set_song_data) => {
   return fetch(`${API_ROOT}/set_songs`, {
     method: 'POST',
@@ -114,7 +120,8 @@ export default {
     deleteBandServer
   },
   setLists: {
-    postNewSetList
+    postNewSetList,
+    deleteSetListServer
   },
   setSongs: {
     postNewSetSong,
