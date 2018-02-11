@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BandListContainer from '../containers/BandListContainer';
-// import SongListContainer from '../containers/SongListContainer';
+import SongListContainer from '../containers/SongListContainer';
 // import BandContainer from '../containers/BandContainer';
 
 
@@ -27,6 +27,7 @@ class DashboardShow extends React.Component {
           <Link to="/songs">
             <h2>Songs</h2>
           </Link>
+          <SongListContainer />
         </div>
 
       </div>
