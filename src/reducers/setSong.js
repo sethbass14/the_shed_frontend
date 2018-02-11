@@ -18,12 +18,3 @@ export const setSongsReducer = ( state = initialState, action) => {
       return state
   }
 }
-
-// export const setSongReducer = (state = [], action) => {
-//   switch(action.type) {
-//     case ADD_SET_SONG:
-//       return [...state, action.setSong]
-//     default:
-//       return state
-//   }
-// }
