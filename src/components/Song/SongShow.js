@@ -13,14 +13,14 @@ const SongShow = props => {
           <h1>Some Space</h1>
         </div>
         <div className=" five wide column">
-          <SongCard song={props.song} band={props.band} />
+          {props.song.id ? <SongCard song={props.song} band={props.band} /> : null }
         </div>
         <div className="six wide column">
           {props.song.id? <SongNoteForm song={props.song} /> : null}
         </div>
         <div className="five wide column">
         </div>
-          {props.song.id? <AudioPlayer song={props.song}/> : null}
+          {/*props.song.id? <AudioPlayer song={props.song}/> : null*/}
         <div className="four wide column">
         </div>
         <div className="column">

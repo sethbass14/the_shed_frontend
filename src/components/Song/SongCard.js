@@ -36,6 +36,7 @@ const SongCard = props => {
             )}
           </div>
         </div>
+        <AudioPlayer song={props.song}/>
       </div>
   )
 }
@@ -49,7 +50,7 @@ const mapStateToProps = (state, prevProps) => {
       setSong: state.setSongs.find(setSong => setSong.set_list_id === prevProps.setList.id && setSong.song_id === prevProps.song.id )
      }
   } else {
-    return {}  
+    return {}
   }
 }
 
