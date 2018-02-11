@@ -37,6 +37,15 @@ const Navbar = (props) => {
           ) : (
             null
           )}
+          {props.loggedIn ? (
+            <div className="item">
+              <Link to="/songs">
+                Songs
+              </Link>
+            </div>
+          ) : (
+            null
+          )}
           <div className='item'>
             {props.loggedIn ? (
               <p>Welcome {props.currentUser.username}!</p>
