@@ -1,5 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import SongIndex from '../components/Song/SongIndex';
 
 class SongContainer extends React.Component {
   constructor() {
@@ -9,8 +11,14 @@ class SongContainer extends React.Component {
   render(){
     console.log('In the song container props:', this.props)
     return (
-      <div className='ui grid container'>
+      <div>
         <h1>In the Song Container</h1>
+        <Switch>
+          <Route
+            path='/songs'
+            component={SongIndex}
+            />
+        </Switch>
       </div>
     )
   }
