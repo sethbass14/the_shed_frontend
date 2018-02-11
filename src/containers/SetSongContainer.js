@@ -9,21 +9,12 @@ class SetSongContainer extends React.Component {
     super()
 
     this.state = {
-      setSongs: null
+      setSongs: []
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ setSongs: nextProps.setSongs}, () => console.log('SetSongContainer local state: ', this.state))
-  }
-
-  handleOrderDecrement = (setSongId) => {
-    console.log('In handleOrderDecrement', setSongId)
-
-  }
-
   handleOrderIncrement = (setSongId) => {
-    let allSetSongs = this.state.setSongs
+    let allSetSongs = this.props.setSongs
     let setSongChangeIncrement = allSetSongs.find(setSong => setSong.id === setSongId)
     const limit = allSetSongs.length
     const change = setSongChangeIncrement.order + 1
@@ -33,26 +24,16 @@ class SetSongContainer extends React.Component {
       }
     console.log('In handleOrderIncrement setSongId:', setSongId, 'allSetSongs', allSetSongs, "setSongChangeIncrement", setSongChangeIncrement, "limit:", limit, "change", change, "setSongChangeDecrement", setSongChangeDecrement)
     this.props.incrementSetOrder(setSongChangeIncrement)
-    // if (change <= limit) {
-    //   allSetSongs = allSetSongs.map(setSong => {
-    //     if (setSong.order === change) {
-    //       setSong.order = setSong.order - 1
-    //   } else if (setSong.id === setSongId) {
-    //       setSong.order = setSong.order + 1
-    //   }
-    //   return setSong
-    // })
-    //
-    // }
-    // console.log('In handleOrderIncrement', allSetSongs)
-    // dispatch( { type: UPDATE_SET_ORDER, allSetSongs } )
-    // this.props.incrementSetOrder()
-
+    
   }
 
 
   render() {
     console.log('In SetSongContainer props: ', this.props)
+    let songs = this.props.songs
+    songs.map(song => song.order = this.props.setSongs.find(setSong => setSong.song_id === song.id).order)
+    songs.sort((a, b) => a.order - b.order)
+    console.log('In Set Song render songs with order:', songs)
     const songCards = this.props.songs.map((song, index) =>
     <SongCard
       key={index}
@@ -61,7 +42,7 @@ class SetSongContainer extends React.Component {
       setList={this.props.setList}
       handleOrderDecrement={this.handleOrderDecrement}
       handleOrderIncrement={this.handleOrderIncrement}
-      order={this.state.setSongs.find(setSong => setSong.song_id === song.id).order}
+      order={this.props.setSongs.find(setSong => setSong.song_id === song.id).order}
       />)
     return (
       <div>

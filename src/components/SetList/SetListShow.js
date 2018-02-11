@@ -17,7 +17,7 @@ class SetListShow extends React.Component {
   }
 
   // componentDidMount() {
-  //   this.setState({...this.state, setSongs: this.props.setSongs}, () => console.log('In Set List show. Local states setSongs:', this.state.setSongs))
+  //   this.setState({...this.state, setSongsShow: this.props.setSongsShow}, () => console.log('In Set List show. Local states setSongsShow:', this.state.setSongsShow))
   // }
 
   handleDeleteClick = () => {
@@ -30,9 +30,9 @@ class SetListShow extends React.Component {
   }
 
   render() {
-    // console.log('In Set List Show', this.props, "bandSongs:", this.props.bandSongs, "setSongs:", this.props.setSongs)
+    // console.log('In Set List Show', this.props, "bandSongs:", this.props.bandSongs, "setSongsShow:", this.props.setSongsShow)
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
-    const setSongCards = this.props.setSongs.map((song, index) => <SongCard key={index} band={this.props.band} song={song} setSong={true} setList={this.props.setList}/>)
+    const setSongCards = this.props.setSongsShow.map((song, index) => <SongCard key={index} band={this.props.band} song={song} setSong={true} setList={this.props.setList}/>)
     return (
       <div className="ui grid container">
         <div className="twelve wide column">
@@ -47,7 +47,7 @@ class SetListShow extends React.Component {
         </div>
         <div className="eight wide column">
           <h2>Song Cards</h2>
-          <SetSongContainer songs={this.props.setSongs} setList={this.props.setList}/>
+          <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
           {/*setSongCards*/}
         </div>
         <div className="four wide column">
@@ -63,21 +63,21 @@ const mapStateToProps = (state, ownProps) => {
   const setList = state.setLists.find(setList => setList.id === parseInt(ownProps.match.params.setListId))
   if (setList) {
     let bandSongs = state.songs.filter(song => song.band_id === band.id)
-    const setSongs = bandSongs.filter(song => song.set_list_ids.includes(setList.id))
+    const setSongsShow = bandSongs.filter(song => song.set_list_ids.includes(setList.id))
     bandSongs = bandSongs.filter(song => !song.set_list_ids.includes(setList.id))
     // debugger
     return {
       band,
       bandSongs,
       setList,
-      setSongs
+      setSongsShow
     }
   } else {
       return {
         band: {},
         bandSongs: [],
         setList: {},
-        setSongs: []
+        setSongsShow: []
       }
   }
 }
