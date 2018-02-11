@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions'
 
 const SongListItem = props => {
-  // console.log('In Song List Item', props)
+  console.log('In Song List Item', props.setList.song_ids.length + 1)
   return (
     <div>
       <Link to={`/bands/${props.song.band_id}/songs/${props.song.id}`}>
@@ -12,7 +12,7 @@ const SongListItem = props => {
       </Link>
       {props.setList ? (
         <i className="add circle icon"
-          onClick={() => props.addSetSong({song_id: props.song.id, set_list_id: props.setList.id})}>
+          onClick={() => props.addSetSong({song_id: props.song.id, set_list_id: props.setList.id, order: props.setList.song_ids.length + 1})}>
         </i>
       ) : (
         null

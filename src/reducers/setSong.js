@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_SET_SONG, DELETE_SONG, DELETE_SET_SONG, DELETE_SET_LIST, INCREMENT_SET_ORDER } from '../constants'
+import { SET_USER_DATA, ADD_SET_SONG, DELETE_SONG, DELETE_SET_SONG, DELETE_SET_LIST, INCREMENT_SET_ORDER, DECREMENT_SET_ORDER } from '../constants'
 
 
 const initialState = []
@@ -19,6 +19,11 @@ export const setSongsReducer = ( state = initialState, action) => {
       let index = state.indexOf(setSong)
       setSong.order = action.setSong.order
       return [...state.slice(0, index), setSong, ...state.slice(index + 1)]
+    case DECREMENT_SET_ORDER:
+      setSong = state.find(setSong => setSong.id === action.setSong.id)
+      index = state.indexOf(setSong)
+      // setSong.order = 
+      return [...state.slice(0,index), setSong, ...state.slice(index + 1)]
     default:
       return state
   }
