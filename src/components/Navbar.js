@@ -19,31 +19,14 @@ const Navbar = (props) => {
             </Link>
           )}
         </div>
-          {props.loggedIn ? (
-              <a className="item back" onClick={() => {
-                  if (window.location.pathname === "/dashboard") {
-                    return null
-                  } else {
-                    window.history.back()
-                  }
-                }
-              }>
-                <i className="arrow circle left icon"></i>
-                <p>Back</p>
-              </a>
-            ) : (
-              null
-            )
-          }
-          {props.loggedIn ? (
-              <a className="item forward" onClick={() => window.history.forward()}>
-                <i className="arrow circle right icon"></i>
-                <p>Forward</p>
-              </a>
-            ) : (
-              null
-            )
-          }
+          <a className="item back" onClick={() =>  window.history.back()}>
+            <i className="arrow circle left icon"></i>
+            <p>Back</p>
+          </a>
+          <a className="item forward" onClick={() => window.history.forward()}>
+            <i className="arrow circle right icon"></i>
+            <p>Forward</p>
+          </a>
         <div className={'right menu'}>
           {props.loggedIn ? (
             <div className="item">
