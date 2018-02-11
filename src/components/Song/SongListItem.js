@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions'
 
 const SongListItem = props => {
-  // console.log('In Song List Item', props.setList.song_ids.length + 1)
+  // console.log('In Song List Item', props.setList.song_ids)
   return (
     <div>
       <Link to={`/bands/${props.song.band_id}/songs/${props.song.id}`}>
