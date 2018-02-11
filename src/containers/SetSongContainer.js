@@ -22,7 +22,6 @@ class SetSongContainer extends React.Component {
     if (change <= limit) {
       setSongChangeIncrement.order = change
       }
-    // console.log('In handleOrderIncrement setSongId:', setSongId, 'allSetSongs', allSetSongs, "setSongChangeIncrement", setSongChangeIncrement, "limit:", limit, "change", change, "setSongChangeDecrement", setSongChangeDecrement)
     this.props.incrementSetOrder(setSongChangeIncrement)
     if (setSongChangeDecrement  && setSongChangeDecrement.order > 0) {
       setSongChangeDecrement.order = setSongChangeDecrement.order - 1
@@ -33,7 +32,6 @@ class SetSongContainer extends React.Component {
   handleOrderDecrement = (setSongId) => {
     let allSetSongs = this.props.setSongs
     let setSongChangeDecrement = allSetSongs.find(setSong => setSong.id === setSongId)
-    // const limit = allSetSongs.length
     const change = setSongChangeDecrement.order - 1
     let setSongChangeIncrement = allSetSongs.find(setSong => setSong.order === change)
     if (change > 0) {

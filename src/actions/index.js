@@ -164,6 +164,7 @@ export const incrementSetOrder = (setSong) => dispatch => {
 }
 
 export const decrementSetOrder = (setSong) => dispatch => {
+  // dispatch({ type: AYSNC_START})
   dispatch({ type: DECREMENT_SET_ORDER, setSong })
 }
 

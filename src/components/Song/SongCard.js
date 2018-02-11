@@ -8,7 +8,7 @@ import * as actions from '../../actions'
 //Could make this into a class component to guard against accidental deletes.
 const SongCard = props => {
   // console.log("In SongCard", props, "Set Song id:", props.setList.set_song_ids.find(setSong => setSong.song_id === props.song.id).id)
-  console.log('In SongCard props:', props)
+  // console.log('In SongCard props:', props)
   return (
       <div className="ui eight wide column">
 
@@ -50,7 +50,7 @@ const SongCard = props => {
 }
 
 const mapStateToProps = (state, prevProps) => {
-  console.log('in map State To Props PrevProps:', prevProps)
+  // console.log('in map State To Props PrevProps:', prevProps)
   if (prevProps.setSong) {
     // debugger
     return {

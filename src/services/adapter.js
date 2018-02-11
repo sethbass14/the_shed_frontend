@@ -101,6 +101,14 @@ const deleteSetSongServer = id => {
   }).then(resp => resp.json())
 }
 
+const updateSetSongOrder = (set_song_data) => {
+  return fetch(`${API_ROOT}/set_song/${set_song_data.id}`, {
+    headers: HEADERS,
+    method: 'PATCH',
+    body: JSON.stringify(set_song_data)
+  })
+}
+
 export default {
   auth: {
     login,

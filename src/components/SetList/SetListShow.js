@@ -46,7 +46,7 @@ class SetListShow extends React.Component {
           {bandSongTitles}
         </div>
         <div className="eight wide column">
-          <h2>Song Cards</h2>
+          <button className="ui button">Save Set List Order</button>
           <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
           {/*setSongCards*/}
         </div>

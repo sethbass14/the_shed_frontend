@@ -22,7 +22,7 @@ export const setSongsReducer = ( state = initialState, action) => {
     case DECREMENT_SET_ORDER:
       setSong = state.find(setSong => setSong.id === action.setSong.id)
       index = state.indexOf(setSong)
-      // setSong.order = 
+      setSong.order = action.setSong.order
       return [...state.slice(0,index), setSong, ...state.slice(index + 1)]
     default:
       return state
