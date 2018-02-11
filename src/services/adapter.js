@@ -102,11 +102,11 @@ const deleteSetSongServer = id => {
 }
 
 const updateSetSongOrder = (set_song_data) => {
-  return fetch(`${API_ROOT}/set_song/${set_song_data.id}`, {
+  return fetch(`${API_ROOT}/set_songs/${set_song_data.id}`, {
     headers: HEADERS,
-    method: 'PATCH',
+    method: 'PUT',
     body: JSON.stringify(set_song_data)
-  })
+  }).then(resp => resp.json())
 }
 
 export default {
@@ -133,6 +133,7 @@ export default {
   },
   setSongs: {
     postNewSetSong,
-    deleteSetSongServer
+    deleteSetSongServer,
+    updateSetSongOrder
   }
 }

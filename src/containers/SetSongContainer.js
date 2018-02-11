@@ -19,13 +19,13 @@ class SetSongContainer extends React.Component {
     const limit = allSetSongs.length
     const change = setSongChangeIncrement.order + 1
     let setSongChangeDecrement = allSetSongs.find(setSong => setSong.order === change)
-    if (change <= limit) {
+    if (change <= limit && change !== setSongChangeIncrement.order) {
       setSongChangeIncrement.order = change
+      this.props.updateSetSongOrder(setSongChangeIncrement)
       }
-    this.props.incrementSetOrder(setSongChangeIncrement)
     if (setSongChangeDecrement  && setSongChangeDecrement.order > 0) {
       setSongChangeDecrement.order = setSongChangeDecrement.order - 1
-      this.props.decrementSetOrder(setSongChangeDecrement)
+      this.props.updateSetSongOrder(setSongChangeDecrement)
     }
   }
 
@@ -36,11 +36,11 @@ class SetSongContainer extends React.Component {
     let setSongChangeIncrement = allSetSongs.find(setSong => setSong.order === change)
     if (change > 0) {
       setSongChangeDecrement.order = change
-      this.props.decrementSetOrder(setSongChangeDecrement)
+      this.props.updateSetSongOrder(setSongChangeDecrement)
     }
     if (setSongChangeIncrement) {
       setSongChangeIncrement.order = setSongChangeIncrement.order + 1
-      this.props.incrementSetOrder(setSongChangeIncrement)
+      this.props.updateSetSongOrder(setSongChangeIncrement)
     }
 
   }

@@ -23,6 +23,7 @@ export const ADD_SET_SONG = 'ADD_SET_SONG'
 export const DELETE_SET_SONG = 'DELETE_SET_SONG'
 export const INCREMENT_SET_ORDER = 'INCREMENT_SET_ORDER'
 export const DECREMENT_SET_ORDER = 'DECREMENT_SET_ORDER'
+export const UPDATE_SET_SONG_ORDER = 'UPDATE_SET_SONG_ORDER'
 
 //non-backend actions
 
