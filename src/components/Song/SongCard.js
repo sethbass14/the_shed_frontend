@@ -21,12 +21,20 @@ const SongCard = props => {
           </div>
           <div className="extra content">
             {props.setSong? (
-              <button
-                className="ui button"
-                onClick={() => props.deleteSetSong(props.setSong.id)}
-                >
-                Remove From Set
-              </button>
+              <div>
+                <button
+                  className="ui button"
+                  onClick={() => props.deleteSetSong(props.setSong.id)}
+                  >
+                  Remove From Set
+                </button>
+                <h4>
+                  Set Order:
+                  <i className="minus circle icon" name="minus" onClick={() => props.handleOrderDecrement(props.setSong.id)}></i>
+                    {props.order}
+                  <i className="add circle icon" name="plus" onClick={() => props.handleOrderIncrement(props.setSong.id)}></i>
+                </h4>
+              </div>
             ) : (
               <button
                 className="ui button"

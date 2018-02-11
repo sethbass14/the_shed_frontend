@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, INCREMENT_SET_ORDER } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -159,7 +159,9 @@ export const deleteSetSong = id => dispatch => {
   })
 }
 
-
+export const incrementSetOrder = (setSong) => dispatch => {
+  dispatch({ type: INCREMENT_SET_ORDER, setSong })
+}
 
 
 //Below are non-crud actions

@@ -21,6 +21,7 @@ export const ADD_SET_LIST = 'ADD_SET_LIST'
 export const DELETE_SET_LIST = 'DELETE_SET_LIST'
 export const ADD_SET_SONG = 'ADD_SET_SONG'
 export const DELETE_SET_SONG = 'DELETE_SET_SONG'
+export const INCREMENT_SET_ORDER = 'INCREMENT_SET_ORDER'
 
 //non-backend actions
 
