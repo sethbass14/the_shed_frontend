@@ -5,7 +5,7 @@ const VideoPlayer = props => {
   return (
     <div>
       <h2>Video Player</h2>
-      {props.video ? <iframe src={link}></iframe> : <h4>No Results</h4>}
+      {props.video ? <iframe src={link}></iframe> : null}
     </div>
   )
 }

@@ -21,15 +21,24 @@ class SongShow extends React.Component {
   searchYouTube = () => {
     console.log('In search YouTube function')
     console.log(`${this.props.song.title} ${this.props.band.name}`)
-    adapter.videos.fetchYouTube(`${this.props.song.title} ${this.props.band.name}`)
+    adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
       .then(resp => {
-        console.log("In search YouTube Function resp:", resp)
-        this.setState({ videos: resp.items.splice(1) ,currentVideo: resp.items[0], youTubeClick: !this.state.youTubeClick  }, () => console.log(this.state))
+        console.log(resp)
+        this.setState({ videos: resp.items.splice(1) ,currentVideo: resp.items[0], youTubeClick: !this.state.youTubeClick  })
       })
   }
 
+  videoOnClick = video => {
+    const newVideo = this.state.videos.find(stateVideo => stateVideo.id.videoId === video.id.videoId)
+    const index = this.state.videos.indexOf(video)
+    const oldVideo = this.state.currentVideo
+    const newVideos = [...this.state.videos.slice(0, index), ...this.state.videos.slice(index + 1), this.state.currentVideo]
+
+    this.setState({...this.state, videos: newVideos, currentVideo: video})
+  }
+
   render() {
-    console.log('In SongShow', this.props)
+    // console.log('In SongShow', this.props)
     return (
       <div className='ui grid container'>
         <div className="five wide column">
@@ -43,7 +52,7 @@ class SongShow extends React.Component {
           {this.props.song.id? <SongNoteForm song={this.props.song} /> : null}
         </div>
         <div className="five wide column">
-          {this.state.youTubeClick ? <VideoCardContainer videos={this.state.videos}/> : null}
+          {this.state.youTubeClick ? <VideoCardContainer videos={this.state.videos} videoOnClick={this.videoOnClick}/> : null}
         </div>
         {/*this.props.song.id? <AudioPlayer song={this.props.song}/> : null*/}
         <div className="four wide column">
