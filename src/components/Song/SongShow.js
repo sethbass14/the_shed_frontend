@@ -21,12 +21,15 @@ class SongShow extends React.Component {
 
   searchYouTube = () => {
     // console.log('In search YouTube function')
-    // console.log(`${this.props.song.title} ${this.props.band.name}`)
-    adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
+    // console.log(`${this.props.song.title} ${this.props.band.name}`
+    if (!this.state.youTubeClick) {
+      adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
       .then(resp => {
         console.log(resp)
-        this.setState({ videos: resp.items.splice(1) ,currentVideo: resp.items[0], youTubeClick: !this.state.youTubeClick  })
+        this.setState({ ...this.state, videos: resp.items.splice(1) ,currentVideo: resp.items[0] })
       })
+    }
+    this.setState({ ...this.state, youTubeClick: !this.state.youTubeClick })
   }
 
   videoOnClick = video => {
@@ -50,7 +53,7 @@ class SongShow extends React.Component {
       <div className='ui grid container'>
         <div className="five wide column">
           <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.currentVideo}/>
-          {this.state.youTubeClick ? (
+          {this.state.youTubeClick && this.state.currentVideo ? (
             <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
           ) : (
             <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
