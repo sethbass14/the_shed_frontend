@@ -24,6 +24,7 @@ export const DELETE_SET_SONG = 'DELETE_SET_SONG'
 export const INCREMENT_SET_ORDER = 'INCREMENT_SET_ORDER'
 export const DECREMENT_SET_ORDER = 'DECREMENT_SET_ORDER'
 export const UPDATE_SET_SONG_ORDER = 'UPDATE_SET_SONG_ORDER'
+export const ADD_VIDEO_URL = 'ADD_VIDEO_URL'
 
 //non-backend actions
 

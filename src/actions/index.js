@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, INCREMENT_SET_ORDER, DECREMENT_SET_ORDER, UPDATE_SET_SONG_ORDER } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, INCREMENT_SET_ORDER, DECREMENT_SET_ORDER, UPDATE_SET_SONG_ORDER, ADD_VIDEO_URL } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -71,6 +71,17 @@ export const addSongNotes = (notes, songId) => dispatch => {
       alert(`${songData.error}`)
     } else {
       dispatch({ type: ADD_SONG_NOTES, songData })
+    }
+  })
+}
+
+export const addVideoUrl = (video, songId) => dispatch => {
+  dispatch({ type: ASYNC_START })
+  adapter.songs.updateVideo(video, songId).then(songData => {
+    if (songData.error) {
+      alert(`${songData.erros}`)
+    } else {
+      dispatch({ type: ADD_VIDEO_URL, songData })
     }
   })
 }

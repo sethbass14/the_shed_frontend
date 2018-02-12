@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_SONG, DELETE_SONG, ADD_SONG_NOTES, DELETE_BAND, ADD_SET_SONG, DELETE_SET_SONG } from '../constants'
+import { SET_USER_DATA, ADD_SONG, DELETE_SONG, ADD_SONG_NOTES, DELETE_BAND, ADD_SET_SONG, DELETE_SET_SONG, ADD_VIDEO_URL } from '../constants'
 
 
 const initialState = []
@@ -22,6 +22,12 @@ export const songsReducer = ( state = initialState, action) => {
       song = state.find(song => song.id === action.setSong.song_id)
       index = state.indexOf(song)
       song.set_list_ids = songSetListIdReducer(song.set_list_ids, action)
+      return [...state.slice(0, index), song, ...state.slice(index + 1)]
+    case ADD_VIDEO_URL:
+
+      song = state.find(song => song.id === action.songData.id)
+      index = state.indexOf(song)
+      song.you_tube_url = action.songData.you_tube_url
       return [...state.slice(0, index), song, ...state.slice(index + 1)]
     default:
       return state

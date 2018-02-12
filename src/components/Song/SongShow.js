@@ -5,6 +5,7 @@ import SongCard from './SongCard';
 import SongNoteForm from './SongNoteForm';
 import VideoPlayer from '../Video/VideoPlayer';
 import VideoCardContainer from '../Video/VideoCardContainer';
+import * as actions from '../../actions'
 import adapter from '../../services/adapter';
 
 
@@ -19,8 +20,8 @@ class SongShow extends React.Component {
   }
 
   searchYouTube = () => {
-    console.log('In search YouTube function')
-    console.log(`${this.props.song.title} ${this.props.band.name}`)
+    // console.log('In search YouTube function')
+    // console.log(`${this.props.song.title} ${this.props.band.name}`)
     adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
       .then(resp => {
         console.log(resp)
@@ -37,13 +38,23 @@ class SongShow extends React.Component {
     this.setState({...this.state, videos: newVideos, currentVideo: video})
   }
 
+  saveVideo = videoUrl => {
+    console.log('In save video')
+    this.props.addVideoUrl({ you_tube_url: `https://www.youtube.com/embed/${this.state.currentVideo.id.videoId}` }, this.props.song.id)
+
+  }
+
   render() {
     // console.log('In SongShow', this.props)
     return (
       <div className='ui grid container'>
         <div className="five wide column">
-          <VideoPlayer video={this.state.currentVideo}/>
-          <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
+          <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.currentVideo}/>
+          {this.state.youTubeClick ? (
+            <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
+          ) : (
+            <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
+          ) }
         </div>
         <div className=" five wide column">
           {this.props.song.id ? <SongCard song={this.props.song} band={this.props.band} /> : null }
@@ -102,4 +113,4 @@ const mapStateToProps = (state, prevProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(SongShow))
+export default withRouter(connect(mapStateToProps, actions)(SongShow))
