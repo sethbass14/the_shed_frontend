@@ -1,4 +1,5 @@
-import { API_ROOT, HEADERS } from '../constants'
+import { API_ROOT, HEADERS } from '../constants';
+import { YOU_TUBE_API_KEY } from './api-key';
 
 
 const login = (user_data) => {
@@ -109,6 +110,10 @@ const updateSetSongOrder = (set_song_data) => {
   }).then(resp => resp.json())
 }
 
+const fetchYouTube = (song_search_data) => {
+  return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOU_TUBE_API_KEY}&q=${song_search_data}&type=video`).then(resp => resp.json())
+}
+
 export default {
   auth: {
     login,
@@ -135,5 +140,8 @@ export default {
     postNewSetSong,
     deleteSetSongServer,
     updateSetSongOrder
+  },
+  videos: {
+    fetchYouTube
   }
 }

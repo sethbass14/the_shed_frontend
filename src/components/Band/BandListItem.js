@@ -16,4 +16,5 @@ const BandListItem = props => (
 
 
 
-export default connect(null, actions)(BandListItem)
+// export default connect(null, actions)(BandListItem)
+export default BandListItem
