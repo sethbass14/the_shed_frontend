@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SongCard from './SongCard';
 import SongNoteForm from './SongNoteForm';
-import VideoPlayer from '../VideoPlayer';
+import VideoPlayer from '../Video/VideoPlayer';
+import VideoCardContainer from '../Video/VideoCardContainer';
 import adapter from '../../services/adapter';
 
 
@@ -11,7 +12,9 @@ class SongShow extends React.Component {
   constructor() {
     super()
     this.state = {
-      video: {}
+      videos: [],
+      currentVideo: null,
+      youTubeClick: false
     }
   }
 
@@ -19,7 +22,10 @@ class SongShow extends React.Component {
     console.log('In search YouTube function')
     console.log(`${this.props.song.title} ${this.props.band.name}`)
     adapter.videos.fetchYouTube(`${this.props.song.title} ${this.props.band.name}`)
-      .then(resp => this.setState({ video: resp.items[0]  }, () => console.log(this.state)))
+      .then(resp => {
+        console.log("In search YouTube Function resp:", resp)
+        this.setState({ videos: resp.items.splice(1) ,currentVideo: resp.items[0], youTubeClick: !this.state.youTubeClick  }, () => console.log(this.state))
+      })
   }
 
   render() {
@@ -27,7 +33,7 @@ class SongShow extends React.Component {
     return (
       <div className='ui grid container'>
         <div className="five wide column">
-          <VideoPlayer video={this.state.video}/>
+          <VideoPlayer video={this.state.currentVideo}/>
           <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
         </div>
         <div className=" five wide column">
@@ -37,6 +43,7 @@ class SongShow extends React.Component {
           {this.props.song.id? <SongNoteForm song={this.props.song} /> : null}
         </div>
         <div className="five wide column">
+          {this.state.youTubeClick ? <VideoCardContainer videos={this.state.videos}/> : null}
         </div>
         {/*this.props.song.id? <AudioPlayer song={this.props.song}/> : null*/}
         <div className="four wide column">
