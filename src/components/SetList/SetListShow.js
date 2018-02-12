@@ -32,7 +32,7 @@ class SetListShow extends React.Component {
   render() {
     // console.log('In Set List Show', this.props, "bandSongs:", this.props.bandSongs, "setSongsShow:", this.props.setSongsShow)
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
-    const setSongCards = this.props.setSongsShow.map((song, index) => <SongCard key={index} band={this.props.band} song={song} setSong={true} setList={this.props.setList}/>)
+    // const setSongCards = this.props.setSongsShow.map((song, index) => <SongCard key={index} band={this.props.band} song={song} setSong={true} setList={this.props.setList}/>)
     return (
       <div className="ui grid container">
         <div className="twelve wide column">
