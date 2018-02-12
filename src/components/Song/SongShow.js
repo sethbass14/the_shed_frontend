@@ -20,7 +20,7 @@ class SongShow extends React.Component {
   }
 
   searchYouTube = () => {
-    if (!this.state.youTubeClick) {
+    if (!this.state.youTubeClick && this.props.song.id) {
       adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
         .then(resp => {
           this.setState({ ...this.state, videos: resp.items.splice(1) ,currentVideo: resp.items[0] })
@@ -70,6 +70,7 @@ class SongShow extends React.Component {
 }
 
 const mapStateToProps = (state, prevProps) => {
+  // console.log(prevProps)
   const song = state.songs.find(song => song.id === parseInt(prevProps.match.params.songId))
   if (song) {
     return {
