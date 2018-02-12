@@ -29,7 +29,7 @@ class SongCard extends React.Component {
               <div>
                 <button
                   className="ui button"
-                  onClick={() => this.props.deleteSetSong(this.props.setSong.id)}
+                  onClick={() => this.props.handleDelete(this.props.setSong.id)}
                   >
                   Remove From Set
                 </button>

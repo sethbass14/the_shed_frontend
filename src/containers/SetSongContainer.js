@@ -46,6 +46,15 @@ class SetSongContainer extends React.Component {
 
   }
 
+  handleDelete = (id) => {
+    let setSongToDelete = this.props.setSongs.find(setSong => setSong.id === id)
+    let setSongArr = this.props.setSongs.filter(setSong => setSong.order > setSongToDelete.order)
+    setSongArr.map(setSong => setSong.order -= 1)
+    this.props.deleteSetSong(id)
+    setSongArr.forEach(setSong => this.props.updateSetSongOrder(setSong))
+    // console.log('in the handleDelete', setSongArr)
+  }
+
 
   render() {
     // console.log('In SetSongContainer props: ', this.props)
@@ -64,6 +73,7 @@ class SetSongContainer extends React.Component {
             setList={this.props.setList}
             handleOrderDecrement={this.handleOrderDecrement}
             handleOrderIncrement={this.handleOrderIncrement}
+            handleDelete={this.handleDelete}
             order={song.order}
             />
         )
