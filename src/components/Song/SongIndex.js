@@ -9,7 +9,11 @@ class SongIndex extends React.Component {
   }
 
   render() {
-    const allSongs = this.props.songs.map((song, index) => <SongCard song={song} key={index} band={this.props.bands.find(band => band.id === song.band_id)}/>)
+    let songs = this.props.songs
+    songs.map(song => song.bandName = this.props.bands.find(band => band.id === song.band_id).name)
+    songs.sort((a, b) => a.bandName.localeCompare(b.bandName))
+    console.log(songs)
+    const allSongs = songs.map((song, index) => <SongCard song={song} key={index} band={this.props.bands.find(band => band.id === song.band_id)}/>)
     return (
       <div>
         <div>
