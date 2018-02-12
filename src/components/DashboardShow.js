@@ -3,16 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BandListContainer from '../containers/BandListContainer';
 import SongListContainer from '../containers/SongListContainer';
-// import BandContainer from '../containers/BandContainer';
 
-
-
-class DashboardShow extends React.Component {
-  render() {
+const DashboardShow = (props) => {
     return (
       <div className="ui grid container">
         <div className="sixteen wide column">
-          <h1>Welcome to your dashboard,  {this.props.user.username} </h1>
+          <h1>Welcome to your dashboard,  {props.user.username} </h1>
         </div>
         <div className="four wide column">
           <Link to="/bands">
@@ -32,7 +28,6 @@ class DashboardShow extends React.Component {
 
       </div>
     )
-  }
 }
 
 const mapStateToProps = state => {
