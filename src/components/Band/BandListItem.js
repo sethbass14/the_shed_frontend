@@ -1,8 +1,5 @@
 import React from 'react';
-import * as actions from '../../actions';
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux';
-
 
 const BandListItem = props => (
   <div>
@@ -14,7 +11,4 @@ const BandListItem = props => (
   </div>
 )
 
-
-
-// export default connect(null, actions)(BandListItem)
 export default BandListItem

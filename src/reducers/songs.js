@@ -24,7 +24,6 @@ export const songsReducer = ( state = initialState, action) => {
       song.set_list_ids = songSetListIdReducer(song.set_list_ids, action)
       return [...state.slice(0, index), song, ...state.slice(index + 1)]
     case ADD_VIDEO_URL:
-
       song = state.find(song => song.id === action.songData.id)
       index = state.indexOf(song)
       song.you_tube_url = action.songData.you_tube_url

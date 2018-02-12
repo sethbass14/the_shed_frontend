@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, INCREMENT_SET_ORDER, DECREMENT_SET_ORDER, UPDATE_SET_SONG_ORDER, ADD_VIDEO_URL } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, UPDATE_SET_SONG_ORDER, ADD_VIDEO_URL } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -31,7 +31,6 @@ export const fetchUserData = (id, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.auth.getUserData(id).then(userData => {
     dispatch({ type: SET_USER_DATA, userData })
-    // history.push("/dashboard")
   })
 }
 
@@ -45,8 +44,6 @@ export const addUser = (user_data, history) => dispatch => {
       localStorage.setItem('token', userData.jwt)
       dispatch({ type: SET_CURRENT_USER , user: userData.user})
       history.push('/dashboard')
-      // dispatch({ type: ADD_USER, userData })
-      // history.push('/login')
     }
   })
 }
@@ -66,7 +63,6 @@ export const addSong = (form_data, history) => dispatch => {
 export const addSongNotes = (notes, songId) => dispatch => {
   dispatch({type: ASYNC_START })
   adapter.songs.updateNotes(notes, songId).then(songData => {
-    // debugger
     if (songData.error) {
       alert(`${songData.error}`)
     } else {
@@ -87,7 +83,6 @@ export const addVideoUrl = (video, songId) => dispatch => {
 }
 
 export const deleteSong = (id, history) => dispatch => {
-  // debugger
   dispatch({ type: ASYNC_START })
   adapter.songs.deleteSongServer(id).then(songData => {
     if (songData.error) {
@@ -132,7 +127,6 @@ export const addNewSetList = (set_list_data) => dispatch => {
       alert(`${setList.error}`)
     } else {
       dispatch({ type: ADD_SET_LIST, setList })
-      // alert(`Got the response! setList id: ${setList.id}`)
     }
   })
 }
@@ -160,7 +154,6 @@ export const addSetSong = (set_song_data) => dispatch => {
 }
 
 export const deleteSetSong = id => dispatch => {
-  // debugger
   adapter.setSongs.deleteSetSongServer(id).then(setSong => {
     if (setSong.error) {
       alert(`${setSong.error}`)
@@ -169,15 +162,6 @@ export const deleteSetSong = id => dispatch => {
     }
   })
 }
-
-// export const incrementSetOrder = (setSong) => dispatch => {
-//   dispatch({ type: INCREMENT_SET_ORDER, setSong })
-// }
-//
-// export const decrementSetOrder = (setSong) => dispatch => {
-//   // dispatch({ type: AYSNC_START})
-//   dispatch({ type: DECREMENT_SET_ORDER, setSong })
-// }
 
 export const updateSetSongOrder = (set_song_data) => dispatch => {
   dispatch({ type: ASYNC_START })

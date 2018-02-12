@@ -6,17 +6,14 @@ import * as actions from '../../actions'
 
 
 //Could make this into a class component to guard against accidental deletes.
-
 class SongCard extends React.Component {
   constructor() {
     super()
   }
 
   render() {
-    // console.log("In Song Card props:", this.props.song.title)
     return (
       <div className="ui eight wide column">
-
         <div className="ui card">
           <div className="content">
             <Link to={`/bands/${this.props.song.band_id}/songs/${this.props.song.id}`}>
@@ -60,21 +57,11 @@ class SongCard extends React.Component {
   }
 }
 
-// const SongCard = props => {
-//   // console.log("In SongCard", props, "Set Song id:", props.setList.set_song_ids.find(setSong => setSong.song_id === props.song.id).id)
-//   console.log('In SongCard props:', props)
-//   return (
-//   )
-// }
-
 const mapStateToProps = (state, prevProps) => {
-  // console.log('in map State To Props PrevProps Son Card:', prevProps)
   if (prevProps.setSong) {
-    // debugger
     return {
       band: state.bands.find(band => band.id === prevProps.song.band_id),
-      setSong: state.setSongs.find(setSong => setSong.set_list_id === prevProps.setList.id && setSong.song_id === prevProps.song.id ),
-      // song: state.songs.find(song => song.id === prevProps.song.id)
+      setSong: state.setSongs.find(setSong => setSong.set_list_id === prevProps.setList.id && setSong.song_id === prevProps.song.id )
      }
   } else {
     return {}

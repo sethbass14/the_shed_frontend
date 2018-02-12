@@ -1,17 +1,12 @@
 import React from 'react';
 import SongCard from '../components/Song/SongCard';
 import { connect } from 'react-redux';
-import { UPDATE_SET_ORDER } from '../constants'
-// import AudioPlayer from '../components/AudioPlayer'
 import * as actions from '../actions'
 
+//This could be presentational
 class SetSongContainer extends React.Component {
   constructor() {
     super()
-
-    this.state = {
-      setSongs: []
-    }
   }
 
   handleOrderIncrement = (setSongId) => {
@@ -52,19 +47,14 @@ class SetSongContainer extends React.Component {
     setSongArr.map(setSong => setSong.order -= 1)
     this.props.deleteSetSong(id)
     setSongArr.forEach(setSong => this.props.updateSetSongOrder(setSong))
-    // console.log('in the handleDelete', setSongArr)
   }
 
 
   render() {
-    // console.log('In SetSongContainer props: ', this.props)
     let songs = this.props.songs
     songs.map(song => song.order = this.props.setSongs.find(setSong => setSong.song_id === song.id).order)
     songs.sort((a, b) => a.order - b.order)
-    // debugger
-    // console.log('In Set Song render songs with order:', songs)
     const songCards = songs.map((song, index) => {
-      // console.log("In song card interation", song)
       return (
           <SongCard
             key={index}
@@ -78,8 +68,8 @@ class SetSongContainer extends React.Component {
             />
         )
 
-        }
-      )
+      }
+    )
     return (
       <div>
         <h4>In Set Song Container</h4>

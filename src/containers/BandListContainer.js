@@ -4,7 +4,6 @@ import BandListItem from '../components/Band/BandListItem'
 
 
 const BandListContainer = props => {
-    // console.log('In band list container', this.props)
     const bands = props.bands.map((band, index) => <BandListItem key={index} band={band}/>  )
     return (
       <div>
