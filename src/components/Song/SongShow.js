@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SongCard from './SongCard';
 import SongNoteForm from './SongNoteForm';
+import BandCard from '../Band/BandCard';
 import VideoPlayer from '../Video/VideoPlayer';
 import VideoCardContainer from '../Video/VideoCardContainer';
 import * as actions from '../../actions'
@@ -60,9 +61,8 @@ class SongShow extends React.Component {
         <div className="five wide column">
           {this.state.youTubeClick ? <VideoCardContainer videos={this.state.videos} videoOnClick={this.videoOnClick}/> : null}
         </div>
-        <div className="four wide column">
-        </div>
-        <div className="column">
+        <div className="five wide column">
+          {<BandCard band={this.props.band} />}
         </div>
       </div>
     )
@@ -79,7 +79,8 @@ const mapStateToProps = (state, prevProps) => {
     }
   } else {
     return {
-      song: {}
+      song: {},
+      band: {}
     }
   }
 }
