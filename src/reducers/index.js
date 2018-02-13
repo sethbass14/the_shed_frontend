@@ -20,5 +20,3 @@ export const rootReducer = combineReducers({
   songLoading: songLoadingReducer
 
 })
-
-// export default rootReducer

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import * as actions from '../../actions'
 
 
@@ -22,7 +23,7 @@ class SetListInput extends React.Component {
     if (!this.state.date) {
       alert('A set list must have a date!')
     } else {
-      this.props.addNewSetList({...this.state, band_id: this.props.band.id})
+      this.props.addNewSetList({...this.state, band_id: this.props.band.id}, this.props.history)
       this.props.handleAddSetListClick()
     }
   }
@@ -59,4 +60,4 @@ class SetListInput extends React.Component {
   }
 }
 
-export default connect(null, actions)(SetListInput)
+export default withRouter(connect(null, actions)(SetListInput))

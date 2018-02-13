@@ -53,7 +53,7 @@ class BandShow extends React.Component {
       <div>
         <div className="ui grid container">
           <div className="four wide column">
-            <h2>Set List Placeholder</h2>
+            <h2>Set Lists</h2>
             {bandSetLists}
           </div>
           <div className="eight wide column">

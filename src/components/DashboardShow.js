@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BandListContainer from '../containers/BandListContainer';
 import SongListContainer from '../containers/SongListContainer';
+import UserCard from './User/UserCard'
 
 const DashboardShow = (props) => {
     return (
@@ -17,7 +18,7 @@ const DashboardShow = (props) => {
           <BandListContainer />
         </div>
         <div className="eight wide column">
-
+          <UserCard />
         </div>
         <div className="four wide column">
           <Link to="/songs">

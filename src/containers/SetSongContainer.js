@@ -72,9 +72,7 @@ class SetSongContainer extends React.Component {
     )
     return (
       <div>
-        <h4>In Set Song Container</h4>
         {songCards}
-        <h4>Out of Set Song Container</h4>
       </div>
     )
   }
