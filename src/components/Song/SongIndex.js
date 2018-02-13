@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SongCard from './SongCard'
+import SongCard from './SongCard';
 
 
 class SongIndex extends React.Component {
@@ -18,9 +19,17 @@ class SongIndex extends React.Component {
         <div className="page-title">
           <h1>Your Songs</h1>
         </div>
-        <div className="ui grid container">
-          {allSongs}
-        </div>
+        {songs.length ? (
+          <div className="ui grid container">
+            {allSongs}
+          </div>
+        ) : (
+          <Link to={`/bands`}>
+            <div className="page-title">
+              Add a band to upload a tune!
+            </div>
+          </Link>
+        )}
       </div>
     )
   }

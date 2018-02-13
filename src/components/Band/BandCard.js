@@ -46,7 +46,8 @@ class BandCard extends React.Component {
                 <p>Update Band Pic</p>
               </div>
             )}
-            {`${this.props.band.song_ids.length} songs`}
+            {this.props.band.id ? <p>{`${this.props.band.song_ids.length} songs`}</p> : null}
+            {this.props.band.id ? <p>{`${this.props.band.set_list_ids.length} set lists`}</p> : null}
           </div>
         </div>
       </div>

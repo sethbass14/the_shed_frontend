@@ -1,8 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SongListItem from '../Song/SongListItem'
-import SetSongContainer from '../../containers/SetSongContainer'
+import SongListItem from '../Song/SongListItem';
+import SetSongContainer from '../../containers/SetSongContainer';
+import BandCard from '../Band/BandCard';
 import * as actions from '../../actions';
 
 //Make this a class to add a search bar functionality in the future
@@ -11,7 +12,7 @@ class SetListShow extends React.Component {
     super()
 
     this.state = {
-      deleteClick: false
+      deleteClick: false,
     }
   }
 
@@ -24,36 +25,49 @@ class SetListShow extends React.Component {
     }
   }
 
+  handleAddSongClick = () => {
+    this.setState({ ...this.state, addSongClick: !this.state.addSongClick })
+  }
+
   render() {
     console.log('In set List show:', this.props)
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
+    this.props.redirect ? this.props.history.push(`/bands/${this.props.match.params.bandId}`) : null
     return (
-      <div className="ui grid container">
-        <div className="twelve wide column">
-          <h1>{this.props.band.id? `${this.props.band.name} Set: ${this.props.setList.name} ${this.props.setList.date}` : null}</h1>
+        <div className="ui grid container">
+          <div className="twelve wide column">
+            <h1>{this.props.band.id? `${this.props.band.name} Set: ${this.props.setList.name} ${this.props.setList.date}` : null}</h1>
+          </div>
+          <div className="four wide column">
+            <button className="ui button" onClick={() => this.handleDeleteClick()}>Delete Set List</button>
+          </div>
+          <div className="four wide column">
+            <h2>Repertoire</h2>
+            {bandSongTitles.length ? (
+              <div>
+                <h4>Add a song to build a set list</h4>
+                {bandSongTitles}
+              </div>
+            ) : (
+              <Link to={`/bands/${this.props.band.id}`}>
+                {`Upload More Songs On ${this.props.band.name}'s page`}
+              </Link>
+            )}
+          </div>
+          <div className="eight wide column">
+            <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
+          </div>
+          <div className="four wide column">
+            <BandCard band={this.props.band}/>
+          </div>
         </div>
-        <div className="four wide column">
-          <button className="ui button" onClick={() => this.handleDeleteClick()}>Delete Set List</button>
-        </div>
-        <div className="four wide column">
-          <h2>Repertoire</h2>
-          {bandSongTitles}
-        </div>
-        <div className="eight wide column">
-          <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
-        </div>
-        <div className="four wide column">
-          <h2>Ability to add a new song to the set list</h2>
-        </div>
-      </div>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const band = state.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
   const setList = state.setLists.find(setList => setList.id === parseInt(ownProps.match.params.setListId))
-  const setListExists = band && setList
+  const band = state.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
   if (setList) {
     let bandSongs = state.songs.filter(song => song.band_id === band.id)
     const setSongsShow = bandSongs.filter(song => song.set_list_ids.includes(setList.id))
@@ -63,16 +77,25 @@ const mapStateToProps = (state, ownProps) => {
       bandSongs,
       setList,
       setSongsShow,
-      exist: (band && !setList)
+      redirect: false
     }
   // write a third statement that checks for a band and not a setlist. Add a key of redirect true and false.
+} else if (band && !setList) {
+    return {
+      band: {},
+      bandSongs: [],
+      setList: {},
+      setSongsShow: [],
+      redirect: true
+    }
   } else {
-      return {
-        band: {},
-        bandSongs: [],
-        setList: {},
-        setSongsShow: []
-      }
+    return {
+      band: {},
+      bandSongs: [],
+      setList: {},
+      setSongsShow: [],
+      redirect: false
+    }
   }
 }
 

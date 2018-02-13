@@ -72,14 +72,17 @@ class BandShow extends React.Component {
 
       <div className="ui grid container">
         <div className="four wide column">
-          <h3 onClick={() => this.handleAddSetListClick()}>Add a Set List</h3>
+          <h3>Add a Set List</h3>
           {this.state.addSetListClick ? (
-            <SetListInput
-              handleAddSetListClick={this.handleAddSetListClick}
-              band={this.props.band}
-              />
+            <div>
+              <i className="minus icon" onClick={() => this.handleAddSetListClick()}></i>
+              <SetListInput
+                handleAddSetListClick={this.handleAddSetListClick}
+                band={this.props.band}
+                />
+            </div>
           ) : (
-            null
+          <i className="plus icon" onClick={() => this.handleAddSetListClick()}></i>
           )}
         </div>
         <div className="eight wide column">
@@ -91,11 +94,14 @@ class BandShow extends React.Component {
         </div>
         <div className="four wide column">
           <div>
-            <h3 onClick={() => this.props.addSongClick()}>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
+            <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
             {this.props.addSongClickState ? (
-              <SongInput />
+              <div>
+                <i className="minus icon" onClick={() => this.props.addSongClick()}></i>
+                <SongInput />
+              </div>
               ) : (
-                null
+            <i className="plus icon" onClick={() => this.props.addSongClick()}></i>
               )
             }
           </div>
