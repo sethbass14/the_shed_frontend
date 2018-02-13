@@ -37,7 +37,7 @@ const Navbar = (props) => {
           ) : (
             null
           )}
-          {props.loggedIn ? (
+          {props.loggedIn && props.songs.length? (
             <div className="item">
               <Link to="/songs">
                 Songs
@@ -76,7 +76,8 @@ const Navbar = (props) => {
 
 const mapStateToProps = state => ({
   loggedIn: !!state.auth.currentUser.id,
-  currentUser: state.auth.currentUser
+  currentUser: state.auth.currentUser,
+  songs: state.songs
 })
 
 export default withRouter(connect(mapStateToProps, actions)(Navbar))

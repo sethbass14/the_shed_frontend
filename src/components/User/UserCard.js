@@ -20,17 +20,29 @@ class UserCard extends React.Component {
     return (
       <div className="ui eight wide column">
         <div className="ui card">
+          {this.props.user.avatar !== "/avatars/original/missing.png" ? (
+            <div className="image">
+              <img src={this.props.user.avatar}></img>
+            </div>
+          ) : (
+            null
+          )}
           <div className="content">
             <h2>{this.props.user.username}</h2>
             <h3>{this.props.bands.length} bands</h3>
             <h3>{this.props.songs.length} songs</h3>
           </div>
           <div className="extra content">
-            <i className="add square icon" onClick={() => this.handleClick()}></i>
             {this.state.clicked ? (
-              <UserPicInput/>
+              <div>
+                <i className="minus square icon" onClick={() => this.handleClick()}></i>
+                <UserPicInput/>
+              </div>
             ) : (
-              <p>Add Profile Pic</p>
+              <div>
+                <i className="add square icon" onClick={() => this.handleClick()}></i>
+                <p>Update Profile Pic</p>
+              </div>
             )}
           </div>
         </div>

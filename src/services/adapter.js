@@ -35,6 +35,14 @@ const postNewUser = (user_data) => {
   }).then(resp => resp.json())
 }
 
+const postUserImage = (file, id) => {
+  return fetch(`${API_ROOT}/users/${id}`, {
+    method: 'PATCH',
+    body: file
+  }).then(resp => resp.json())
+}
+
+
 //Below is everything for a song
 const postNewSong = (file) => {
   // console.log(song_data)
@@ -129,7 +137,8 @@ export default {
     getUserData
   },
   users: {
-    postNewUser
+    postNewUser,
+    postUserImage
   },
   songs: {
     postNewSong,

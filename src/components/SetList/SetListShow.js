@@ -25,6 +25,7 @@ class SetListShow extends React.Component {
   }
 
   render() {
+    console.log('In set List show:', this.props)
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
     return (
       <div className="ui grid container">
@@ -52,6 +53,7 @@ class SetListShow extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const band = state.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
   const setList = state.setLists.find(setList => setList.id === parseInt(ownProps.match.params.setListId))
+  const setListExists = band && setList
   if (setList) {
     let bandSongs = state.songs.filter(song => song.band_id === band.id)
     const setSongsShow = bandSongs.filter(song => song.set_list_ids.includes(setList.id))
@@ -60,8 +62,10 @@ const mapStateToProps = (state, ownProps) => {
       band,
       bandSongs,
       setList,
-      setSongsShow
+      setSongsShow,
+      exist: (band && !setList)
     }
+  // write a third statement that checks for a band and not a setlist. Add a key of redirect true and false.
   } else {
       return {
         band: {},

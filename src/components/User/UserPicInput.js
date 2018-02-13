@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../actions'
 
 
 
@@ -17,7 +18,8 @@ class UserPicInput extends React.Component {
     if (file) {
       formData.append("avatar", file)
       formData.append("id", this.props.user.id)
-      debugger
+      // debugger
+      this.props.addUserImage(formData, this.props.user.id)
     } else {
       alert('Must upload a file on submit!')
     }
@@ -42,4 +44,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(UserPicInput)
+export default connect(mapStateToProps, actions)(UserPicInput)
