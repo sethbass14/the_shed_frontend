@@ -83,6 +83,13 @@ const postNewBand = (band_data) => {
   }).then(resp => resp.json())
 }
 
+const updateBandImage = (file, id) => {
+  return fetch(`${API_ROOT}/bands/${id}`, {
+    method: 'PATCH',
+    body: file
+  }).then(resp => resp.json())
+}
+
 const deleteBandServer = id => {
   return fetch(`${API_ROOT}/bands/${id}`, {
     method: 'DELETE'
@@ -148,7 +155,8 @@ export default {
   },
   bands: {
     postNewBand,
-    deleteBandServer
+    deleteBandServer,
+    updateBandImage
   },
   setLists: {
     postNewSetList,

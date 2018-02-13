@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_BAND, DELETE_BAND, ADD_SONG, DELETE_SONG } from '../constants'
+import { SET_USER_DATA, ADD_BAND, DELETE_BAND, ADD_SONG, ADD_BAND_IMAGE, DELETE_SONG } from '../constants'
 
 const initialState = []
 export const bandsReducer = ( state = initialState, action) => {
@@ -14,6 +14,12 @@ export const bandsReducer = ( state = initialState, action) => {
       let band = state.find(band => band.id === action.songData.band_id)
       let index = state.indexOf(band)
       band.song_ids = bandSongIdsReducer(band.song_ids, action)
+      return [...state.slice(0, index), band, ...state.slice(index + 1)]
+    case ADD_BAND_IMAGE:
+      // debugger
+      band = state.find(band => band.id === action.bandData.id)
+      index = state.indexOf(band)
+      band.image = action.bandData.image
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     default:
       return state

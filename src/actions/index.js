@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, UPDATE_SET_SONG_ORDER, ADD_VIDEO_URL, ADD_USER_IMAGE } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, ADD_BAND_IMAGE, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, UPDATE_SET_SONG_ORDER, ADD_VIDEO_URL, ADD_USER_IMAGE } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -118,6 +118,17 @@ export const addBand = (band_data, history) => dispatch => {
   })
 }
 
+export const addBandImage = (file, id) => dispatch => {
+  dispatch({ type: ASYNC_START })
+  adapter.bands.updateBandImage(file, id).then(bandData => {
+    if (bandData.error) {
+      alert(`${bandData.error}`)
+    } else {
+      // debugger
+      dispatch({ type: ADD_BAND_IMAGE, bandData })
+    }
+  })
+}
 export const deleteBand = (id, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.bands.deleteBandServer(id).then(bandData => {

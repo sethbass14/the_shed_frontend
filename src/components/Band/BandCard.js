@@ -21,6 +21,13 @@ class BandCard extends React.Component {
     return (
       <div className="ui eight wide column">
         <div className="ui card">
+          {this.props.band.image !== "/images/original/missing.png" ? (
+            <div className="image">
+              <img src={this.props.band.image}></img>
+            </div>
+          ) : (
+            null
+          )}
           <div className="content">
             <Link
               to={`/bands/${this.props.band.id}`} >

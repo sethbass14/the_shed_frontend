@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../actions'
+import * as actions from '../../actions';
 
 
 class BandPicInput extends React.Component {
@@ -17,7 +18,9 @@ class BandPicInput extends React.Component {
     if (file) {
       formData.append("image", file)
       formData.append("id", this.props.band.id)
-      // this.props.addUserImage(formData, this.props.band.id)
+      console.log(formData)
+      console.log(this.props.band.id)
+      this.props.addBandImage(formData, this.props.band.id)
     } else {
       alert('Must upload a file on submit!')
     }
@@ -26,6 +29,7 @@ class BandPicInput extends React.Component {
   }
 
   render() {
+    console.log('In band pic input props:', this.props)
     return (
       <div>
         <form onSubmit={this.handleFileSubmit}>
@@ -37,10 +41,17 @@ class BandPicInput extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    band: state.band
+const mapStateToProps = (state, prevProps) => {
+  const band =  state.bands.find(band => band.id === parseInt(prevProps.match.params.bandId))
+  if (band.id) {
+    return {
+      band
+    }
+  } else {
+      return {
+        band: {}
+      }
   }
 }
 
-export default connect(mapStateToProps, actions)(BandPicInput)
+export default withRouter(connect(mapStateToProps, actions)(BandPicInput))
