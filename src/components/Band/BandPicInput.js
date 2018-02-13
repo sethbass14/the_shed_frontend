@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions'
 
 
-
-class UserPicInput extends React.Component {
+class BandPicInput extends React.Component {
   constructor() {
     super()
   }
@@ -16,13 +15,14 @@ class UserPicInput extends React.Component {
     const file = image_upload.files[0]
     const formData = new FormData()
     if (file) {
-      formData.append("avatar", file)
-      formData.append("id", this.props.user.id)
-      this.props.addUserImage(formData, this.props.user.id)
+      formData.append("image", file)
+      formData.append("id", this.props.band.id)
+      // this.props.addUserImage(formData, this.props.band.id)
     } else {
       alert('Must upload a file on submit!')
     }
     console.log('in handleFileSubmit')
+
   }
 
   render() {
@@ -39,8 +39,8 @@ class UserPicInput extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    band: state.band
   }
 }
 
-export default connect(mapStateToProps, actions)(UserPicInput)
+export default connect(mapStateToProps, actions)(BandPicInput)
