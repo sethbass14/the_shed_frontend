@@ -20,17 +20,12 @@ const DashboardShow = (props) => {
         <div className="eight wide column">
           <UserCard />
         </div>
-          {props.songs.length ? (
-            <div className="four wide column">
-              <Link to="/songs">
-                <h2>Songs</h2>
-              </Link>
-              <SongListContainer />
-          </div>
-
-          ) : (
-            null
-          )}
+        <div className="four wide column">
+          <Link to="/songs">
+            <h2>Songs</h2>
+          </Link>
+          <SongListContainer />
+        </div>
 
       </div>
     )
@@ -39,7 +34,6 @@ const DashboardShow = (props) => {
 const mapStateToProps = state => {
   return {
     user: state.user,
-    songs: state.songs
   }
 }
 
