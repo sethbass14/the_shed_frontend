@@ -7,7 +7,7 @@ import * as actions from '../actions';
 const Navbar = (props) => {
   // console.log('In the nav bar', props)
   return (
-      <div className={`ui menu`}>
+      <div className={`ui menu nav`}>
         <div className={'item'}>
           {props.loggedIn ? (
             <Link to="/dashboard">
@@ -19,11 +19,11 @@ const Navbar = (props) => {
             </Link>
           )}
         </div>
-          <a className="item back" onClick={() =>  window.history.back()}>
+          <a className="item" onClick={() =>  window.history.back()}>
             <i className="arrow circle left icon"></i>
             <p>Back</p>
           </a>
-          <a className="item forward" onClick={() => window.history.forward()}>
+          <a className="item" onClick={() => window.history.forward()}>
             <i className="arrow circle right icon"></i>
             <p>Forward</p>
           </a>

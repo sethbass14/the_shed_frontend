@@ -52,12 +52,25 @@ body {
   text-align: center;
 }
 
+/* .item {
+  background-color: rgb(213, 180, 145);
+} */
+
+.ui.menu.nav {
+  background-color: rgb(227, 211, 198);
+  margin-bottom: 0px;
+}
+
 #sign-up {
   color: white;
 }
 
 .logout:hover {
   cursor: pointer;
+}
+
+.main-container {
+  background-color: rgb(227, 211, 198);
 }
 
 .page-title {
