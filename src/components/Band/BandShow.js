@@ -49,11 +49,11 @@ class BandShow extends React.Component {
   render() {
     const bandSongs = this.props.songs.map((song, index) => <SongListItem key={index} song={song}/>)
     const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
-    console.log('In the band show', this.props)
+    // console.log('In the band show', this.props)
     return (
         <div className="show">
           <div className="ui grid container">
-            <div className="sixteen wide centered column">
+            <div className="sixteen wide centered column heading">
               <h1>{this.props.band.name}</h1>
             </div>
             <div className="five wide column">

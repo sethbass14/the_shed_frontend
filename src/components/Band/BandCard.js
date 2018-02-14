@@ -18,11 +18,12 @@ class BandCard extends React.Component {
   }
 
   render() {
+    // console.log(this.props)
     return (
         <div className="ui card">
           {this.props.band.image !== "/images/original/missing.png" ? (
             <div className="image">
-              <img src={this.props.band.image}></img>
+              <img src={this.props.band.image} alt="band"></img>
             </div>
           ) : (
             null

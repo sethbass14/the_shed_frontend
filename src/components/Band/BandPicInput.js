@@ -5,9 +5,6 @@ import * as actions from '../../actions';
 
 
 class BandPicInput extends React.Component {
-  constructor() {
-    super()
-  }
 
   handleFileSubmit = (event) => {
     event.preventDefault()

@@ -1,7 +1,5 @@
 import React from 'react';
 import VideoCard from './VideoCard';
-import { Segment, Card } from 'semantic-ui-react';
-
 
 const VideoCardContainer = props => {
   const videoCards = props.videos.map((video, index) => <VideoCard videoOnClick={props.videoOnClick} key={index} video={video}/>)

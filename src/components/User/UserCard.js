@@ -21,7 +21,7 @@ class UserCard extends React.Component {
         <div className="ui card">
           {this.props.user.avatar !== "/avatars/original/missing.png" ? (
             <div className="image">
-              <img src={this.props.user.avatar}></img>
+              <img src={this.props.user.avatar} alt="user avatar"></img>
             </div>
           ) : (
             null

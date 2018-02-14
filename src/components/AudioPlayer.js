@@ -11,7 +11,7 @@ class AudioPlayer extends React.Component {
   // }
 
   render() {
-    console.log('in audio player song title:', this.props.song.title, "in audio player song url:", this.props.song.audio)
+    // console.log('in audio player song title:', this.props.song.title, "in audio player song url:", this.props.song.audio)
     return (
       <audio controls>
         <source src={this.props.song ? this.props.song.audio : null}/>

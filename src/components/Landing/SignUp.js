@@ -29,7 +29,7 @@ class SignUp extends React.Component {
   render() {
     return (
       <div className="home">
-        <div id='sign-up'>
+        <div className='sign-up'>
           <h1>Sign Up</h1>
         </div>
         <form onSubmit={this.handleSubmit} className="ui form login-form">

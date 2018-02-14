@@ -31,6 +31,9 @@ class Login extends React.Component {
   render() {
     return (
       <div className="home">
+        <div className="sign-up">
+          <h1>Log In</h1>
+        </div>
         <form className="ui form login-form" onSubmit={this.handleSubmit}>
           <br></br>
           <input placeholder='Username'onChange={this.onChange} type='text' name='username' value={this.state.username}/>

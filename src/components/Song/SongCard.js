@@ -7,21 +7,10 @@ import * as actions from '../../actions'
 
 //Could make this into a class component to guard against accidental deletes.
 class SongCard extends React.Component {
-  constructor() {
-    super()
-  }
-
   render() {
     return (
       <div className="ui eight wide column">
         <div className="ui card">
-        {  /*this.props.band.image !== "/images/original/missing.png" ? (
-            <div className="image">
-              <img src={this.props.band.image}></img>
-            </div>
-          ) : (
-            null
-          )*/}
           <div className="content">
             <Link to={`/bands/${this.props.song.band_id}/songs/${this.props.song.id}`}>
               <h3>{this.props.song.title}</h3>
@@ -31,7 +20,7 @@ class SongCard extends React.Component {
             ) : (
               <div>
                 <h4>band:</h4>
-                <Link to={`/bands/${this.props.song.band_id}`}>{this.props.band ? this.props.band.name : null}</Link>  
+                <Link to={`/bands/${this.props.song.band_id}`}>{this.props.band ? this.props.band.name : null}</Link>
               </div>
             )}
           </div>
