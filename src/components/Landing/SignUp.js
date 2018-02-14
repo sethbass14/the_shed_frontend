@@ -28,19 +28,19 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Create a username and password</h1>
-        <form onSubmit={this.handleSubmit} className="ui form">
-          <label>Username</label>
-          <input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange}/>
+      <div className="home">
+        <h1 id='sign-up'>Sign Up</h1>
+        <form onSubmit={this.handleSubmit} className="ui form login-form">
           <br></br>
-          <label>Email</label>
-          <input type="text" name="email" value={this.state.fields.email} onChange={this.handleChange}/>
+          <input placeholder="username"type="text" name="username" value={this.state.fields.username} onChange={this.handleChange}/>
           <br></br>
-          <label>Password</label>
-          <input type="text" name="password" value={this.state.fields.password} onChange={this.handleChange}/>
           <br></br>
-          <button type="submit" className="ui button">Submit</button>
+          <input placeholder="email"type="text" name="email" value={this.state.fields.email} onChange={this.handleChange}/>
+          <br></br>
+          <br></br>
+          <input placeholder="password"type="text" name="password" value={this.state.fields.password} onChange={this.handleChange}/>
+          <br></br>
+          <button type="submit" className="ui button centered">Submit</button>
       </form>
       </div>
     )

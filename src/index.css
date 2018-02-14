@@ -1,12 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
   font-family: sans-serif;
 }
 
+#root {
+  height: 100%;
+  margin: 0
+}
+
+.App {
+  height: 100%;
+  margin: 0
+}
 
 .home {
+  height: 100%;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  /* text-align: center; */
+  background-image: url(https://images.pexels.com/photos/532127/pexels-photo-532127.jpeg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.home-container {
+  height: 50%;
+  width: 50%;
+  margin: 0 25%;
+  border-radius: 20px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* this form needs to be centered */
+.login-form {
+   position: relative;
+   max-width: 50%;
+   margin: 0 25%;
+   background-color: rgba(255, 255, 255, 0.6);
+   border-radius: 10px;
+}
+
+.centered {
+  width: 100%;
+  text-align: center;
+}
+
+#sign-up {
+  color: white;
 }
 
 .logout:hover {

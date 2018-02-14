@@ -11,7 +11,7 @@ const Navbar = (props) => {
         <div className={'item'}>
           {props.loggedIn ? (
             <Link to="/dashboard">
-              <h1>The Shed Logo</h1>
+              <h1 className="logo">The Shed</h1>
             </Link>
           ) : (
             <Link to="/">
