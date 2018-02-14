@@ -71,6 +71,8 @@ body {
 
 .main-container {
   background-color: rgb(227, 211, 198);
+  height: 100%;
+  margin: 0;
 }
 
 .band-form{
@@ -81,7 +83,7 @@ body {
    border-radius: 10px;
 }
 
-.content {
+ui.card>.content {
   background-color: rgb(227, 211, 198);
 }
 
