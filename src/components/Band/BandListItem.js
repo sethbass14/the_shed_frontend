@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { Segment } from 'semantic-ui-react'
 
 const BandListItem = props => (
   <div>
-    <Link
-      to={`/bands/${props.band.id}`}
-      >
-      {props.band.name}
-    </Link>
+    <Segment>
+      <Link
+        to={`/bands/${props.band.id}`}
+        >
+        {props.band.name}
+      </Link>
+    </Segment>
   </div>
 )
 

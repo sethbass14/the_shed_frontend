@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
+import { Segment } from 'semantic-ui-react'
 import * as actions from '../../actions';
 import SongListItem from '../Song/SongListItem';
 import SetListListItem from '../SetList/SetListListItem';
@@ -50,64 +51,70 @@ class BandShow extends React.Component {
     const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
     console.log('In the band show', this.props)
     return (
-      <div>
-        <div className="ui grid container">
-          <div className="four wide column">
-            <h2>Set Lists</h2>
-            {bandSetLists}
-          </div>
-          <div className="eight wide column">
-            <div>
-              {this.props.band.id ? <BandCard band={this.props.band}/> : null}
+        <div className="band-show">
+          <div className="ui grid container">
+            <div className="sixteen wide centered column">
+              <h1>{this.props.band.name}</h1>
             </div>
-
-          </div>
-          <div className="four wide column">
-            <div>
-              <h2>Songs</h2>
-              {bandSongs}
-            </div>
-          </div>
-        </div>
-
-      <div className="ui grid container">
-        <div className="four wide column">
-          <h3>Add a Set List</h3>
-          {this.state.addSetListClick ? (
-            <div>
-              <i className="minus icon" onClick={() => this.handleAddSetListClick()}></i>
-              <SetListInput
-                handleAddSetListClick={this.handleAddSetListClick}
-                band={this.props.band}
-                />
-            </div>
-          ) : (
-          <i className="plus icon" onClick={() => this.handleAddSetListClick()}></i>
-          )}
-        </div>
-        <div className="eight wide column">
-          <button
-            className="ui button"
-            onClick={() => this.handleBandDelete(this.props.band.id)}>
-            Delete Band
-          </button>
-        </div>
-        <div className="four wide column">
-          <div>
-            <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
-            {this.props.addSongClickState ? (
+            <div className="four wide column">
               <div>
-                <i className="minus icon" onClick={() => this.props.addSongClick()}></i>
-                <SongInput />
+                {this.props.band.id ? <BandCard band={this.props.band}/> : null}
+                <br></br>
+                <button
+                  className="ui button"
+                  onClick={() => this.handleBandDelete(this.props.band.id)}>
+                  Delete Band
+                </button>
               </div>
-              ) : (
-            <i className="plus icon" onClick={() => this.props.addSongClick()}></i>
-              )
-            }
+
+            </div>
+            <div className="eight wide column">
+              <Segment>
+                <Segment>
+                  <h2>Set Lists</h2>
+                </Segment>
+                {bandSetLists}
+                <Segment>
+                  <h3>Add a Set List</h3>
+                    {this.state.addSetListClick ? (
+                      <div>
+                        <i className="minus icon" onClick={() => this.handleAddSetListClick()}></i>
+                        <SetListInput
+                          handleAddSetListClick={this.handleAddSetListClick}
+                          band={this.props.band}
+                          />
+                      </div>
+                    ) : (
+                      <i className="plus icon" onClick={() => this.handleAddSetListClick()}></i>
+                    )}
+                </Segment>
+              </Segment>
+
+            </div>
+            <div className="four wide column">
+              <Segment>
+                <Segment>
+                  <h2>Songs</h2>
+                </Segment>
+                {bandSongs}
+                <Segment>
+                  <div>
+                    <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
+                    {this.props.addSongClickState ? (
+                      <div>
+                        <i className="minus icon" onClick={() => this.props.addSongClick()}></i>
+                        <SongInput />
+                      </div>
+                    ) : (
+                      <i className="plus icon" onClick={() => this.props.addSongClick()}></i>
+                    )
+                  }
+                </div>
+                </Segment>
+              </Segment>
+            </div>
           </div>
-        </div>
       </div>
-    </div>
     )
   }
 }

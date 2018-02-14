@@ -73,6 +73,16 @@ body {
   cursor: pointer;
 }
 
+.ui.grid.container.spaced {
+  padding-top: 175px;
+}
+
+/* .ui.segment {
+  background-color: rgb(227, 211, 198);
+} */
+.band-show {
+  padding-top: 20px;
+}
 .main-container {
   background-color: rgb(227, 211, 198);
   min-height: 100%;
