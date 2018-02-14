@@ -75,7 +75,8 @@ body {
 
 .main-container {
   background-color: rgb(227, 211, 198);
-  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
   margin: 0;
 }
 
