@@ -27,7 +27,7 @@ class SongShow extends React.Component {
           this.setState({ ...this.state, videos: resp.items.splice(1) ,currentVideo: resp.items[0] })
         })
     }
-    this.setState({ ...this.state, youTubeClick: !this.state.youTubeClick })
+    this.youTubeToggle()
   }
 
   videoOnClick = video => {
@@ -41,13 +41,25 @@ class SongShow extends React.Component {
 
   }
 
+  youTubeToggle = () => {
+    this.setState({ ...this.state, youTubeClick: !this.state.youTubeClick })
+  }
+
   render() {
     return (
       <div className='ui grid container'>
         <div className="five wide column">
           <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.currentVideo}/>
           {this.state.youTubeClick && this.state.currentVideo ? (
-            <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
+            <div>
+              <div>
+                <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
+              </div>
+              <div>
+                <p>See Less</p>
+                <i className="minus circle icon" onClick={() => this.youTubeToggle()}/>
+              </div>
+            </div>
           ) : (
             <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
           ) }

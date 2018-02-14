@@ -28,6 +28,10 @@ body {
   background-repeat: no-repeat;
 }
 
+.video-card-container {
+  height: 100%;
+}
+
 .home-container {
   height: 50%;
   width: 50%;
