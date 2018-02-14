@@ -28,10 +28,11 @@ class BandInput extends React.Component {
   render() {
     // console.log('In band input', this.props)
     return (
-      <div className="ui form">
+      <div className="ui form band-form">
         <form onSubmit={this.handleSubmit}>
-          <label onClick={() => this.props.addBandClick()}>Band Name</label>
+          <br></br>
           <input
+            placeholder="Band Name"
             type="text"
             onChange={this.handleChange}
             value={this.state.name}

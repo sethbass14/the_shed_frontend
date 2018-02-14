@@ -42,8 +42,15 @@ class BandCard extends React.Component {
               </div>
             ) : (
               <div>
-                <i className="add square icon" onClick={() => this.handleClick()}></i>
-                <p>Update Band Pic</p>
+                {this.props.bandIndex ? (
+                  null
+                ) : (
+                  <div>
+                    <i className="add square icon" onClick={() => this.handleClick()}></i>
+                    <p>Update Band Pic</p>
+                  </div>    
+                )}
+
               </div>
             )}
             {this.props.band.id ? <p>{`${this.props.band.song_ids.length} songs`}</p> : null}

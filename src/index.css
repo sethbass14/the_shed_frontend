@@ -73,6 +73,18 @@ body {
   background-color: rgb(227, 211, 198);
 }
 
+.band-form{
+   position: relative;
+   /* max-width: 100%; */
+   margin: 0 30%;
+   background-color: rgba(255, 255, 255, 0.6);
+   border-radius: 10px;
+}
+
+.content {
+  background-color: rgb(227, 211, 198);
+}
+
 .page-title {
   margin-bottom: 50px;
   text-align: center;
@@ -80,6 +92,7 @@ body {
 
 .add-band {
   margin-top: 100px;
+  margin-bottom: 50px;
   text-align: center;
 }
 

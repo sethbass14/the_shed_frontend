@@ -27,6 +27,7 @@ class BandsIndex extends React.Component {
         <BandCard
           key={index}
           band={band}
+          bandIndex={true}
           />
       )
     })
@@ -37,9 +38,15 @@ class BandsIndex extends React.Component {
         </div>
         <div className="add-band">
           {this.state.addBandClick ? (
-            <BandInput addBandClick={this.addBandClick}/>
+            <div>
+              <BandInput/>
+              <i className="minus circle icon" onClick={() => this.addBandClick()}/>
+            </div>
           ) : (
-            <a onClick={() => this.addBandClick()}>Add a band</a>
+            <div>
+              <p >Add a band</p>
+              <i className="add circle icon" onClick={() => this.addBandClick()}/>
+            </div>
           )}
         </div>
         <div className="ui grid container">
