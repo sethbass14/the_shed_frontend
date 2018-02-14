@@ -15,7 +15,7 @@ const Navbar = (props) => {
             </Link>
           ) : (
             <Link to="/">
-              <h1>The Shed Logo</h1>
+              <h1>The Shed</h1>
             </Link>
           )}
         </div>

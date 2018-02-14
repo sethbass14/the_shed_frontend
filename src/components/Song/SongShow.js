@@ -47,31 +47,37 @@ class SongShow extends React.Component {
 
   render() {
     return (
-      <div className='ui grid container spaced'>
-        <div className="five wide column">
-          {<BandCard band={this.props.band} />}
-        </div>
-        <div className=" five wide column">
-          {this.props.song.id ? <SongCard song={this.props.song} band={this.props.band} /> : null }
-          <br></br>
-          {this.props.song.id? <SongNoteForm song={this.props.song} /> : null}
-        </div>
-        <div className="six wide column">
-          <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.currentVideo}/>
-          {this.state.youTubeClick && this.state.currentVideo ? (
-            <div>
+      <div className="show">
+        <div className='ui grid container'>
+          <div className="sixteen wide centered column">
+            {this.props.song ? <h1>Song Title:  {this.props.song.title}</h1> : null}
+            <br></br>
+          </div>
+          <div className="five wide column">
+            <BandCard band={this.props.band} />
+          </div>
+          <div className=" five wide column">
+            {this.props.song.id ? <SongCard song={this.props.song} band={this.props.band} /> : null }
+            <br></br>
+            {this.props.song.id? <SongNoteForm song={this.props.song} /> : null}
+          </div>
+          <div className="five wide column">
+            <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.currentVideo}/>
+            {this.state.youTubeClick && this.state.currentVideo ? (
               <div>
-                <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
+                <div>
+                  <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
+                </div>
+                <div>
+                  <p>See Less</p>
+                  <i className="minus circle icon" onClick={() => this.youTubeToggle()}/>
+                </div>
               </div>
-              <div>
-                <p>See Less</p>
-                <i className="minus circle icon" onClick={() => this.youTubeToggle()}/>
-              </div>
-            </div>
-          ) : (
-            <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
-          ) }
-          {this.state.youTubeClick ? <VideoCardContainer videos={this.state.videos} videoOnClick={this.videoOnClick}/> : null}
+            ) : (
+              <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
+            ) }
+            {this.state.youTubeClick ? <VideoCardContainer videos={this.state.videos} videoOnClick={this.videoOnClick}/> : null}
+          </div>
         </div>
       </div>
     )

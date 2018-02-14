@@ -28,8 +28,12 @@ body {
   background-repeat: no-repeat;
 }
 
+#sign-up {
+  text-align: center
+}
+
 .video-card-container {
-  height: 100%;
+  
 }
 
 .home-container {
@@ -80,9 +84,10 @@ body {
 /* .ui.segment {
   background-color: rgb(227, 211, 198);
 } */
-.band-show {
+.show {
   padding-top: 20px;
 }
+
 .main-container {
   background-color: rgb(227, 211, 198);
   min-height: 100%;
@@ -111,6 +116,11 @@ body {
   margin-top: 100px;
   margin-bottom: 50px;
   text-align: center;
+}
+
+.video-card-container {
+  background-color: rgb(227, 211, 198) !important;
+  margin: auto;
 }
 
 .circle:hover{

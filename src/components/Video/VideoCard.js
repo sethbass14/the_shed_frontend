@@ -1,4 +1,5 @@
 import React from 'react';
+import { Segment } from 'semantic-ui-react';
 
 const VideoCard = props => {
   console.log(props.video)
@@ -6,7 +7,7 @@ const VideoCard = props => {
   let thumbnail_url = props.video.snippet.thumbnails.default.url
   let description = props.video.snippet.description
   return (
-    <div classname="four wide column">
+    <div>
     {props.video ? (
       <div>
         <img src={thumbnail_url} alt="An awesome video" onClick={() => props.videoOnClick(props.video)}></img>

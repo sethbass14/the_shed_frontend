@@ -26,7 +26,14 @@ class SongCard extends React.Component {
             <Link to={`/bands/${this.props.song.band_id}/songs/${this.props.song.id}`}>
               <h3>{this.props.song.title}</h3>
             </Link>
-            <h4>band:</h4> <Link to={`/bands/${this.props.song.band_id}`}>{this.props.band ? this.props.band.name : null}</Link>
+            {this.props.match.params.bandId ? (
+              null
+            ) : (
+              <div>
+                <h4>band:</h4>
+                <Link to={`/bands/${this.props.song.band_id}`}>{this.props.band ? this.props.band.name : null}</Link>  
+              </div>
+            )}
           </div>
           <div className="extra content">
             {this.props.setSong? (

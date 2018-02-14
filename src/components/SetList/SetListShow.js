@@ -35,32 +35,36 @@ class SetListShow extends React.Component {
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
     this.props.redirect ? this.props.history.push(`/bands/${this.props.match.params.bandId}`) : null
     return (
-        <div className="ui grid container">
-          <div className="twelve wide column">
-            <h1>{this.props.band.id? `${this.props.band.name} Set: ${this.props.setList.name} ${this.props.setList.date}` : null}</h1>
-          </div>
-          <div className="four wide column">
-            <button className="ui button" onClick={() => this.handleDeleteClick()}>Delete Set List</button>
-          </div>
-          <div className="four wide column">
-            <h2>Repertoire</h2>
-            {bandSongTitles.length ? (
+        <div className="show">
+          <div className="ui grid container">
+            <div className="twelve wide centered column">
+              <h1>{this.props.band.id? `${this.props.band.name} Set List: ${this.props.setList.name} ${this.props.setList.date}` : null}</h1>
+            </div>
+            <div className="five wide column">
+              <BandCard band={this.props.band}/>
               <div>
-                <h4>Add a song to build a set list</h4>
-                {bandSongTitles}
+                <button className="ui button" onClick={() => this.handleDeleteClick()}>Delete Set List</button>
               </div>
-            ) : (
-              <Link to={`/bands/${this.props.band.id}`}>
-                {`Upload More Songs On ${this.props.band.name}'s page`}
-              </Link>
-            )}
+            </div>
+            <div className="five wide column">
+              <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
+            </div>
+            <div className="five wide column">
+              <h2>Repertoire</h2>
+              {bandSongTitles.length ? (
+                <div>
+                  <h4>Add a song to build a set list</h4>
+                  {bandSongTitles}
+                </div>
+              ) : (
+                <Link to={`/bands/${this.props.band.id}`}>
+                  {`Upload More Songs On ${this.props.band.name}'s page`}
+                </Link>
+              )}
+
+            </div>
           </div>
-          <div className="eight wide column">
-            <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
-          </div>
-          <div className="four wide column">
-            <BandCard band={this.props.band}/>
-          </div>
+
         </div>
     )
   }

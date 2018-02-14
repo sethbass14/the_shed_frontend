@@ -51,7 +51,7 @@ class BandShow extends React.Component {
     const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
     console.log('In the band show', this.props)
     return (
-        <div className="band-show">
+        <div className="show">
           <div className="ui grid container">
             <div className="sixteen wide centered column">
               <h1>{this.props.band.name}</h1>
