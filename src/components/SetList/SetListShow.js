@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Card } from 'semantic-ui-react';
 import SongListItem from '../Song/SongListItem';
 import SetSongContainer from '../../containers/SetSongContainer';
 import BandCard from '../Band/BandCard';

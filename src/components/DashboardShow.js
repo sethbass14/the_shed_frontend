@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Container } from 'semantic-ui-react'
 import BandListContainer from '../containers/BandListContainer';
 import SongListContainer from '../containers/SongListContainer';
 import UserCard from './User/UserCard'
@@ -8,19 +9,19 @@ import UserCard from './User/UserCard'
 const DashboardShow = (props) => {
     return (
       <div className="ui grid container">
-        <div className="sixteen wide column">
+        <div className="sixteen wide centered column">
           <h1>Welcome to your dashboard,  {props.user.username} </h1>
         </div>
-        <div className="four wide column">
+        <div className=" five wide column">
+          <UserCard />
+        </div>
+        <div className="five wide column">
           <Link to="/bands">
             <h2>Bands</h2>
           </Link>
           <BandListContainer />
         </div>
-        <div className="eight wide column">
-          <UserCard />
-        </div>
-        <div className="four wide column">
+        <div className="five wide column">
           <Link to="/songs">
             <h2>Songs</h2>
           </Link>

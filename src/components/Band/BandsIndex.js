@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Card } from 'semantic-ui-react';
 import BandCard from './BandCard';
 import BandInput from './BandInput';
 
@@ -49,9 +50,9 @@ class BandsIndex extends React.Component {
             </div>
           )}
         </div>
-        <div className="ui grid container">
+        <Card.Group centered>
           {allBands}
-        </div>
+        </Card.Group>
       </div>
 
     )

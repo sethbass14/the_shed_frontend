@@ -18,7 +18,6 @@ class UserCard extends React.Component {
   // console.log("In UserCard", props)
   render() {
     return (
-      <div className="ui eight wide column">
         <div className="ui card">
           {this.props.user.avatar !== "/avatars/original/missing.png" ? (
             <div className="image">
@@ -46,7 +45,6 @@ class UserCard extends React.Component {
             )}
           </div>
         </div>
-      </div>
     )
   }
 }

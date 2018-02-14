@@ -19,7 +19,6 @@ class BandCard extends React.Component {
 
   render() {
     return (
-      <div className="ui eight wide column">
         <div className="ui card">
           {this.props.band.image !== "/images/original/missing.png" ? (
             <div className="image">
@@ -48,7 +47,7 @@ class BandCard extends React.Component {
                   <div>
                     <i className="add square icon" onClick={() => this.handleClick()}></i>
                     <p>Update Band Pic</p>
-                  </div>    
+                  </div>
                 )}
 
               </div>
@@ -57,7 +56,6 @@ class BandCard extends React.Component {
             {this.props.band.id ? <p>{`${this.props.band.set_list_ids.length} set lists`}</p> : null}
           </div>
         </div>
-      </div>
     )
   }
 }

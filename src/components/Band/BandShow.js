@@ -56,7 +56,7 @@ class BandShow extends React.Component {
             <div className="sixteen wide centered column">
               <h1>{this.props.band.name}</h1>
             </div>
-            <div className="four wide column">
+            <div className="five wide column">
               <div>
                 {this.props.band.id ? <BandCard band={this.props.band}/> : null}
                 <br></br>
@@ -68,7 +68,30 @@ class BandShow extends React.Component {
               </div>
 
             </div>
-            <div className="eight wide column">
+            <div className="five wide column">
+              <Segment>
+                <Segment>
+                  <h2>Songs</h2>
+                </Segment>
+                {bandSongs}
+                <Segment>
+                  <div>
+                    <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
+                    {this.props.addSongClickState ? (
+                      <div>
+                        <i className="minus icon" onClick={() => this.props.addSongClick()}></i>
+                        <SongInput />
+                      </div>
+                    ) : (
+                      <i className="plus icon" onClick={() => this.props.addSongClick()}></i>
+                    )
+                  }
+                </div>
+                </Segment>
+              </Segment>
+
+            </div>
+            <div className="five wide column">
               <Segment>
                 <Segment>
                   <h2>Set Lists</h2>
@@ -90,28 +113,6 @@ class BandShow extends React.Component {
                 </Segment>
               </Segment>
 
-            </div>
-            <div className="four wide column">
-              <Segment>
-                <Segment>
-                  <h2>Songs</h2>
-                </Segment>
-                {bandSongs}
-                <Segment>
-                  <div>
-                    <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
-                    {this.props.addSongClickState ? (
-                      <div>
-                        <i className="minus icon" onClick={() => this.props.addSongClick()}></i>
-                        <SongInput />
-                      </div>
-                    ) : (
-                      <i className="plus icon" onClick={() => this.props.addSongClick()}></i>
-                    )
-                  }
-                </div>
-                </Segment>
-              </Segment>
             </div>
           </div>
       </div>

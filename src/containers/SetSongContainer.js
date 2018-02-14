@@ -1,6 +1,7 @@
 import React from 'react';
 import SongCard from '../components/Song/SongCard';
 import { connect } from 'react-redux';
+import { Card } from 'semantic-ui-react';
 import * as actions from '../actions'
 
 //This could be presentational
@@ -71,9 +72,9 @@ class SetSongContainer extends React.Component {
       }
     )
     return (
-      <div>
+      <Card.Group>
         {songCards}
-      </div>
+      </Card.Group>
     )
   }
 }

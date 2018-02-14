@@ -98,7 +98,7 @@ body {
    border-radius: 10px;
 }
 
-ui.card>.content {
+.content {
   background-color: rgb(227, 211, 198);
 }
 
