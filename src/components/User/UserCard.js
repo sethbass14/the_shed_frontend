@@ -18,7 +18,7 @@ class UserCard extends React.Component {
   // console.log("In UserCard", props)
   render() {
     return (
-        <div className="ui card">
+        <div className="ui card opaque">
           {this.props.user.avatar !== "/avatars/original/missing.png" ? (
             <div className="image">
               <img src={this.props.user.avatar} alt="user avatar"></img>

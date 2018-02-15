@@ -9,8 +9,8 @@ import * as actions from '../../actions'
 class SongCard extends React.Component {
   render() {
     return (
-      <div className="ui eight wide column">
-        <div className="ui card">
+      <div className="ui eight wide">
+        <div className="ui card opaque">
           <div className="content">
             <Link to={`/bands/${this.props.song.band_id}/songs/${this.props.song.id}`}>
               <h3>{this.props.song.title}</h3>

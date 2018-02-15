@@ -20,7 +20,7 @@ class BandCard extends React.Component {
   render() {
     // console.log(this.props)
     return (
-        <div className="ui card">
+        <div className="ui card opaque">
           {this.props.band.image !== "/images/original/missing.png" ? (
             <div className="image">
               <img src={this.props.band.image} alt="band"></img>

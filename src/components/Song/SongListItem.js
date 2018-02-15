@@ -7,7 +7,7 @@ import * as actions from '../../actions';
 const SongListItem = props => {
   return (
     <div>
-      <Segment>
+      <Segment className="opaque">
         <Link to={`/bands/${props.song.band_id}/songs/${props.song.id}`}>
           {props.song.title}
         </Link>

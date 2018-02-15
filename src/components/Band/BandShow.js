@@ -69,12 +69,12 @@ class BandShow extends React.Component {
 
             </div>
             <div className="five wide column">
-              <Segment>
-                <Segment>
+              <Segment basic>
+                <Segment basic>
                   <h2>Songs</h2>
                 </Segment>
                 {bandSongs}
-                <Segment>
+                <Segment className="opaque">
                   <div>
                     <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
                     {this.props.addSongClickState ? (
@@ -92,12 +92,12 @@ class BandShow extends React.Component {
 
             </div>
             <div className="five wide column">
-              <Segment>
-                <Segment>
+              <Segment basic>
+                <Segment basic>
                   <h2>Set Lists</h2>
                 </Segment>
                 {bandSetLists}
-                <Segment>
+                <Segment className="opaque">
                   <h3>Add a Set List</h3>
                     {this.state.addSetListClick ? (
                       <div>

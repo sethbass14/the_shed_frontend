@@ -46,6 +46,7 @@ class SetListShow extends React.Component {
               </div>
             </div>
             <div className="five wide column">
+              <h2>Build Your Set List</h2>
               <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
             </div>
             <div className="five wide column">

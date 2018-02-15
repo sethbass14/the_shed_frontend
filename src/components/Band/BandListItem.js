@@ -4,7 +4,7 @@ import { Segment } from 'semantic-ui-react'
 
 const BandListItem = props => (
   <div>
-    <Segment>
+    <Segment className="opaque">
       <Link
         to={`/bands/${props.band.id}`}
         >

@@ -33,6 +33,7 @@ class SongNoteForm extends React.Component {
         <form className="ui form" onSubmit={this.handleSubmit}>
           <label>Song Notes</label>
           <textarea
+            className="opaque"
             value={this.state.notes}
             onChange={this.handleChange}
             >

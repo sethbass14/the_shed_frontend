@@ -89,6 +89,11 @@ body {
   padding-top: 20px;
 }
 
+.opaque {
+  /* background-color: rgb(198, 227, 211) !important; */
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
 .main-container {
   background-color: rgb(227, 211, 198);
   min-height: 100%;

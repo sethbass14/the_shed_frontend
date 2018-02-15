@@ -6,7 +6,7 @@ const SetListListItem = props => {
   // console.log('In SetList List Item', props)
   return (
     <div>
-      <Segment>
+      <Segment className='opaque'>
         <Link to={`${props.match.url}/setlists/${props.setList.id}`}>
           {props.setList.name}
           {props.setList.date}

@@ -49,6 +49,7 @@ class SongInput extends React.Component {
             onChange={this.handleChange}
             />
           <br></br>
+          <label>Audio File</label>
           <input type="file" name="audio" accept="audio/*" id="audio_upload" onChange={this.handleAudioChange}/>
           <br></br>
           {this.props.songLoading ? (
