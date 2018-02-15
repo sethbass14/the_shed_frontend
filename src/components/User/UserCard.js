@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { DEFAULT_USER_IMAGE_URL } from '../../constants';
 import UserPicInput from './UserPicInput'
 
 
@@ -19,7 +20,7 @@ class UserCard extends React.Component {
   render() {
     return (
         <div className="ui card opaque">
-          {this.props.user.avatar !== "/avatars/original/missing.png" ? (
+          {this.props.user.avatar !== DEFAULT_USER_IMAGE_URL ? (
             <div className="image">
               <img src={this.props.user.avatar} alt="user avatar"></img>
             </div>

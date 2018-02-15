@@ -16,7 +16,8 @@ class SongShow extends React.Component {
     this.state = {
       videos: [],
       currentVideo: null,
-      youTubeClick: false
+      youTubeClick: false,
+      youTubeLoading: false
     }
   }
 
