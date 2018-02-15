@@ -12,6 +12,7 @@ class SongCard extends React.Component {
       <div className="ui eight wide">
         <div className="ui card opaque">
           <div className="content">
+            <i className="right floated music icon"></i>
             <Link to={`/bands/${this.props.song.band_id}/songs/${this.props.song.id}`}>
               <h3>{this.props.song.title}</h3>
             </Link>
