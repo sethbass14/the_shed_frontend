@@ -9,7 +9,7 @@ import * as actions from '../../actions'
 class SongCard extends React.Component {
   render() {
     return (
-      <div className="ui eight wide">
+      <div className="ui eight wide column">
         <div className="ui card opaque">
           <div className="content">
             <i className="right floated music icon"></i>
