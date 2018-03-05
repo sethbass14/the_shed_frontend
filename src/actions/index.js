@@ -1,4 +1,4 @@
-import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, ADD_BAND_IMAGE, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, UPDATE_SET_SONG_ORDER, ADD_VIDEO_URL, ADD_USER_IMAGE, YOU_TUBE_LOADING } from '../constants'
+import { ASYNC_START, SET_CURRENT_USER, SET_USER_DATA, LOGOUT_USER, ADD_SONG_START, ADD_SONG, SONG_LOADING_ERROR, ADD_SONG_NOTES, DELETE_SONG, ADD_BAND, ADD_BAND_IMAGE, DELETE_BAND, ADD_SONG_CLICK, ADD_SET_LIST, DELETE_SET_LIST, ADD_SET_SONG, DELETE_SET_SONG, UPDATE_SET_SONG_ORDER, ADD_VIDEO_URL, ADD_USER_IMAGE, YOU_TUBE_LOADING, YOU_TUBE_FETCHED, VIDEO_CLICK } from '../constants'
 import adapter from '../services/adapter'
 
 export const loginUser = (username, password, history) => dispatch => {
@@ -197,11 +197,16 @@ export const updateSetSongOrder = (set_song_data) => dispatch => {
   })
 }
 
-// export const youTubeFetch = (search_string) => dispatch => {
-//   dispatch({ type: YOU_TUBE_LOADING })
-//   adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
-//
-// }
+export const youTubeFetch = (search_string) => dispatch => {
+  dispatch({ type: YOU_TUBE_LOADING })
+  adapter.videos.fetchYouTube(search_string).then(resp => {
+    dispatch({ type: YOU_TUBE_FETCHED, resp })
+  })
+}
+
+export const videoOnClick = video => dispatch => {
+  dispatch({ type: VIDEO_CLICK, video })
+}
 
 
 //Below are non-crud actions

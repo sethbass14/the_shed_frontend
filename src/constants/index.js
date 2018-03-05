@@ -27,7 +27,9 @@ export const ADD_SET_SONG = 'ADD_SET_SONG'
 export const DELETE_SET_SONG = 'DELETE_SET_SONG'
 export const UPDATE_SET_SONG_ORDER = 'UPDATE_SET_SONG_ORDER'
 export const ADD_VIDEO_URL = 'ADD_VIDEO_URL'
+export const YOU_TUBE_FETCHED = 'YOU_TUBE_FETCHED'
 export const YOU_TUBE_LOADING = 'YOU_TUBE_LOADING'
+export const VIDEO_CLICK = 'VIDEO_CLICK'
 
 //non-backend actions
 
