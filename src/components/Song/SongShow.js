@@ -22,16 +22,8 @@ class SongShow extends React.Component {
   }
 
   searchYouTube = () => {
-    // if (!this.props.youTubeClick && this.props.song.id) {
-    //   // this.setState({...this.state, youTubeLoading: !this.state.youTubeLoading}, console.log('In search youTube method', this.state))
-    //   // this.props.youTubeFetch(`${this.props.band.name} ${this.props.song.title}`)
-    //   adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
-    //     .then(resp => {
-    //       this.setState({ ...this.state, videos: resp.items.splice(1) ,currentVideo: resp.items[0]})
-    //     })
     this.youTubeToggle()
     this.props.youTubeFetch(`${this.props.band.name} ${this.props.song.title}`)
-    // }
   }
 
   videoOnClick = video => {
