@@ -30,7 +30,6 @@ class SetListShow extends React.Component {
   }
 
   render() {
-    console.log('In set List show:', this.props)
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
     this.props.redirect ? this.props.history.push(`/bands/${this.props.match.params.bandId}`) : null
     return (
@@ -85,6 +84,7 @@ const mapStateToProps = (state, ownProps) => {
       redirect: false
     }
   // write a third statement that checks for a band and not a setlist. Add a key of redirect true and false.
+  // This code below needs to be checked. Is it neccessary? 3.6.18
 } else if (band && !setList) {
     return {
       band: {},

@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { Segment } from 'semantic-ui-react'
 
 const SetListListItem = props => {
-  // console.log('In SetList List Item', props)
   return (
     <div>
       <Segment className='opaque'>
