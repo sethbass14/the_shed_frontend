@@ -14,20 +14,16 @@ class SongShow extends React.Component {
   constructor() {
     super()
     this.state = {
-      videos: [],
-      currentVideo: null,
-      youTubeClick: false
+      // videos: [],
+      // currentVideo: null,
+      youTubeClick: false,
+      // youTubeLoading: false
     }
   }
 
   searchYouTube = () => {
-    if (!this.state.youTubeClick && this.props.song.id) {
-      adapter.videos.fetchYouTube(`${this.props.band.name} ${this.props.song.title}`)
-        .then(resp => {
-          this.setState({ ...this.state, videos: resp.items.splice(1) ,currentVideo: resp.items[0] })
-        })
-    }
     this.youTubeToggle()
+    this.props.youTubeFetch(`${this.props.band.name} ${this.props.song.title}`)
   }
 
   videoOnClick = video => {
@@ -36,8 +32,9 @@ class SongShow extends React.Component {
     this.setState({...this.state, videos: newVideos, currentVideo: video})
   }
 
+  //I think this function is redudant. I can move the url base to constants, and the function from actions directly to the onClick.
   saveVideo = videoUrl => {
-    this.props.addVideoUrl({ you_tube_url: `https://www.youtube.com/embed/${this.state.currentVideo.id.videoId}` }, this.props.song.id)
+    this.props.addVideoUrl({ you_tube_url: `https://www.youtube.com/embed/${this.props.currentVideo.id.videoId}` }, this.props.song.id)
 
   }
 
@@ -46,6 +43,7 @@ class SongShow extends React.Component {
   }
 
   render() {
+    console.log("In the render method", this.props)
     return (
       <div className="show">
         <div className='ui grid container'>
@@ -62,8 +60,8 @@ class SongShow extends React.Component {
             {this.props.song.id? <SongNoteForm song={this.props.song} /> : null}
           </div>
           <div className="five wide column">
-            <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.currentVideo}/>
-            {this.state.youTubeClick && this.state.currentVideo ? (
+            <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.youTubeClick ? this.props.currentVideo : null }/>
+            {this.state.youTubeClick && this.props.currentVideo ? (
               <div>
                 <div>
                   <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
@@ -74,9 +72,13 @@ class SongShow extends React.Component {
                 </div>
               </div>
             ) : (
-              <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button>
+              <div>
+                {!this.props.youTubeLoading ? <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button> : <button className="ui loading button" type="submit">Submit</button> }
+
+              </div>
+
             ) }
-            {this.state.youTubeClick ? <VideoCardContainer videos={this.state.videos} videoOnClick={this.videoOnClick}/> : null}
+            {this.state.youTubeClick && !this.props.youTubeLoading ? <VideoCardContainer/> : null }
           </div>
         </div>
       </div>
@@ -90,12 +92,18 @@ const mapStateToProps = (state, prevProps) => {
   if (song) {
     return {
       song,
-      band: state.bands.find(band => band.id === song.band_id)
+      band: state.bands.find(band => band.id === song.band_id),
+      videos: state.youTube.videos,
+      currentVideo: state.youTube.currentVideo,
+      youTubeLoading: state.youTube.youTubeLoading
     }
   } else {
     return {
       song: {},
-      band: {}
+      band: {},
+      videos: [],
+      currentVideo: null,
+      youTubeLoading: false
     }
   }
 }

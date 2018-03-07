@@ -41,7 +41,7 @@ class BandShow extends React.Component {
   }
 
   handleBandDelete = (bandId) => {
-    console.log('In handle Band Delete')
+    // console.log('In handle Band Delete')
     this.setState({ ...this.state, deleteClick: this.state.deleteClick + 1 }, () => this.deleteConfirmation(bandId))
   }
 
