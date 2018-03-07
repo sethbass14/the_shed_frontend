@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { YOU_TUBE_ROOT } from '../../constants';
 import SongCard from './SongCard';
 import SongNoteForm from './SongNoteForm';
 import BandCard from '../Band/BandCard';
@@ -34,7 +35,7 @@ class SongShow extends React.Component {
 
   //I think this function is redudant. I can move the url base to constants, and the function from actions directly to the onClick.
   saveVideo = videoUrl => {
-    this.props.addVideoUrl({ you_tube_url: `https://www.youtube.com/embed/${this.props.currentVideo.id.videoId}` }, this.props.song.id)
+    this.props.addVideoUrl({ you_tube_url: YOU_TUBE_ROOT + `${this.props.currentVideo.id.videoId}` }, this.props.song.id)
 
   }
 
