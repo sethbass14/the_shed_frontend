@@ -10,10 +10,8 @@ const initialState = {
 export const youTubeReducer = ( state = initialState, action ) => {
   switch(action.type) {
     case YOU_TUBE_LOADING:
-      // return {...state, youTubeLoading: !state.youTubeloading}
       return { ...initialState, youTubeLoading: !state.youTubeloading }
     case YOU_TUBE_FETCHED:
-      // debugger
       if (action.resp.items.length) {
         return { videos: action.resp.items.splice(1), currentVideo: action.resp.items[0], youTubeLoading: !state.youTubeLoading }
       } else {
