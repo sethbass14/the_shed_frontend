@@ -1,4 +1,4 @@
-import { YOU_TUBE_LOADING, YOU_TUBE_FETCHED, VIDEO_CLICK } from '../constants'
+import { YOU_TUBE_LOADING, YOU_TUBE_FETCHED, VIDEO_CLICK, LOGOUT_USER } from '../constants'
 
 
 const initialState = {
@@ -21,6 +21,8 @@ export const youTubeReducer = ( state = initialState, action ) => {
       const index = state.videos.indexOf(action.video)
       const newVideos = [...state.videos.slice(0, index), ...state.videos.slice(index + 1), state.currentVideo]
       return {...state, videos: newVideos, currentVideo: action.video}
+    case LOGOUT_USER:
+      return initialState
     default:
       return state
   }
