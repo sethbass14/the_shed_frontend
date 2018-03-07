@@ -197,6 +197,11 @@ export const updateSetSongOrder = (set_song_data) => dispatch => {
   })
 }
 
+//Below are non-crud actions
+export const addSongClick = () => dispatch => {
+  dispatch({ type: ADD_SONG_CLICK, action: true})
+}
+
 export const youTubeFetch = (search_string) => dispatch => {
   dispatch({ type: YOU_TUBE_LOADING })
   adapter.videos.fetchYouTube(search_string).then(resp => {
@@ -206,10 +211,4 @@ export const youTubeFetch = (search_string) => dispatch => {
 
 export const videoOnClick = video => dispatch => {
   dispatch({ type: VIDEO_CLICK, video })
-}
-
-
-//Below are non-crud actions
-export const addSongClick = () => dispatch => {
-  dispatch({ type: ADD_SONG_CLICK, action: true})
 }

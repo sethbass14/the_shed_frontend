@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_SET_SONG, DELETE_SONG, DELETE_SET_SONG, DELETE_SET_LIST, UPDATE_SET_SONG_ORDER} from '../constants'
+import { SET_USER_DATA, ADD_SET_SONG, DELETE_SONG, DELETE_SET_SONG, DELETE_SET_LIST, UPDATE_SET_SONG_ORDER, LOGOUT_USER} from '../constants'
 
 
 const initialState = []
@@ -19,6 +19,8 @@ export const setSongsReducer = ( state = initialState, action) => {
       let index = state.indexOf(setSong)
       setSong.order = action.setSong.order
       return [...state.slice(0, index), setSong, ...state.slice(index + 1)]
+    case LOGOUT_USER:
+      return initialState
     default:
       return state
   }

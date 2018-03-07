@@ -15,10 +15,7 @@ class SongShow extends React.Component {
   constructor() {
     super()
     this.state = {
-      // videos: [],
-      // currentVideo: null,
       youTubeClick: false,
-      // youTubeLoading: false
     }
   }
 
@@ -33,7 +30,6 @@ class SongShow extends React.Component {
     this.setState({...this.state, videos: newVideos, currentVideo: video})
   }
 
-  //I think this function is redudant. I can move the url base to constants, and the function from actions directly to the onClick.
   saveVideo = videoUrl => {
     this.props.addVideoUrl({ you_tube_url: YOU_TUBE_ROOT + `${this.props.currentVideo.id.videoId}` }, this.props.song.id)
 
@@ -88,7 +84,6 @@ class SongShow extends React.Component {
 }
 
 const mapStateToProps = (state, prevProps) => {
-  // console.log(prevProps)
   const song = state.songs.find(song => song.id === parseInt(prevProps.match.params.songId))
   if (song) {
     return {
