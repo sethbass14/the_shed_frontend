@@ -16,7 +16,6 @@ export const bandsReducer = ( state = initialState, action) => {
       band.song_ids = bandSongIdsReducer(band.song_ids, action)
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     case ADD_BAND_IMAGE:
-      // debugger
       band = state.find(band => band.id === action.bandData.id)
       index = state.indexOf(band)
       band.image = action.bandData.image

@@ -17,14 +17,14 @@ class BandShow extends React.Component {
 
     this.state = {
       addSong: false,
-      deleteClick: 0,
+      deleteClick: true,
       addSetListClick: false
     }
 
   }
 
   handleSongAdd = () => {
-    this.setState({ ...this.state, addSong: true })
+    this.setState({ ...this.state, addSong: !this.state.addSong })
   }
 
   handleAddSetListClick = () => {
@@ -32,24 +32,22 @@ class BandShow extends React.Component {
   }
 
   deleteConfirmation = (bandId) => {
-    if (this.state.deleteClick > 1) {
+    if (this.state.deleteClick) {
       this.props.deleteBand(bandId, this.props.history)
-      this.setState({ ...this.state, deleteClick: 0 })
+      this.setState({ ...this.state, deleteClick: !this.state.deleteClick})
     } else {
       alert('Are you sure you want to delete this band, all of its songs and setlists? Click delete again to END this band.')
     }
   }
 
   handleBandDelete = (bandId) => {
-    // console.log('In handle Band Delete')
-    this.setState({ ...this.state, deleteClick: this.state.deleteClick + 1 }, () => this.deleteConfirmation(bandId))
+    this.setState({ ...this.state, deleteClick: !this.state.deleteClick }, () => this.deleteConfirmation(bandId))
   }
 
 
   render() {
     const bandSongs = this.props.songs.map((song, index) => <SongListItem key={index} song={song}/>)
     const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
-    // console.log('In the band show', this.props)
     return (
         <div className="show">
           <div className="ui grid container">
@@ -77,13 +75,13 @@ class BandShow extends React.Component {
                 <Segment className="opaque">
                   <div>
                     <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
-                    {this.props.addSongClickState ? (
+                    {this.state.addSong ? (
                       <div>
-                        <i className="minus icon" onClick={() => this.props.addSongClick()}></i>
+                        <i className="minus icon" onClick={() => this.handleSongAdd()}></i>
                         <SongInput />
                       </div>
                     ) : (
-                      <i className="plus icon" onClick={() => this.props.addSongClick()}></i>
+                      <i className="plus icon" onClick={() => this.handleSongAdd()}></i>
                     )
                   }
                 </div>
@@ -128,10 +126,8 @@ const mapStateToProps = (state, ownProps) => {
       band: band,
       songs: state.songs.filter(song => song.band_id === band.id),
       setLists: state.setLists.filter(setList => setList.band_id === band.id),
-      addSongClickState: state.addSong,
     }
   } else {
-    //I'm not sure if I need this code below
     return {
       band: {},
       songs: [],
@@ -141,4 +137,3 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 export default withRouter(connect(mapStateToProps, actions)(BandShow))
-// export default BandShow

@@ -33,5 +33,3 @@ export const YOU_TUBE_LOADING = 'YOU_TUBE_LOADING'
 export const VIDEO_CLICK = 'VIDEO_CLICK'
 
 //non-backend actions
-
-export const ADD_SONG_CLICK = 'ADD_SONG_CLICK'

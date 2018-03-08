@@ -2,9 +2,9 @@ import { SET_USER_DATA, LOGOUT_USER, ADD_USER_IMAGE } from '../constants'
 
 //I think I can refactor this initial state
 const initialState = {
-  'id': null,
-  'username': null,
-  'email': null,
+  id: null,
+  username: null,
+  email: null,
 }
 
 export const userReducer = ( state = initialState, action ) => {
