@@ -25,7 +25,9 @@ class UserCard extends React.Component {
               <img src={this.props.user.avatar} alt="user avatar"></img>
             </div>
           ) : (
-            null
+            <div className="image">
+              <img src="https://s3.us-east-2.amazonaws.com/the-shed-audio-files/images/users/default_avatar.jpg" alt="user avatar"></img>
+            </div>
           )}
           <div className="content">
             <h2>{this.props.user.username}</h2>
@@ -36,7 +38,7 @@ class UserCard extends React.Component {
             {this.state.clicked ? (
               <div>
                 <i className="minus square icon" onClick={() => this.handleClick()}></i>
-                <UserPicInput/>
+                <UserPicInput handleUserPicClick={this.handleClick}/>
               </div>
             ) : (
               <div>

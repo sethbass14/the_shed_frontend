@@ -18,19 +18,25 @@ class UserPicInput extends React.Component {
     if (file) {
       formData.append("avatar", file)
       formData.append("id", this.props.user.id)
-      this.props.addUserImage(formData, this.props.user.id)
+      this.props.addUserImage(formData, this.props.user.id, this.props.handleUserPicClick)
     } else {
       alert('Must upload a file on submit!')
     }
-    console.log('in handleFileSubmit')
+    // console.log('in handleFileSubmit')
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <form onSubmit={this.handleFileSubmit}>
           <input type="file" name="image" accept="image/*" id="image_upload"></input>
-          <button className="ui button" type="submit">Submit</button>
+          {this.props.loading ? (
+              <button className="ui loading button" type="submit">Submit</button>
+            ) : (
+              <button className="ui button" type="submit">Submit</button>
+            )
+          }
         </form>
       </div>
     )
@@ -39,7 +45,8 @@ class UserPicInput extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    loading: state.loading
   }
 }
 
