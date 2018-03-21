@@ -5,7 +5,7 @@ import { songsReducer } from './songs';
 import { bandsReducer } from './bands';
 import { setListReducer } from './setList';
 import { setSongsReducer } from './setSong';
-import { songLoadingReducer } from './songLoading';
+import { loadingReducer } from './loading';
 import {  youTubeReducer } from './youTubeReducer'
 
 
@@ -16,6 +16,6 @@ export const rootReducer = combineReducers({
   songs: songsReducer,
   setLists: setListReducer,
   setSongs: setSongsReducer,
-  songLoading: songLoadingReducer,
+  loading: loadingReducer,
   youTube: youTubeReducer
 })

@@ -23,7 +23,7 @@ body {
   margin: 0;
   font-family: 'Lato', sans-serif;
   /* text-align: center; */
-  background-image: url(https://images.pexels.com/photos/532127/pexels-photo-532127.jpeg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb);
+  background-image: url(https://s3.us-east-2.amazonaws.com/the-shed-audio-files/css/headphones.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
 }

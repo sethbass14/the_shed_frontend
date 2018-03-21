@@ -20,6 +20,8 @@ class BandCard extends React.Component {
 
   render() {
     // console.log(this.props)
+    // Set default image on the backend
+    // Check about the prop of band index needing to be present
     return (
         <div className="ui card opaque">
           {this.props.band.image !== DEFAULT_BAND_IMAGE_URL ? (
@@ -27,7 +29,9 @@ class BandCard extends React.Component {
               <img src={this.props.band.image} alt="band"></img>
             </div>
           ) : (
-            null
+            <div className="image">
+              <img src='https://s3.us-east-2.amazonaws.com/the-shed-audio-files/css/headphones.jpeg' alt="band"></img>
+            </div>
           )}
           <div className="content">
             <Link
@@ -39,19 +43,14 @@ class BandCard extends React.Component {
             {this.state.clicked ? (
               <div>
                 <i className="minus square icon" onClick={() => this.handleClick()}></i>
-                <BandPicInput/>
+                <BandPicInput handleAddPicClick={this.handleClick}/>
               </div>
             ) : (
               <div>
-                {this.props.bandIndex ? (
-                  null
-                ) : (
-                  <div>
-                    <i className="add square icon" onClick={() => this.handleClick()}></i>
-                    <p>Update Band Pic</p>
-                  </div>
-                )}
-
+                <div>
+                  <i className="add square icon" onClick={() => this.handleClick()}></i>
+                  <p>Update Band Pic</p>
+                </div>
               </div>
             )}
             {this.props.band.id ? <p>{`${this.props.band.song_ids.length} songs`}</p> : null}

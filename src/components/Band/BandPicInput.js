@@ -17,11 +17,11 @@ class BandPicInput extends React.Component {
       formData.append("id", this.props.band.id)
       console.log(formData)
       console.log(this.props.band.id)
-      this.props.addBandImage(formData, this.props.band.id)
+      this.props.addBandImage(formData, this.props.band.id, this.props.handleAddPicClick)
     } else {
       alert('Must upload a file on submit!')
     }
-    console.log('in handleFileSubmit')
+    // console.log('in handleFileSubmit')
 
   }
 
@@ -31,7 +31,12 @@ class BandPicInput extends React.Component {
       <div>
         <form onSubmit={this.handleFileSubmit}>
           <input type="file" name="image" accept="image/*" id="image_upload"></input>
-          <button className="ui button" type="submit">Submit</button>
+          {this.props.loading ? (
+              <button className="ui loading button" type="submit">Submit</button>
+            ) : (
+              <button className="ui button" type="submit">Submit</button>
+            )
+          }
         </form>
       </div>
     )
@@ -42,11 +47,13 @@ const mapStateToProps = (state, prevProps) => {
   const band =  state.bands.find(band => band.id === parseInt(prevProps.match.params.bandId))
   if (band.id) {
     return {
-      band
+      band,
+      loading: state.loading
     }
   } else {
       return {
-        band: {}
+        band: {},
+        loading: false
       }
   }
 }
