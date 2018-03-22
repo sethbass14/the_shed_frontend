@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { DEFAULT_USER_IMAGE_URL } from '../../constants';
 import UserPicInput from './UserPicInput'
 
 
@@ -20,15 +19,9 @@ class UserCard extends React.Component {
   render() {
     return (
         <div className="ui card opaque">
-          {this.props.user.avatar !== DEFAULT_USER_IMAGE_URL ? (
             <div className="image">
               <img src={this.props.user.avatar} alt="user avatar"></img>
             </div>
-          ) : (
-            <div className="image">
-              <img src="https://s3.us-east-2.amazonaws.com/the-shed-audio-files/images/users/default_avatar.jpg" alt="user avatar"></img>
-            </div>
-          )}
           <div className="content">
             <h2>{this.props.user.username}</h2>
             <h3>{this.props.bands.length} bands</h3>
