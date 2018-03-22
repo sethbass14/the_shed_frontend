@@ -36,7 +36,7 @@ class BandCard extends React.Component {
           {this.state.clicked ? (
             <div>
               <i className="minus square icon" onClick={() => this.handleClick()}></i>
-              <BandPicInput/>
+              <BandPicInput handleAddPicClick={this.handleClick}/>
             </div>
           ) : (
             <div>
