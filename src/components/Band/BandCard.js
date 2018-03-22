@@ -40,19 +40,24 @@ class BandCard extends React.Component {
             </Link>
           </div>
           <div className="extra content">
-            {this.state.clicked ? (
-              <div>
-                <i className="minus square icon" onClick={() => this.handleClick()}></i>
-                <BandPicInput handleAddPicClick={this.handleClick}/>
-              </div>
-            ) : (
-              <div>
+          {this.state.clicked ? (
+            <div>
+              <i className="minus square icon" onClick={() => this.handleClick()}></i>
+              <BandPicInput/>
+            </div>
+          ) : (
+            <div>
+              {this.props.bandIndex ? (
+                null
+              ) : (
                 <div>
                   <i className="add square icon" onClick={() => this.handleClick()}></i>
                   <p>Update Band Pic</p>
                 </div>
-              </div>
-            )}
+              )}
+
+            </div>
+          )}
             {this.props.band.id ? <p>{`${this.props.band.song_ids.length} songs`}</p> : null}
             {this.props.band.id ? <p>{`${this.props.band.set_list_ids.length} set lists`}</p> : null}
           </div>
