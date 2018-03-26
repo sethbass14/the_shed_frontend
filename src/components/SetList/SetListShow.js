@@ -21,7 +21,7 @@ class SetListShow extends React.Component {
       alert('Are you sure you want to delete this set list? There is no turning back. Click again if you are sure.')
       this.setState({ deleteClick: !this.state.deleteClick })
     } else {
-      this.props.deleteSetList(this.props.setList.id, this.props.history)
+      this.props.deleteSetList(this.props.setList.id, this.props.band.slug, this.props.history)
     }
   }
 
@@ -31,12 +31,22 @@ class SetListShow extends React.Component {
 
   render() {
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
-    this.props.redirect ? this.props.history.push(`/bands/${this.props.match.params.bandId}`) : null
+    this.props.redirect ? this.props.history.push(`/bands/${this.props.match.params.bandSlug}`) : null
+    console.log('Set List Show Props: ', this.props)
     return (
         <div className="show">
           <div className="ui grid container">
             <div className="twelve wide centered column">
-              <h1>{this.props.band.id? `${this.props.band.name} Set List: ${this.props.setList.name} ${this.props.setList.date}` : null}</h1>
+              {this.props.band.id? (
+                  <div>
+                    <h1>{this.props.band.name}</h1>
+                    <h2>{this.props.setList.name} </h2>
+                    <h2>{this.props.setList.date} </h2>
+                  </div>
+                ) : (
+                  null
+                )
+              }
             </div>
             <div className="five wide column">
               <BandCard band={this.props.band}/>
@@ -56,7 +66,7 @@ class SetListShow extends React.Component {
                   {bandSongTitles}
                 </div>
               ) : (
-                <Link to={`/bands/${this.props.band.id}`}>
+                <Link to={`/bands/${this.props.band.slug}`}>
                   {`Upload More Songs On ${this.props.band.name}'s page`}
                 </Link>
               )}
@@ -70,8 +80,8 @@ class SetListShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const setList = state.setLists.find(setList => setList.id === parseInt(ownProps.match.params.setListId))
-  const band = state.bands.find(band => band.id === parseInt(ownProps.match.params.bandId))
+  const setList = state.setLists.find(setList => setList.slug === ownProps.match.params.setListSlug)
+  const band = state.bands.find(band => band.slug === ownProps.match.params.bandSlug)
   if (setList) {
     let bandSongs = state.songs.filter(song => song.band_id === band.id)
     const setSongsShow = bandSongs.filter(song => song.set_list_ids.includes(setList.id))

@@ -59,7 +59,7 @@ export const addUserImage = (file, id, handleUserPicClick) => dispatch => {
   })
 }
 
-export const addSong = (form_data, history) => dispatch => {
+export const addSong = (form_data, bandSlug, history) => dispatch => {
   dispatch({ type: LOADING_START })
   adapter.songs.postNewSong(form_data).then(songData => {
     if (songData.errors) {
@@ -67,7 +67,7 @@ export const addSong = (form_data, history) => dispatch => {
       dispatch({ type: LOADING_ERROR })
     }
     dispatch({ type: ADD_SONG, songData })
-    history.push(`/bands/${songData.band_id}/songs/${songData.id}`)
+    history.push(`/bands/${bandSlug}/songs/${songData.slug}`)
   })
 }
 
@@ -86,20 +86,20 @@ export const addVideoUrl = (video, songId) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.songs.updateVideo(video, songId).then(songData => {
     if (songData.error) {
-      alert(`${songData.erros}`)
+      alert(`${songData.errors}`)
     } else {
       dispatch({ type: ADD_VIDEO_URL, songData })
     }
   })
 }
 
-export const deleteSong = (id, history) => dispatch => {
+export const deleteSong = (id, bandSlug, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.songs.deleteSongServer(id).then(songData => {
     if (songData.error) {
       alert(`${songData.error}`)
     } else {
-      history.push(`/bands/${songData.band_id}`)
+      history.push(`/bands/${bandSlug}`)
       dispatch({ type: DELETE_SONG, songData })
     }
   })
@@ -113,7 +113,7 @@ export const addBand = (band_data, history) => dispatch => {
       alert(`${bandData.error}`)
     } else {
       dispatch({ type: ADD_BAND, bandData })
-      history.push(`/bands/${bandData.id}`)
+      history.push(`/bands/${bandData.slug}`)
     }
   })
 }
@@ -150,18 +150,18 @@ export const addNewSetList = (set_list_data, history) => dispatch => {
       alert(`${setList.error}`)
     } else {
       dispatch({ type: ADD_SET_LIST, setList })
-      history.push(`/bands/${setList.band_id}/setlists/${setList.id}`)
+      history.push(`${history.location.pathname}/setlists/${setList.slug}`)
     }
   })
 }
 
-export const deleteSetList = (id, history) => dispatch => {
+export const deleteSetList = (id, bandSlug, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.setLists.deleteSetListServer(id).then(setList => {
     if (setList.error) {
       alert(`${setList.error}`)
     } else {
-      history.push(`/bands/${setList.band_id}`)
+      history.push(`/bands/${bandSlug}`)
       dispatch({ type: DELETE_SET_LIST, setList })
     }
   })

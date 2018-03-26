@@ -84,7 +84,7 @@ class SongShow extends React.Component {
 }
 
 const mapStateToProps = (state, prevProps) => {
-  const song = state.songs.find(song => song.id === parseInt(prevProps.match.params.songId))
+  const song = state.songs.find(song => song.slug === prevProps.match.params.songSlug)
   if (song) {
     return {
       song,
