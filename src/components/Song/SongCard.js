@@ -8,12 +8,13 @@ import * as actions from '../../actions'
 //Could make this into a class component to guard against accidental deletes.
 class SongCard extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <div className="ui eight wide column">
         <div className="ui card opaque">
           <div className="content">
             <i className="right floated music icon"></i>
-            <Link to={`/bands/${this.props.song.band_id}/songs/${this.props.song.id}`}>
+            <Link to={`/bands/${this.props.band.slug}/songs/${this.props.song.slug}`}>
               <h3>{this.props.song.title}</h3>
             </Link>
             {this.props.match.params.bandId ? (
@@ -21,7 +22,7 @@ class SongCard extends React.Component {
             ) : (
               <div>
                 <h4>band:</h4>
-                <Link to={`/bands/${this.props.song.band_id}`}>{this.props.band ? this.props.band.name : null}</Link>
+                <Link to={`/bands/${this.props.band.slug}`}>{this.props.band ? this.props.band.name : null}</Link>
               </div>
             )}
           </div>
@@ -44,7 +45,7 @@ class SongCard extends React.Component {
             ) : (
               <button
                 className="ui button"
-                onClick={() => this.props.deleteSong(this.props.song.id, this.props.history)}>
+                onClick={() => this.props.deleteSong(this.props.song.id, this.props.match.params.bandSlug, this.props.history)}>
                 Delete Song
               </button>
             )}

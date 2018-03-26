@@ -8,7 +8,7 @@ const SongListItem = props => {
   return (
     <div>
       <Segment className="opaque">
-        <Link to={`/bands/${props.song.band_id}/songs/${props.song.id}`}>
+        <Link to={`/bands/${props.bandSlug}/songs/${props.song.slug}`}>
           {props.song.title}
         </Link>
         {props.setList ? (
@@ -23,6 +23,13 @@ const SongListItem = props => {
   )
 }
 
+const mapStateToProps = (state, ownProps) => {
+  const band = state.bands.find(band => band.id === ownProps.song.band_id)
+  const bandSlug = band.slug
+  return {
+    bandSlug
+  }
+}
 
 
-export default withRouter(connect(null, actions)(SongListItem))
+export default withRouter(connect(mapStateToProps, actions)(SongListItem))

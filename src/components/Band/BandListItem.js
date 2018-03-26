@@ -6,7 +6,7 @@ const BandListItem = props => (
   <div>
     <Segment className="opaque">
       <Link
-        to={`/bands/${props.band.id}`}
+        to={`/bands/${props.band.slug}`}
         >
         {props.band.name}
       </Link>

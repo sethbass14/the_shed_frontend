@@ -12,7 +12,7 @@ class BandContainer extends React.Component {
     return (
         <Switch>
           <Route
-            path="/bands/:bandId/songs/:songId"
+            path="/bands/:bandSlug/songs/:songSlug"
             component={SongShow}
             />
           <Route
@@ -20,11 +20,7 @@ class BandContainer extends React.Component {
             component={SetListShow}
             />
           <Route
-            path="/bands/new"
-            component={BandInput}
-            />
-          <Route
-            path="/bands/:bandId"
+            path="/bands/:bandSlug"
             component={BandShow}
             />
           <Route

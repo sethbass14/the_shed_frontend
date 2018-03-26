@@ -27,14 +27,13 @@ class SongInput extends React.Component {
       formData.append("audio", file)
       formData.append("title", this.state.title)
       formData.append("band_id", this.props.bandId)
-      this.props.addSong(formData, this.props.history)
+      this.props.addSong(formData, this.props.bandSlug, this.props.history)
     } else {
       alert('Please select a file to upload and enter a title.')
     }
   }
 
   render() {
-    // console.log("Song Input", this.props)
     return (
       <div>
         <h1>New Song</h1>
@@ -66,8 +65,10 @@ class SongInput extends React.Component {
 }
 
 const mapStateToProps = (state, prevProps) => {
+  const band = state.bands.find(band => band.slug === prevProps.match.params.bandSlug)
   return {
-    bandId: parseInt(prevProps.match.params.bandId),
+    bandId: band.id,
+    bandSlug: band.slug,
     loading: state.loading
   }
 }

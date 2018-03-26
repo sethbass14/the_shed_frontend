@@ -18,7 +18,7 @@ class BandCard extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
+    console.log('slug: ', this.props.band.slug)
     // Set default image on the backend
     // Check about the prop of band index needing to be present
     return (
@@ -28,7 +28,7 @@ class BandCard extends React.Component {
             </div>
           <div className="content">
             <Link
-              to={`/bands/${this.props.band.id}`} >
+              to={`/bands/${this.props.band.slug}`} >
               <h3>{this.props.band.name}</h3>
             </Link>
           </div>
