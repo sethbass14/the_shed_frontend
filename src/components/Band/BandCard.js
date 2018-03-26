@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BandPicInput from './BandPicInput';
 
-//This component is in inheriting a band from Band Index. Check this out if you want to reuse it.
 class BandCard extends React.Component {
-  // console.log("In BandCard", this.props)
   constructor() {
     super()
 
@@ -18,9 +16,6 @@ class BandCard extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
-    // Set default image on the backend
-    // Check about the prop of band index needing to be present
     return (
         <div className="ui card opaque">
             <div className="image">
