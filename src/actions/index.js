@@ -67,8 +67,7 @@ export const addSong = (form_data, bandSlug, history) => dispatch => {
       dispatch({ type: LOADING_ERROR })
     }
     dispatch({ type: ADD_SONG, songData })
-    debugger
-    history.push(`/bands/${bandSlug}/songs/${songData.id}`)
+    history.push(`/bands/${bandSlug}/songs/${songData.slug}`)
   })
 }
 

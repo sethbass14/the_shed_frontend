@@ -16,7 +16,7 @@ class SongCard extends React.Component {
             <Link to={`/bands/${this.props.band.slug}/songs/${this.props.song.slug}`}>
               <h3>{this.props.song.title}</h3>
             </Link>
-            {this.props.match.params.bandId ? (
+            {this.props.match.params.bandSlug ? (
               null
             ) : (
               <div>
@@ -25,30 +25,35 @@ class SongCard extends React.Component {
               </div>
             )}
           </div>
-          <div className="extra content">
-            {this.props.setSong? (
-              <div>
+          {this.props.songIndex ? (
+            null
+          ) : (
+            <div className="extra content">
+              {this.props.setSong? (
+                <div>
+                  <button
+                    className="ui button"
+                    onClick={() => this.props.handleDelete(this.props.setSong.id)}
+                    >
+                    Remove From Set
+                  </button>
+                  <h4>
+                    Set Order:
+                    <i className="minus circle icon" name="minus" onClick={() => this.props.handleOrderDecrement(this.props.setSong.id)}></i>
+                    {this.props.setSong.order}
+                    <i className="add circle icon" name="plus" onClick={() => this.props.handleOrderIncrement(this.props.setSong.id)}></i>
+                  </h4>
+                </div>
+              ) : (
                 <button
                   className="ui button"
-                  onClick={() => this.props.handleDelete(this.props.setSong.id)}
-                  >
-                  Remove From Set
+                  onClick={() => this.props.deleteSong(this.props.song.id, this.props.match.params.bandSlug, this.props.history)}>
+                  Delete Song
                 </button>
-                <h4>
-                  Set Order:
-                  <i className="minus circle icon" name="minus" onClick={() => this.props.handleOrderDecrement(this.props.setSong.id)}></i>
-                  {this.props.setSong.order}
-                  <i className="add circle icon" name="plus" onClick={() => this.props.handleOrderIncrement(this.props.setSong.id)}></i>
-                </h4>
-              </div>
-            ) : (
-              <button
-                className="ui button"
-                onClick={() => this.props.deleteSong(this.props.song.id, this.props.match.params.bandSlug, this.props.history)}>
-                Delete Song
-              </button>
-            )}
-          </div>
+              )}
+            </div>
+          )}
+
         </div>
         {this.props.setSong? (
           null

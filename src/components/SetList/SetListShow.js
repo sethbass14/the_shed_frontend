@@ -66,7 +66,7 @@ class SetListShow extends React.Component {
                   {bandSongTitles}
                 </div>
               ) : (
-                <Link to={`/bands/${this.props.band.id}`}>
+                <Link to={`/bands/${this.props.band.slug}`}>
                   {`Upload More Songs On ${this.props.band.name}'s page`}
                 </Link>
               )}
