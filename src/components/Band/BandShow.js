@@ -48,6 +48,7 @@ class BandShow extends React.Component {
   render() {
     const bandSongs = this.props.songs.map((song, index) => <SongListItem key={index} song={song} />)
     const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
+    console.log('In band Show props: ', this.props)
     return (
         <div className="show">
           <div className="ui grid container">
@@ -121,7 +122,6 @@ class BandShow extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const band = state.bands.find(band => band.slug === ownProps.match.params.bandSlug)
-  console.log('in MapStateToProps bandShow BAND: ', band)
   if (band) {
     return {
       band: band,

@@ -16,7 +16,7 @@ class BandContainer extends React.Component {
             component={SongShow}
             />
           <Route
-            path="/bands/:bandId/setlists/:setListId"
+            path="/bands/:bandSlug/setlists/:setListSlug"
             component={SetListShow}
             />
           <Route

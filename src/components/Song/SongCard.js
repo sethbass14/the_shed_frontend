@@ -8,7 +8,6 @@ import * as actions from '../../actions'
 //Could make this into a class component to guard against accidental deletes.
 class SongCard extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <div className="ui eight wide column">
         <div className="ui card opaque">

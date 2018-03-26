@@ -114,7 +114,7 @@ export const addBand = (band_data, history) => dispatch => {
       alert(`${bandData.error}`)
     } else {
       dispatch({ type: ADD_BAND, bandData })
-      history.push(`/bands/${bandData.id}`)
+      history.push(`/bands/${bandData.slug}`)
     }
   })
 }
@@ -151,18 +151,18 @@ export const addNewSetList = (set_list_data, history) => dispatch => {
       alert(`${setList.error}`)
     } else {
       dispatch({ type: ADD_SET_LIST, setList })
-      history.push(`/bands/${setList.band_id}/setlists/${setList.id}`)
+      history.push(`${history.location.pathname}/setlists/${setList.slug}`)
     }
   })
 }
 
-export const deleteSetList = (id, history) => dispatch => {
+export const deleteSetList = (id, bandSlug, history) => dispatch => {
   dispatch({ type: ASYNC_START })
   adapter.setLists.deleteSetListServer(id).then(setList => {
     if (setList.error) {
       alert(`${setList.error}`)
     } else {
-      history.push(`/bands/${setList.band_id}`)
+      history.push(`/bands/${bandSlug}`)
       dispatch({ type: DELETE_SET_LIST, setList })
     }
   })
