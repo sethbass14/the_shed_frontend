@@ -44,7 +44,7 @@ class BandPicInput extends React.Component {
 }
 
 const mapStateToProps = (state, prevProps) => {
-  const band =  state.bands.find(band => band.id === parseInt(prevProps.match.params.bandId))
+  const band =  state.bands.find(band => band.slug === prevProps.match.params.bandSlug)
   if (band.id) {
     return {
       band,
