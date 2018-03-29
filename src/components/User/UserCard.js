@@ -24,8 +24,8 @@ class UserCard extends React.Component {
             </div>
           <div className="content">
             <h2>{this.props.user.username}</h2>
-            <h3>{this.props.bands.length} { this.props.bands.length > 1 ? 'bands' : 'band' } </h3>
-            <h3>{this.props.songs.length} { this.props.bands.length > 1 ? 'songs' : 'song' } </h3>
+            <h3>{this.props.bands.length} { this.props.bands.length === 1 ? 'band' : 'bands' } </h3>
+            <h3>{this.props.songs.length} { this.props.songs.length === 1 ? 'song' : 'songs' } </h3>
           </div>
           <div className="extra content">
             {this.state.clicked ? (
