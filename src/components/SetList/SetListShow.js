@@ -32,7 +32,6 @@ class SetListShow extends React.Component {
   render() {
     const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
     this.props.redirect ? this.props.history.push(`/bands/${this.props.match.params.bandSlug}`) : null
-    console.log('Set List Show Props: ', this.props)
     return (
         <div className="show">
           <div className="ui grid container">

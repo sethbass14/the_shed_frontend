@@ -66,9 +66,10 @@ export const addSong = (form_data, bandSlug, history) => dispatch => {
     if (songData.errors) {
       alert(`${songData.errors}`)
       dispatch({ type: LOADING_ERROR })
+    } else {
+      dispatch({ type: ADD_SONG, songData })
+      history.push(`/bands/${bandSlug}/songs/${songData.slug}`)
     }
-    dispatch({ type: ADD_SONG, songData })
-    history.push(`/bands/${bandSlug}/songs/${songData.slug}`)
   })
 }
 
