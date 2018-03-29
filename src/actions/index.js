@@ -52,6 +52,7 @@ export const addUserImage = (file, id, handleUserPicClick) => dispatch => {
   adapter.users.postUserImage(file, id).then(userData => {
     if (userData.error) {
       alert(`${userData.error}`)
+      dispatch({ type: LOADING_ERROR })
     } else {
       handleUserPicClick()
       dispatch({ type: ADD_USER_IMAGE, userData })
@@ -124,6 +125,7 @@ export const addBandImage = (file, id, clickToggle) => dispatch => {
   adapter.bands.updateBandImage(file, id).then(bandData => {
     if (bandData.error) {
       alert(`${bandData.error}`)
+      dispatch({ type: LOADING_ERROR })
     } else {
       dispatch({ type: ADD_BAND_IMAGE, bandData })
       clickToggle()

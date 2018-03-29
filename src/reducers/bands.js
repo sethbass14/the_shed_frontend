@@ -1,4 +1,4 @@
-import { SET_USER_DATA, ADD_BAND, DELETE_BAND, ADD_SONG, ADD_BAND_IMAGE, DELETE_SONG, LOGOUT_USER } from '../constants'
+import { SET_USER_DATA, ADD_BAND, DELETE_BAND, ADD_SONG, ADD_BAND_IMAGE, DELETE_SONG, LOGOUT_USER, ADD_SET_LIST, DELETE_SET_LIST } from '../constants'
 
 const initialState = []
 export const bandsReducer = ( state = initialState, action) => {
@@ -20,6 +20,13 @@ export const bandsReducer = ( state = initialState, action) => {
       index = state.indexOf(band)
       band.image = action.bandData.image
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
+    case ADD_SET_LIST:
+    case DELETE_SET_LIST:
+      debugger
+      band = state.find(band => band.id === action.setList.band_id)
+      index = state.indexOf(band)
+      band.set_list_ids = bandSetListIdsReducer(band.set_list_ids, action)
+      return [...state.slice(0, index), band, ...state.slice(index + 1)]
     case LOGOUT_USER:
       return initialState
     default:
@@ -33,6 +40,17 @@ const bandSongIdsReducer = (state = [], action) => {
       return [...state, action.songData.id]
     case DELETE_SONG:
       return state.filter(songId => songId !== action.songData.id)
+    default:
+      return state
+  }
+}
+
+const bandSetListIdsReducer = (state = [], action) => {
+  switch(action.type) {
+    case ADD_SET_LIST:
+      return [...state, action.setList.id]
+    case DELETE_SET_LIST:
+      return state.filter(setListId => setListId !== action.setList.id)
     default:
       return state
   }
