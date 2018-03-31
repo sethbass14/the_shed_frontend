@@ -10,43 +10,31 @@ class SetSongContainer extends React.Component {
     super()
   }
 
-  handleOrderIncrement = (setSongId) => {
-    let allSetSongs = this.props.setSongs
-    let setSongChangeIncrement = allSetSongs.find(setSong => setSong.id === setSongId)
-    const limit = allSetSongs.length
-    const change = setSongChangeIncrement.order + 1
-    let setSongChangeDecrement = allSetSongs.find(setSong => setSong.order === change)
-    if (change <= limit && change !== setSongChangeIncrement.order) {
-      setSongChangeIncrement.order = change
-      this.props.updateSetSongOrder(setSongChangeIncrement)
-      }
-    if (setSongChangeDecrement  && setSongChangeDecrement.order > 0) {
-      setSongChangeDecrement.order = setSongChangeDecrement.order - 1
-      this.props.updateSetSongOrder(setSongChangeDecrement)
+  handleOrderChange = (event, setSongId) => {
+    const increment = event.target.id === 'increment'
+    const upperLimit = this.props.setSongs.length
+    let setSongTarget = this.props.setSongs.find(setSong => setSong.id === setSongId)
+    let orderChange = increment ? setSongTarget.order + 1 : setSongTarget.order - 1
+    let setSongChange = this.props.setSongs.find(setSong => setSong.order === orderChange)
+    let nextOrderChange = increment ? orderChange - 1 : orderChange + 1
+    if (orderChange <= upperLimit && orderChange > 0 ) {
+      setSongTarget.order = orderChange
+      setSongChange.order = nextOrderChange
+      this.props.updateSetSongOrder(setSongTarget)
+      this.props.updateSetSongOrder(setSongChange)
+      //I should make this function take in an array of setSong objects and let the backend take care of the rest
+      // this.props.updateSetSongOrder(setSongTarget)
+      // this.props.updateSetSongOrder(setSongChange)
     }
   }
 
-  handleOrderDecrement = (setSongId) => {
-    let allSetSongs = this.props.setSongs
-    let setSongChangeDecrement = allSetSongs.find(setSong => setSong.id === setSongId)
-    const change = setSongChangeDecrement.order - 1
-    let setSongChangeIncrement = allSetSongs.find(setSong => setSong.order === change)
-    if (change > 0) {
-      setSongChangeDecrement.order = change
-      this.props.updateSetSongOrder(setSongChangeDecrement)
-    }
-    if (setSongChangeIncrement) {
-      setSongChangeIncrement.order = setSongChangeIncrement.order + 1
-      this.props.updateSetSongOrder(setSongChangeIncrement)
-    }
-
-  }
-
+  //Change this message to fire a post request of an array of objects
   handleDelete = (id) => {
     let setSongToDelete = this.props.setSongs.find(setSong => setSong.id === id)
     let setSongArr = this.props.setSongs.filter(setSong => setSong.order > setSongToDelete.order)
     setSongArr.map(setSong => setSong.order -= 1)
     this.props.deleteSetSong(id)
+    //This line of code below works. Should I keep it like this or send all of the setSongs to the backend and let the controller update each one?
     setSongArr.forEach(setSong => this.props.updateSetSongOrder(setSong))
   }
 
@@ -62,8 +50,7 @@ class SetSongContainer extends React.Component {
             song={song}
             setSong={true}
             setList={this.props.setList}
-            handleOrderDecrement={this.handleOrderDecrement}
-            handleOrderIncrement={this.handleOrderIncrement}
+            handleOrderChange={this.handleOrderChange}
             handleDelete={this.handleDelete}
             order={song.order}
             />
