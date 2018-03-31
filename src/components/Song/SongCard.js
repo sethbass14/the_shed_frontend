@@ -39,9 +39,9 @@ class SongCard extends React.Component {
                   </button>
                   <h4>
                     Set Order:
-                    <i className="minus circle icon" name="minus" onClick={() => this.props.handleOrderChange(event, this.props.setSong.id)}></i>
+                    <i className="minus circle icon" name="minus" id="decrement" onClick={(event) => this.props.handleOrderChange(event, this.props.setSong.id)}></i>
                     {this.props.setSong.order}
-                    <i className="add circle icon" name="plus" onClick={() => this.props.handleOrderChange(event, this.props.setSong.id)}></i>
+                    <i className="add circle icon" name="plus" id="increment" onClick={(event) => this.props.handleOrderChange(event, this.props.setSong.id)}></i>
                   </h4>
                 </div>
               ) : (

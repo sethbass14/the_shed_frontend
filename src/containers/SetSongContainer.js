@@ -11,8 +11,10 @@ class SetSongContainer extends React.Component {
   }
 
   handleOrderChange = (event, setSongId) => {
+
     const increment = event.target.id === 'increment'
     const upperLimit = this.props.setSongs.length
+    console.log('handleOrderChange event.target.id: ', event.target.id)
     let setSongTarget = this.props.setSongs.find(setSong => setSong.id === setSongId)
     let orderChange = increment ? setSongTarget.order + 1 : setSongTarget.order - 1
     let setSongChange = this.props.setSongs.find(setSong => setSong.order === orderChange)
