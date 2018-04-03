@@ -6,9 +6,6 @@ import * as actions from '../actions'
 
 //This could be presentational
 class SetSongContainer extends React.Component {
-  constructor() {
-    super()
-  }
 
   handleOrderChange = (event, setSongId) => {
     const increment = event.target.id === 'increment'

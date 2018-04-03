@@ -15,7 +15,6 @@ class UserCard extends React.Component {
   handleClick = () => {
     this.setState({ clicked: !this.state.clicked })
   }
-  // console.log("In UserCard", props)
   render() {
     return (
         <div className="ui card opaque">

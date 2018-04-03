@@ -40,7 +40,6 @@ class SongShow extends React.Component {
   }
 
   render() {
-    console.log("In the render method", this.props)
     return (
       <div className="show">
         <div className='ui grid container'>
