@@ -122,6 +122,7 @@ class BandShow extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const band = state.bands.find(band => band.slug === ownProps.match.params.bandSlug)
+  console.log('mapStateToProps BandShow: ', band)
   if (band) {
     return {
       band: band,

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth'
 import DashboardShow from '../components/DashboardShow';
 import BandContainer from './BandContainer';
-import SongContainer from './SongContainer'
+import SongContainer from './SongContainer';
+import NoMatch from '../components/NoMatch'
 import * as actions from '../actions';
 
 class MainContainer extends React.Component {
@@ -28,8 +29,11 @@ class MainContainer extends React.Component {
             component={SongContainer}
             />
           <Route
-            path="/:dashboard"
+            path="/dashboard"
             component={DashboardShow}
+            />
+          <Route
+            component={NoMatch}
             />
         </Switch>
       </div>
