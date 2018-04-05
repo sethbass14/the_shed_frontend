@@ -164,7 +164,7 @@ export const deleteSetList = (id, bandSlug, history) => dispatch => {
     if (setList.error) {
       alert(`${setList.error}`)
     } else {
-      history.push(`/bands/${bandSlug}`)
+      history.goBack(-1)
       dispatch({ type: DELETE_SET_LIST, setList })
     }
   })

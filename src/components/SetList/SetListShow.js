@@ -1,26 +1,20 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import SongListItem from '../Song/SongListItem';
 import SetSongContainer from '../../containers/SetSongContainer';
 import BandCard from '../Band/BandCard';
-import NoMatch from '../NoMatch'
-// import * as actions from '../../actions';
 
-//Make this a class to add a search bar functionality in the future
-class SetListShow extends React.Component {
-  render() {
-    console.log('SetListShow props: ', this.props)
-    const bandSongTitles = this.props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={this.props.setList}/>)
+const SetListShow = props => {
+    const bandSongTitles = props.bandSongs.map((song, index) =>  <SongListItem key={index} song={song} setList={props.setList}/>)
     return (
         <div className="show">
           <div className="ui grid container">
             <div className="twelve wide centered column">
-              {this.props.band.id? (
+              {props.band.id? (
                 <div>
-                  <h1>{this.props.band.name}</h1>
-                  <h2>{this.props.setList.name} </h2>
-                  <h2>{this.props.setList.date} </h2>
+                  <h1>{props.band.name}</h1>
+                  <h2>{props.setList.name} </h2>
+                  <h2>{props.setList.date} </h2>
                 </div>
                 ) : (
                   null
@@ -28,14 +22,14 @@ class SetListShow extends React.Component {
               }
             </div>
             <div className="five wide column">
-              <BandCard band={this.props.band}/>
+              <BandCard band={props.band}/>
               <div>
-                <button className="ui button" onClick={() => this.props.handleDeleteClick()}>Delete Set List</button>
+                <button className="ui button" onClick={() => props.handleDeleteClick()}>Delete Set List</button>
               </div>
             </div>
           <div className="five wide column">
             <h2>Build Your Set List</h2>
-              <SetSongContainer songs={this.props.setSongsShow} setList={this.props.setList}/>
+              <SetSongContainer songs={props.setSongsShow} setList={props.setList}/>
           </div>
           <div className="five wide column">
             <h2>Repertoire</h2>
@@ -45,15 +39,14 @@ class SetListShow extends React.Component {
                 {bandSongTitles}
               </div>
             ) : (
-              <Link to={`/bands/${this.props.band.slug}`}>
-                {`Upload More Songs On ${this.props.band.name}'s page`}
+              <Link to={`/bands/${props.band.slug}`}>
+                {`Upload More Songs On ${props.band.name}'s page`}
               </Link>
             )}
           </div>
         </div>
       </div>
     )
-  }
 }
 
-export default withRouter(SetListShow)
+export default SetListShow
