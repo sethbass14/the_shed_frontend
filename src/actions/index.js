@@ -101,7 +101,7 @@ export const deleteSong = (id, bandSlug, history) => dispatch => {
     if (songData.error) {
       alert(`${songData.error}`)
     } else {
-      history.push(`/bands/${bandSlug}`)
+      history.goBack(-1)
       dispatch({ type: DELETE_SONG, songData })
     }
   })

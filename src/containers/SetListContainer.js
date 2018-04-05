@@ -24,7 +24,6 @@ class SetListContainer extends React.Component {
   }
 
   render() {
-    console.log('In setList container')
     return (
       <div>
         {this.props.redirect ? <NoMatch/> : (

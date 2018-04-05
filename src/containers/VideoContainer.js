@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { YOU_TUBE_ROOT } from '../../constants';
-import * as actions from '../../actions'
-import VideoPlayer from '../Video/VideoPlayer';
-import VideoCardHolder from '../Video/VideoCardHolder';
-import VideoCard from './VideoCard';
+import { YOU_TUBE_ROOT } from '../constants';
+import * as actions from '../actions'
+import VideoPlayer from '../components/Video/VideoPlayer';
+import VideoCardHolder from '../components/Video/VideoCardHolder';
+import VideoCard from '../components/Video/VideoCard';
 
 //pass the song id to videoCardContainer
 class VideoContainer extends React.Component {

@@ -4,9 +4,6 @@ import { Card } from 'semantic-ui-react';
 import BandCard from './BandCard';
 import BandInput from './BandInput';
 
-
-
-// This needs to be an index of all the user's bands
 class BandsIndex extends React.Component {
   constructor() {
     super()

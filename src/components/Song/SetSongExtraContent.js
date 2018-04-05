@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SetSongExtraContent = props => {
-  console.log('SetSongExtraContent props: ', props)
   return (
     <div>
       <button
