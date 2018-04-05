@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { YOU_TUBE_ROOT } from '../../constants';
 import SongCard from './SongCard';
-import SongNoteForm from './SongNoteForm';
+import SongNoteFormContainer from '../../containers/SongNoteFormContainer';
 import BandCard from '../Band/BandCard';
 import VideoPlayer from '../Video/VideoPlayer';
 import VideoCardContainer from '../Video/VideoCardContainer';
@@ -53,7 +53,7 @@ class SongShow extends React.Component {
           <div className=" five wide column">
             {this.props.song.id ? <SongCard song={this.props.song} band={this.props.band} /> : null }
             <br></br>
-            {this.props.song.id? <SongNoteForm song={this.props.song} /> : null}
+            {this.props.song.id? <SongNoteFormContainer song={this.props.song} /> : null}
           </div>
           <div className="five wide column">
             <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.youTubeClick ? this.props.currentVideo : null }/>
