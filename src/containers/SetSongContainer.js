@@ -4,13 +4,11 @@ import { connect } from 'react-redux';
 import { Card } from 'semantic-ui-react';
 import * as actions from '../actions'
 
-//This could be presentational
 class SetSongContainer extends React.Component {
 
   handleOrderChange = (event, setSongId) => {
     const increment = event.target.id === 'increment'
     const upperLimit = this.props.setSongs.length
-    console.log('handleOrderChange event.target.id: ', event.target.id)
     let setSongTarget = this.props.setSongs.find(setSong => setSong.id === setSongId)
     let orderChange = increment ? setSongTarget.order + 1 : setSongTarget.order - 1
     let setSongChange = this.props.setSongs.find(setSong => setSong.order === orderChange)
@@ -20,22 +18,16 @@ class SetSongContainer extends React.Component {
       setSongChange.order = nextOrderChange
       this.props.updateSetSongOrder(setSongTarget)
       this.props.updateSetSongOrder(setSongChange)
-      //I should make this function take in an array of setSong objects and let the backend take care of the rest
-      // this.props.updateSetSongOrder(setSongTarget)
-      // this.props.updateSetSongOrder(setSongChange)
     }
   }
 
-  //Change this message to fire a post request of an array of objects
   handleDelete = (id) => {
     let setSongToDelete = this.props.setSongs.find(setSong => setSong.id === id)
     let setSongArr = this.props.setSongs.filter(setSong => setSong.order > setSongToDelete.order)
     setSongArr.map(setSong => setSong.order -= 1)
     this.props.deleteSetSong(id)
-    //This line of code below works. Should I keep it like this or send all of the setSongs to the backend and let the controller update each one?
     setSongArr.forEach(setSong => this.props.updateSetSongOrder(setSong))
   }
-
 
   render() {
     let songs = this.props.songs
