@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux'
 import AudioPlayer from '../AudioPlayer'
+import SetSongExtraContent from './SetSongExtraContent'
 import * as actions from '../../actions'
 
 
@@ -16,13 +17,13 @@ class SongCard extends React.Component {
             <Link to={`/bands/${this.props.band.slug}/songs/${this.props.song.slug}`}>
               <h3>{this.props.song.title}</h3>
             </Link>
-            {this.props.match.params.bandSlug ? (
-              null
-            ) : (
+            {this.props.songIndex ? (
               <div>
                 <h4>band:</h4>
                 <Link to={`/bands/${this.props.band.slug}`}>{this.props.band ? this.props.band.name : null}</Link>
               </div>
+            ) : (
+              null
             )}
           </div>
           {this.props.songIndex ? (
@@ -30,20 +31,11 @@ class SongCard extends React.Component {
           ) : (
             <div className="extra content">
               {this.props.setSong? (
-                <div>
-                  <button
-                    className="ui button"
-                    onClick={() => this.props.handleDelete(this.props.setSong.id)}
-                    >
-                    Remove From Set
-                  </button>
-                  <h4>
-                    Set Order:
-                    <i className="minus circle icon" name="minus" id="decrement" onClick={(event) => this.props.handleOrderChange(event, this.props.setSong.id)}></i>
-                    {this.props.setSong.order}
-                    <i className="add circle icon" name="plus" id="increment" onClick={(event) => this.props.handleOrderChange(event, this.props.setSong.id)}></i>
-                  </h4>
-                </div>
+                <SetSongExtraContent
+                  setSong={this.props.setSong}
+                  handleOrderChange={this.props.handleOrderChange}
+                  handleDelete={this.props.handleDelete}
+                  />
               ) : (
                 <button
                   className="ui button"
