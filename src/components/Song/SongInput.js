@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions'
 
 
+//Can you make this more react like?
 class SongInput extends React.Component {
   constructor() {
     super()

@@ -2,6 +2,7 @@ import React from 'react';
 import { Embed } from 'semantic-ui-react';
 
 const VideoPlayer = props => {
+  console.log('In Video Player props: ', props)
   let you_tube_url = props.url ? props.url : null
   let searchLink = props.video ? `https://www.youtube.com/embed/${props.video.id.videoId}` : null
   let link
