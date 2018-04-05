@@ -38,23 +38,30 @@ class VideoContainer extends React.Component {
   render() {
     return (
       <div>
-        <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.youTubeClick ? this.props.currentVideo : null }/>
-            {this.state.youTubeClick && this.props.currentVideo ? (
+        <VideoPlayer
+          url={this.props.song.you_tube_url}
+          video={this.state.youTubeClick ? this.props.currentVideo : null }
+          />
+          {this.state.youTubeClick && this.props.currentVideo ? (
+            <div>
               <div>
-                <div>
-                  <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
-                </div>
-                <div>
-                  <p>See Less</p>
-                  <i className="minus circle icon" onClick={() => this.youTubeToggle()}/>
-                </div>
+                <button className="ui button" onClick={() => this.saveVideo()}>Save Video</button>
               </div>
-            ) : (
               <div>
-                {!this.props.youTubeLoading ? <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button> : <button className="ui loading button" type="submit">SearchYouTube</button> }
+                <p>See Less</p>
+                <i className="minus circle icon" onClick={() => this.youTubeToggle()}/>
               </div>
-            ) }
-            {this.state.youTubeClick && !this.props.youTubeLoading ? <VideoCardHolder videos={this.props.videos}/> : null }
+            </div>
+          ) : (
+            <div>
+            <button
+              className={this.state.youTubeLoading ? "ui loading button" : 'ui button'}
+              onClick={this.searchYouTube}>
+              Search YouTube
+            </button>
+            </div>
+          ) }
+          {this.state.youTubeClick && !this.props.youTubeLoading ? <VideoCardHolder videos={this.props.videos}/> : null }
       </div>
     )
   }
