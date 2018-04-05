@@ -4,7 +4,7 @@ import BandsIndex from '../components/Band/BandsIndex';
 import BandShow from '../components/Band/BandShow';
 import SongShow from '../components/Song/SongShow';
 import BandInput from '../components/Band/BandInput';
-import SetListShow from '../components/SetList/SetListShow';
+import SetListContainer from './SetListContainer';
 
 
 const BandContainer = () => {
@@ -16,7 +16,7 @@ const BandContainer = () => {
             />
           <Route
             path="/bands/:bandSlug/setlists/:setListSlug"
-            component={SetListShow}
+            component={SetListContainer}
             />
           <Route
             path="/bands/:bandSlug"

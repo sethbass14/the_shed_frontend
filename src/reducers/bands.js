@@ -22,7 +22,6 @@ export const bandsReducer = ( state = initialState, action) => {
       return [...state.slice(0, index), band, ...state.slice(index + 1)]
     case ADD_SET_LIST:
     case DELETE_SET_LIST:
-      debugger
       band = state.find(band => band.id === action.setList.band_id)
       index = state.indexOf(band)
       band.set_list_ids = bandSetListIdsReducer(band.set_list_ids, action)
