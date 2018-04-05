@@ -3,7 +3,6 @@ import * as actions from '../../actions'
 import { connect } from 'react-redux';
 
 const VideoCard = props => {
-  console.log("In video card props:", props)
   let title = props.video.snippet.title
   let thumbnail_url = props.video.snippet.thumbnails.default.url
   let description = props.video.snippet.description

@@ -16,7 +16,6 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    // console.log('In Main Cotainter render props:', this.props)
     return (
       <div className='main-container'>
         <Switch>

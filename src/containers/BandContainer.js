@@ -7,8 +7,7 @@ import BandInput from '../components/Band/BandInput';
 import SetListShow from '../components/SetList/SetListShow';
 
 
-class BandContainer extends React.Component {
-  render() {
+const BandContainer = () => {
     return (
         <Switch>
           <Route
@@ -29,7 +28,6 @@ class BandContainer extends React.Component {
             />
         </Switch>
     )
-  }
 }
 
 export default BandContainer

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SongCard from './SongCard';
 
-
+// This could be presentational
 class SongIndex extends React.Component {
   constructor(){
     super()
