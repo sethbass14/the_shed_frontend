@@ -14,7 +14,7 @@ class VideoContainer extends React.Component {
       youTubeClick: false,
     }
   }
-  
+
   searchYouTube = () => {
     this.youTubeToggle()
     this.props.youTubeFetch(`${this.props.band.name} ${this.props.song.title}`)
@@ -36,7 +36,6 @@ class VideoContainer extends React.Component {
   }
 
   render() {
-    console.log('VideoContainer props: ', this.props)
     return (
       <div>
         <VideoPlayer  url={this.props.song.you_tube_url} video={this.state.youTubeClick ? this.props.currentVideo : null }/>
@@ -52,10 +51,8 @@ class VideoContainer extends React.Component {
               </div>
             ) : (
               <div>
-                {!this.props.youTubeLoading ? <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button> : <button className="ui loading button" type="submit">Submit</button> }
-
+                {!this.props.youTubeLoading ? <button className="ui button" onClick={this.searchYouTube}>Search YouTube</button> : <button className="ui loading button" type="submit">SearchYouTube</button> }
               </div>
-
             ) }
             {this.state.youTubeClick && !this.props.youTubeLoading ? <VideoCardHolder videos={this.props.videos}/> : null }
       </div>

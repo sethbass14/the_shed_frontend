@@ -15,7 +15,7 @@ const VideoCard = props => {
         <p>{description}</p>
       </div>
     ) : (
-      <div class="ui active centered inline loader"></div>
+      <div className="ui active centered inline loader"></div>
     ) }
   </div>
   )

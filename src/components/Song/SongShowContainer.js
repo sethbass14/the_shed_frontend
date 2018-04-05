@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { YOU_TUBE_ROOT } from '../../constants';
 import SongCard from './SongCard';
 import SongNoteFormContainer from '../../containers/SongNoteFormContainer';
 import BandCard from '../Band/BandCard';
 import VideoContainer from '../Video/VideoContainer';
-import * as actions from '../../actions'
-// import adapter from '../../services/adapter';
-// import SongShow from './SongShow'
+
 
 
 class SongShowContainer extends React.Component {
@@ -52,4 +49,4 @@ const mapStateToProps = (state, prevProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, actions)(SongShowContainer))
+export default withRouter(connect(mapStateToProps)(SongShowContainer))
