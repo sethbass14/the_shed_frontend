@@ -7,7 +7,6 @@ import BandCard from '../Band/BandCard';
 import VideoContainer from '../../containers/VideoContainer';
 
 const SongShow = props => {
-  console.log("SongShow props: ", props)
   return (
     <div className="show">
       <div className='ui grid container'>

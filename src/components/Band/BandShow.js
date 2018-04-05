@@ -12,39 +12,6 @@ import SetListInput from '../SetList/SetListInput';
 
 
 class BandShow extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      addSong: false,
-      deleteClick: true,
-      addSetListClick: false
-    }
-
-  }
-
-  handleSongAdd = () => {
-    this.setState({ ...this.state, addSong: !this.state.addSong })
-  }
-
-  handleAddSetListClick = () => {
-    this.setState({ ...this.state, addSetListClick: !this.state.addSetListClick })
-  }
-
-  deleteConfirmation = (bandId) => {
-    if (this.state.deleteClick) {
-      this.props.deleteBand(bandId, this.props.history)
-      this.setState({ ...this.state, deleteClick: !this.state.deleteClick})
-    } else {
-      alert('Are you sure you want to delete this band, all of its songs and setlists? Click delete again to END this band.')
-    }
-  }
-
-  handleBandDelete = (bandId) => {
-    this.setState({ ...this.state, deleteClick: !this.state.deleteClick }, () => this.deleteConfirmation(bandId))
-  }
-
-
   render() {
     const bandSongs = this.props.songs.map((song, index) => <SongListItem key={index} song={song} />)
     const bandSetLists = this.props.setLists.map((setList, index) => { return <SetListListItem key={index} setList={setList} />})
@@ -60,7 +27,7 @@ class BandShow extends React.Component {
                 <br></br>
                 <button
                   className="ui button"
-                  onClick={() => this.handleBandDelete(this.props.band.id)}>
+                  onClick={() => this.props.handleBandDelete(this.props.band.id)}>
                   Delete Band
                 </button>
               </div>
@@ -75,13 +42,13 @@ class BandShow extends React.Component {
                 <Segment className="opaque">
                   <div>
                     <h3>{`Add A Song to ${this.props.band.name}'s rep!`}</h3>
-                    {this.state.addSong ? (
+                    {this.props.addSong ? (
                       <div>
-                        <i className="minus icon" onClick={() => this.handleSongAdd()}></i>
+                        <i className="minus icon" onClick={() => this.props.handleSongAdd()}></i>
                         <SongInput />
                       </div>
                     ) : (
-                      <i className="plus icon" onClick={() => this.handleSongAdd()}></i>
+                      <i className="plus icon" onClick={() => this.props.handleSongAdd()}></i>
                     )
                   }
                 </div>
@@ -97,16 +64,16 @@ class BandShow extends React.Component {
                 {bandSetLists}
                 <Segment className="opaque">
                   <h3>Add a Set List</h3>
-                    {this.state.addSetListClick ? (
+                    {this.props.addSetListClick ? (
                       <div>
-                        <i className="minus icon" onClick={() => this.handleAddSetListClick()}></i>
+                        <i className="minus icon" onClick={() => this.props.handleAddSetListClick()}></i>
                         <SetListInput
-                          handleAddSetListClick={this.handleAddSetListClick}
+                          handleAddSetListClick={this.props.handleAddSetListClick}
                           band={this.props.band}
                           />
                       </div>
                     ) : (
-                      <i className="plus icon" onClick={() => this.handleAddSetListClick()}></i>
+                      <i className="plus icon" onClick={() => this.props.handleAddSetListClick()}></i>
                     )}
                 </Segment>
               </Segment>
@@ -118,22 +85,4 @@ class BandShow extends React.Component {
   }
 }
 
-
-const mapStateToProps = (state, ownProps) => {
-  const band = state.bands.find(band => band.slug === ownProps.match.params.bandSlug)
-  if (band) {
-    return {
-      band: band,
-      songs: state.songs.filter(song => song.band_id === band.id),
-      setLists: state.setLists.filter(setList => setList.band_id === band.id),
-    }
-  } else {
-    return {
-      band: {},
-      songs: [],
-      setLists: []
-     }
-  }
-}
-
-export default withRouter(connect(mapStateToProps, actions)(BandShow))
+export default withRouter(BandShow)

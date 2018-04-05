@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import BandsIndex from '../components/Band/BandsIndex';
-import BandShow from '../components/Band/BandShow';
+import BandShowContainer from './BandShowContainer';
 import SongShowContainer from './SongShowContainer';
 import BandInput from '../components/Band/BandInput';
 import SetListContainer from './SetListContainer';
@@ -20,7 +20,7 @@ const BandContainer = () => {
             />
           <Route
             path="/bands/:bandSlug"
-            component={BandShow}
+            component={BandShowContainer}
             />
           <Route
             path="/bands"
