@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { Segment } from 'semantic-ui-react'
-import * as actions from '../../actions';
 import SongListItem from '../Song/SongListItem';
 import SetListListItem from '../SetList/SetListListItem';
 import SongInput from '../Song/SongInput';

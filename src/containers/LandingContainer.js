@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import SignUp from '../components/Landing/SignUp';
 import Login from '../components/Landing/Login';
 import Home from '../components/Landing/Home';
-import NoMatch from '../components/NoMatch'
 import MainContainer from './MainContainer';
 
 

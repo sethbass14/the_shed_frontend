@@ -4,7 +4,6 @@ import { YOU_TUBE_ROOT } from '../constants';
 import * as actions from '../actions'
 import VideoPlayer from '../components/Video/VideoPlayer';
 import VideoCardHolder from '../components/Video/VideoCardHolder';
-import VideoCard from '../components/Video/VideoCard';
 
 //pass the song id to videoCardContainer
 class VideoContainer extends React.Component {

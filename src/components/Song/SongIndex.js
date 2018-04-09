@@ -5,9 +5,6 @@ import SongCard from './SongCard';
 
 // This could be presentational
 class SongIndex extends React.Component {
-  constructor(){
-    super()
-  }
 
   render() {
     let songs = this.props.songs

@@ -7,30 +7,36 @@ import * as actions from '../../actions'
 class UserPicInput extends React.Component {
   constructor() {
     super()
+
+    this.state = {
+      image: ''
+    }
+  }
+
+  handleImageChange = event => {
+    event.preventDefault()
+    const image = event.target.files[0]
+    this.setState({ image })
   }
 
   handleFileSubmit = (event) => {
     event.preventDefault()
-    console.log(event)
-    const image_upload = document.getElementById('image_upload')
-    const file = image_upload.files[0]
-    const formData = new FormData()
-    if (file) {
-      formData.append("avatar", file)
+    const { image } = this.state
+    if (image) {
+      const formData = new FormData()
+      formData.append("avatar", image)
       formData.append("id", this.props.user.id)
       this.props.addUserImage(formData, this.props.user.id, this.props.handleUserPicClick)
     } else {
       alert('Must upload a file on submit!')
     }
-    // console.log('in handleFileSubmit')
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <form onSubmit={this.handleFileSubmit}>
-          <input type="file" name="image" accept="image/*" id="image_upload"></input>
+          <input type="file" name="image" accept="image/*" id="image_upload" onChange={this.handleImageChange}></input>
           {this.props.loading ? (
               <button className="ui loading button" type="submit">Submit</button>
             ) : (

@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import SongCard from './SongCard';
 import SongNoteFormContainer from '../../containers/SongNoteFormContainer';
 import BandCard from '../Band/BandCard';

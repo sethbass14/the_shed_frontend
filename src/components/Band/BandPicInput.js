@@ -5,32 +5,38 @@ import * as actions from '../../actions';
 
 
 class BandPicInput extends React.Component {
+  constructor(){
+    super()
+
+    this.state = {
+      image: ''
+    }
+  }
+
+  handleImageChange = event => {
+      event.preventDefault()
+      const image = event.target.files[0]
+      this.setState({ image }, () => console.log(this.state.image))
+  }
 
   handleFileSubmit = (event) => {
     event.preventDefault()
-    console.log(event)
-    const image_upload = document.getElementById('image_upload')
-    const file = image_upload.files[0]
-    const formData = new FormData()
-    if (file) {
-      formData.append("image", file)
+    const { image } = this.state
+    if (image) {
+      const formData = new FormData()
+      formData.append("image", image)
       formData.append("id", this.props.band.id)
-      console.log(formData)
-      console.log(this.props.band.id)
       this.props.addBandImage(formData, this.props.band.id, this.props.handleAddPicClick)
     } else {
       alert('Must upload a file on submit!')
     }
-    // console.log('in handleFileSubmit')
-
   }
 
   render() {
-    console.log('In band pic input props:', this.props)
     return (
       <div>
         <form onSubmit={this.handleFileSubmit}>
-          <input type="file" name="image" accept="image/*" id="image_upload"></input>
+          <input type="file" name="image" accept="image/*" id="image_upload" onChange={this.handleImageChange}></input>
           {this.props.loading ? (
               <button className="ui loading button" type="submit">Submit</button>
             ) : (

@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import BandsIndex from '../components/Band/BandsIndex';
 import BandShowContainer from './BandShowContainer';
 import SongShowContainer from './SongShowContainer';
-import BandInput from '../components/Band/BandInput';
 import SetListContainer from './SetListContainer';
 
 
