@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import withAuth from '../hocs/withAuth'
 import DashboardShow from '../components/DashboardShow';
-import BandContainer from './BandContainer';
+import BandRoutes from './BandRoutes';
 import SongContainer from './SongContainer';
 import NoMatch from '../components/NoMatch'
 import * as actions from '../actions';
@@ -22,7 +22,7 @@ class MainContainer extends React.Component {
         <Switch>
           <Route
             path="/bands"
-            component={BandContainer}
+            component={BandRoutes}
             />
           <Route
             path="/songs"

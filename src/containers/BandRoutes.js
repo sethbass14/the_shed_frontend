@@ -7,7 +7,7 @@ import BandInput from '../components/Band/BandInput';
 import SetListContainer from './SetListContainer';
 
 
-const BandContainer = () => {
+const BandRoutes = () => {
     return (
         <Switch>
           <Route
@@ -30,4 +30,4 @@ const BandContainer = () => {
     )
 }
 
-export default BandContainer
+export default BandRoutes
