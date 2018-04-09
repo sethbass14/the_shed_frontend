@@ -11,22 +11,28 @@ class SongInput extends React.Component {
 
     this.state = {
       title: '',
+      audio: '',
     }
   }
 
-  handleChange = event => {
+  handleTitleChange = event => {
     event.preventDefault()
     this.setState({ title: event.target.value })
   }
 
+  handleAudioChange = event => {
+    event.preventDefault()
+    const file = event.target.files[0]
+    this.setState({ audio: file })
+  }
+
   handleSubmit = event => {
     event.preventDefault()
-      const audio_upload = document.getElementById('audio_upload')
-      const file = audio_upload.files[0]
+    const { title, audio } = this.state
+    if (title && audio) {
       const formData = new FormData()
-    if (this.state.title && file) {
-      formData.append("audio", file)
-      formData.append("title", this.state.title)
+      formData.append("audio", audio)
+      formData.append("title", title)
       formData.append("band_id", this.props.bandId)
       this.props.addSong(formData, this.props.bandSlug, this.props.history)
     } else {
@@ -46,7 +52,7 @@ class SongInput extends React.Component {
           <input
             type="text"
             value={this.state.title}
-            onChange={this.handleChange}
+            onChange={this.handleTitleChange}
             />
           <br></br>
           <label>Audio File</label>
