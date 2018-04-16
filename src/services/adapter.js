@@ -10,22 +10,29 @@ const login = (user_data) => {
     }).then(resp => resp.json())
 }
 
-const getWithToken = url => {
+const getWithToken = route => {
   const token = localStorage.getItem('token');
-  return fetch(url, {
-    headers: { 'Authorization': token }
+  return fetch(API_ROOT + route , {
+    headers: { ...HEADERS, 'Authorization': token }
   }).then(res => res.json());
 }
 
+//Use this function for post requests with text only like new band or new note
+const postWithToken = (route, data) => {
+  const token = localStorage.getItem('token')
+  return fetch(API_ROOT + route, {
+    method: 'POST',
+    headers: {...HEADERS, 'Authorization': token},
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
 const getCurrentUser = () => {
-  return getWithToken(`${API_ROOT}/current_user`)
+  return getWithToken('/current_user')
 }
 
 const getUserData = () => {
-  const token = localStorage.getItem('token')
-  return fetch(`${API_ROOT}/user_data`, {
-    headers: { ...HEADERS, 'Authorization': token }
-  }).then(resp => resp.json())
+  return getWithToken('/user_data')
 }
 
 const postNewUser = (user_data) => {
@@ -78,13 +85,16 @@ const deleteSongServer = id => {
 }
 
 //Below is everything for a band
-const postNewBand = (band_data) => {
-  return fetch(`${API_ROOT}/bands`, {
-    headers: HEADERS,
-    method: 'POST',
-    body: JSON.stringify(band_data)
-  }).then(resp => resp.json())
+const postNewBand = band_data => {
+  return postWithToken('/bands', band_data)
 }
+// const postNewBand = (band_data) => {
+//   return fetch(`${API_ROOT}/bands`, {
+//     headers: HEADERS,
+//     method: 'POST',
+//     body: JSON.stringify(band_data)
+//   }).then(resp => resp.json())
+// }
 
 const updateBandImage = (file, id) => {
   return fetch(`${API_ROOT}/bands/${id}`, {

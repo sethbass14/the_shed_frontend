@@ -11,7 +11,6 @@ const withAuth = WrappedComponent => {
     }
 
     componentDidMount() {
-      console.log('withAuth this.props: ', this.props)
       if (localStorage.getItem('token')) {
         this.props.fetchUser();
       } else {
