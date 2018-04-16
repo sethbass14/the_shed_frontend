@@ -27,9 +27,9 @@ export const logOutUser = (history) => {
   return { type: LOGOUT_USER }
 }
 
-export const fetchUserData = (id, history) => dispatch => {
+export const fetchUserData = (history) => dispatch => {
   dispatch({ type: ASYNC_START })
-  adapter.auth.getUserData(id).then(userData => {
+  adapter.auth.getUserData().then(userData => {
     dispatch({ type: SET_USER_DATA, userData })
   })
 }
@@ -47,9 +47,9 @@ export const addUser = (user_data, history) => dispatch => {
   })
 }
 
-export const addUserImage = (file, id, handleUserPicClick) => dispatch => {
+export const addUserImage = (file, handleUserPicClick) => dispatch => {
   dispatch({ type: LOADING_START })
-  adapter.users.postUserImage(file, id).then(userData => {
+  adapter.users.postUserImage(file).then(userData => {
     if (userData.error) {
       alert(`${userData.error}`)
       dispatch({ type: LOADING_ERROR })

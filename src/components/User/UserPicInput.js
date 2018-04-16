@@ -25,8 +25,7 @@ class UserPicInput extends React.Component {
     if (image) {
       const formData = new FormData()
       formData.append("avatar", image)
-      formData.append("id", this.props.user.id)
-      this.props.addUserImage(formData, this.props.user.id, this.props.handleUserPicClick)
+      this.props.addUserImage(formData, this.props.handleUserPicClick)
     } else {
       alert('Must upload a file on submit!')
     }

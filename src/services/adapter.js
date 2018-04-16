@@ -21,10 +21,11 @@ const getCurrentUser = () => {
   return getWithToken(`${API_ROOT}/current_user`)
 }
 
-const getUserData = (id) => {
-  // console.log('In getUserData in the adapter')
-  return fetch(`${API_ROOT}/users/${id}`)
-          .then(resp => resp.json())
+const getUserData = () => {
+  const token = localStorage.getItem('token')
+  return fetch(`${API_ROOT}/user_data`, {
+    headers: { ...HEADERS, 'Authorization': token }
+  }).then(resp => resp.json())
 }
 
 const postNewUser = (user_data) => {
@@ -35,9 +36,11 @@ const postNewUser = (user_data) => {
   }).then(resp => resp.json())
 }
 
-const postUserImage = (file, id) => {
-  return fetch(`${API_ROOT}/users/${id}`, {
+const postUserImage = (file) => {
+  const token = localStorage.getItem('token')
+  return fetch(`${API_ROOT}/user_data`, {
     method: 'PATCH',
+    headers: { 'Authorization': token },
     body: file
   }).then(resp => resp.json())
 }

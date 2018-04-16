@@ -12,7 +12,7 @@ class MainContainer extends React.Component {
 
   componentDidMount() {
     if (this.props.user.id) {
-      this.props.fetchUserData(this.props.user.id)
+      this.props.fetchUserData()
     }
   }
 

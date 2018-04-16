@@ -1,8 +1,9 @@
 export const API_ROOT = 'http://localhost:3000/api/v1'
 export const YOU_TUBE_ROOT = `https://www.youtube.com/embed/`
+
 export const HEADERS = {
   'Content-Type': 'application/json',
-  'Accepts': 'application/json'
+  'Accepts': 'application/json',
 };
 
 //actions
@@ -29,5 +30,3 @@ export const ADD_VIDEO_URL = 'ADD_VIDEO_URL'
 export const YOU_TUBE_FETCHED = 'YOU_TUBE_FETCHED'
 export const YOU_TUBE_LOADING = 'YOU_TUBE_LOADING'
 export const VIDEO_CLICK = 'VIDEO_CLICK'
-
-//non-backend actions
