@@ -1,30 +1,32 @@
 import { API_ROOT, HEADERS } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
+const token = ()  => localStorage.getItem('token')
+const headersWithToken = {...HEADERS, 'Authorization': token()}
 
+const getWithToken = route => {
+  // debugger
+  return fetch(API_ROOT + route , {
+    headers: headersWithToken
+  }).then(res => res.json());
+}
+
+//Use this function for post requests with text only like new band or new note
+const postWithToken = (route, data) => {
+  return fetch(API_ROOT + route, {
+    method: 'POST',
+    headers: headersWithToken,
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+}
+
+//log in and auth
 const login = (user_data) => {
     return fetch(`${API_ROOT}/login`, {
       method: 'POST',
       headers: HEADERS,
       body: JSON.stringify(user_data)
     }).then(resp => resp.json())
-}
-
-const getWithToken = route => {
-  const token = localStorage.getItem('token');
-  return fetch(API_ROOT + route , {
-    headers: { ...HEADERS, 'Authorization': token }
-  }).then(res => res.json());
-}
-
-//Use this function for post requests with text only like new band or new note
-const postWithToken = (route, data) => {
-  const token = localStorage.getItem('token')
-  return fetch(API_ROOT + route, {
-    method: 'POST',
-    headers: {...HEADERS, 'Authorization': token},
-    body: JSON.stringify(data)
-  }).then(res => res.json())
 }
 
 const getCurrentUser = () => {
@@ -35,6 +37,7 @@ const getUserData = () => {
   return getWithToken('/user_data')
 }
 
+// User
 const postNewUser = (user_data) => {
   return fetch(`${API_ROOT}/users`, {
     method: 'POST',
@@ -88,13 +91,6 @@ const deleteSongServer = id => {
 const postNewBand = band_data => {
   return postWithToken('/bands', band_data)
 }
-// const postNewBand = (band_data) => {
-//   return fetch(`${API_ROOT}/bands`, {
-//     headers: HEADERS,
-//     method: 'POST',
-//     body: JSON.stringify(band_data)
-//   }).then(resp => resp.json())
-// }
 
 const updateBandImage = (file, id) => {
   return fetch(`${API_ROOT}/bands/${id}`, {
