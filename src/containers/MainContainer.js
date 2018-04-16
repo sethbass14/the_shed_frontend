@@ -11,7 +11,8 @@ import * as actions from '../actions';
 class MainContainer extends React.Component {
 
   componentDidMount() {
-    if (this.props.user.id) {
+    console.log('In Main Container props: ', this.props)
+    if (this.props.user.username) {
       this.props.fetchUserData()
     }
   }

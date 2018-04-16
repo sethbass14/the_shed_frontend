@@ -5,7 +5,7 @@ import * as actions from '../actions';
 
 
 const Navbar = (props) => {
-  // console.log('In the nav bar', props)
+  console.log('In the nav bar', props)
   return (
       <div className={`ui menu nav`}>
         <div className={'item'}>
@@ -75,7 +75,7 @@ const Navbar = (props) => {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: !!state.auth.currentUser.id,
+  loggedIn: !!state.auth.currentUser.username,
   currentUser: state.auth.currentUser
 })
 
