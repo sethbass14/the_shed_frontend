@@ -21,7 +21,6 @@ const req = method =>
     body: JSON.stringify(data)
   })
 
-
 const postReqFile = reqWithFile('POST')
 const patchReqFile = reqWithFile('PATCH')
 
@@ -36,16 +35,24 @@ const getWithToken = route => {
 
 //Use this function for post requests with text only like new band or new note
 const postWithToken = (route, data) => {
-  return fetch(API_ROOT + route, postReq(data)).then(res => res.json())
+  return fetch(API_ROOT + route, postReq(data))
+    .then(res => res.json())
 }
 
 const postFileWithToken = (route, data) => {
-  return fetch(API_ROOT + route, postReqFile(data)).then(res => res.json())
+  return fetch(API_ROOT + route, postReqFile(data))
+    .then(res => res.json())
 }
 
 const patchFileWithToken = (route, data) => {
   return fetch(API_ROOT + route, patchReqFile(data))
     .then(res => res.json())
+}
+
+const deleteServer = route => {
+  return fetch(API_ROOT + route, {
+    method: 'DELETE'
+  }).then(res => res.json())
 }
 
 //log in, auth, and user data
@@ -76,28 +83,18 @@ const postNewBand = band_data => {
 }
 
 const updateBandImage = (file, id) => {
-  return fetch(`${API_ROOT}/bands/${id}`, {
-    method: 'PATCH',
-    body: file
-  }).then(resp => resp.json())
+  return patchFileWithToken(BANDS_ROUTE + '/' + id, file)
 }
 
+
 const deleteBandServer = id => {
-  return fetch(`${API_ROOT}/bands/${id}`, {
-    method: 'DELETE'
-  }).then(resp => resp.json())
+  return deleteServer(BANDS_ROUTE + '/' + id)
 }
 
 //Below is everything for a song
 const postNewSong = (file) => {
   return postFileWithToken(SONGS_ROUTE, file)
 }
-// const postNewSong = (file) => {
-//   return fetch(`${API_ROOT}/songs`, {
-//     method: 'POST',
-//     body: file
-//   }).then(resp => resp.json())
-// }
 
 const updateNotes = (notes, songId) => {
   return fetch(`${API_ROOT}/songs/${songId}`, {
