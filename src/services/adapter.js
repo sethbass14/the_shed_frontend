@@ -6,13 +6,11 @@ const authorization = () => ({ 'Authorization': token() })
 const headersWithToken = () => ({...HEADERS, ...authorization() })
 
 const reqWithFile = method =>
-  data => {
-    return {
+  data => ({
       method,
       headers: authorization(),
       body: data
-    }
-  }
+    })
 
 const req = method =>
   data => ({
@@ -41,6 +39,11 @@ const postWithToken = (route, data) => {
 
 const postFileWithToken = (route, data) => {
   return fetch(API_ROOT + route, postReqFile(data))
+    .then(res => res.json())
+}
+
+const patchWithToken = (route, data) => {
+  return fetch(API_ROOT + route, patchReq(data))
     .then(res => res.json())
 }
 
@@ -97,13 +100,8 @@ const postNewSong = (file) => {
 }
 
 const updateNotes = (notes, songId) => {
-  return fetch(`${API_ROOT}/songs/${songId}`, {
-    method: 'PATCH',
-    headers: HEADERS,
-    body: JSON.stringify(notes)
-  }).then(resp => resp.json())
+  return patchWithToken(SONGS_ROUTE + '/' + songId, notes)
 }
-
 const updateVideo = (video, songId) => {
   return fetch(`${API_ROOT}/songs/${songId}`, {
     method: 'PATCH',
