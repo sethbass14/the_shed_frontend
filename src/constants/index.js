@@ -12,6 +12,7 @@ export const USER_DATA = '/user_data'
 export const BANDS_ROUTE = '/bands'
 export const SONGS_ROUTE = '/songs'
 export const SET_LISTS_ROUTE = '/set_lists'
+export const SET_SONGS_ROUTE = '/set_songs'
 
 //actions
 export const ASYNC_START = 'ASYNC_START'

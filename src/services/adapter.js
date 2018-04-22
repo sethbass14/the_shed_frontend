@@ -1,4 +1,4 @@
-import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE, SET_LISTS_ROUTE } from '../constants';
+import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE, SET_LISTS_ROUTE, SET_SONGS_ROUTE } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
 const token = ()  => localStorage.getItem('token')
@@ -24,6 +24,7 @@ const patchReqFile = reqWithFile('PATCH')
 
 const postReq = req('POST')
 const patchReq = req('PATCH')
+const putReq = req('PUT')
 
 const getWithToken = route => {
   return fetch(API_ROOT + route , {
@@ -39,6 +40,11 @@ const postWithToken = (route, data) => {
 
 const postFileWithToken = (route, data) => {
   return fetch(API_ROOT + route, postReqFile(data))
+    .then(res => res.json())
+}
+
+const putWithToken = (route, data) => {
+  return fetch(API_ROOT + route, putReq(data))
     .then(res => res.json())
 }
 
@@ -68,7 +74,7 @@ const getCurrentUser = () => {
 }
 
 const getUserData = () => {
-  return getWithToken('/user_data')
+  return getWithToken(USER_DATA)
 }
 
 // User
@@ -132,31 +138,19 @@ const postNewSetList = (set_list_data) => {
 }
 
 const deleteSetListServer = (id) => {
-  return fetch(`${API_ROOT}/set_lists/${id}`, {
-    method: 'DELETE'
-  }).then(resp => resp.json())
+  return deleteServer(SET_LISTS_ROUTE + '/' + id)
 }
 
 const postNewSetSong = (set_song_data) => {
-  return fetch(`${API_ROOT}/set_songs`, {
-    method: 'POST',
-    headers: HEADERS,
-    body: JSON.stringify(set_song_data)
-  }).then(resp => resp.json())
+  return postWithToken(SET_SONGS_ROUTE, set_song_data)
 }
 
 const deleteSetSongServer = id => {
-  return fetch(`${API_ROOT}/set_songs/${id}`, {
-    method: 'DELETE'
-  }).then(resp => resp.json())
+  return deleteServer(SET_SONGS_ROUTE + '/' + id)
 }
 
 const updateSetSongOrder = (set_song_data) => {
-  return fetch(`${API_ROOT}/set_songs/${set_song_data.id}`, {
-    headers: HEADERS,
-    method: 'PUT',
-    body: JSON.stringify(set_song_data)
-  }).then(resp => resp.json())
+  return putWithToken(SET_SONGS_ROUTE + '/' + set_song_data.id, set_song_data)
 }
 
 //abstract this
