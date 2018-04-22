@@ -1,11 +1,10 @@
-import { API_ROOT, HEADERS } from '../constants';
+import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
 const token = ()  => localStorage.getItem('token')
 const headersWithToken = () => { return {...HEADERS, 'Authorization': token()} }
 
 const getWithToken = route => {
-  // debugger
   return fetch(API_ROOT + route , {
     headers: headersWithToken()
   }).then(res => res.json());
@@ -20,13 +19,9 @@ const postWithToken = (route, data) => {
   }).then(res => res.json())
 }
 
-//log in and auth
+//log in, auth, and user data
 const login = (user_data) => {
-    return fetch(`${API_ROOT}/login`, {
-      method: 'POST',
-      headers: HEADERS,
-      body: JSON.stringify(user_data)
-    }).then(resp => resp.json())
+  return postWithToken(LOGIN_ROUTE, user_data)
 }
 
 const getCurrentUser = () => {
@@ -39,12 +34,15 @@ const getUserData = () => {
 
 // User
 const postNewUser = (user_data) => {
-  return fetch(`${API_ROOT}/users`, {
-    method: 'POST',
-    headers: HEADERS,
-    body: JSON.stringify(user_data)
-  }).then(resp => resp.json())
+  return postWithToken(USERS_ROUTE, user_data)
 }
+// const postNewUser = (user_data) => {
+//   return fetch(`${API_ROOT}/users`, {
+//     method: 'POST',
+//     headers: HEADERS,
+//     body: JSON.stringify(user_data)
+//   }).then(resp => resp.json())
+// }
 
 const postUserImage = (file) => {
   const token = localStorage.getItem('token')

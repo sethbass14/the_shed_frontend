@@ -1,10 +1,13 @@
 export const API_ROOT = 'http://localhost:3000/api/v1'
 export const YOU_TUBE_ROOT = `https://www.youtube.com/embed/`
 
+//Adapter and routes
 export const HEADERS = {
   'Content-Type': 'application/json',
   'Accepts': 'application/json',
 };
+export const LOGIN_ROUTE = '/login'
+export const USERS_ROUTE = '/users'
 
 //actions
 export const ASYNC_START = 'ASYNC_START'
