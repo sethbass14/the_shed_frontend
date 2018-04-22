@@ -8,6 +8,9 @@ export const HEADERS = {
 };
 export const LOGIN_ROUTE = '/login'
 export const USERS_ROUTE = '/users'
+export const USER_DATA = '/user_data'
+export const BANDS_ROUTE = '/bands'
+export const SONGS_ROUTE = '/songs'
 
 //actions
 export const ASYNC_START = 'ASYNC_START'

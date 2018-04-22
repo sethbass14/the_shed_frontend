@@ -1,8 +1,32 @@
-import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE } from '../constants';
+import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
 const token = ()  => localStorage.getItem('token')
-const headersWithToken = () => { return {...HEADERS, 'Authorization': token()} }
+const authorization = () => ({ 'Authorization': token() })
+const headersWithToken = () => ({...HEADERS, ...authorization() })
+
+const reqWithFile = method =>
+  data => {
+    return {
+      method,
+      headers: authorization(),
+      body: data
+    }
+  }
+
+const req = method =>
+  data => ({
+    method,
+    headers: headersWithToken(),
+    body: JSON.stringify(data)
+  })
+
+
+const postReqFile = reqWithFile('POST')
+const patchReqFile = reqWithFile('PATCH')
+
+const postReq = req('POST')
+const patchReq = req('PATCH')
 
 const getWithToken = route => {
   return fetch(API_ROOT + route , {
@@ -12,11 +36,16 @@ const getWithToken = route => {
 
 //Use this function for post requests with text only like new band or new note
 const postWithToken = (route, data) => {
-  return fetch(API_ROOT + route, {
-    method: 'POST',
-    headers: headersWithToken(),
-    body: JSON.stringify(data)
-  }).then(res => res.json())
+  return fetch(API_ROOT + route, postReq(data)).then(res => res.json())
+}
+
+const postFileWithToken = (route, data) => {
+  return fetch(API_ROOT + route, postReqFile(data)).then(res => res.json())
+}
+
+const patchFileWithToken = (route, data) => {
+  return fetch(API_ROOT + route, patchReqFile(data))
+    .then(res => res.json())
 }
 
 //log in, auth, and user data
@@ -36,32 +65,39 @@ const getUserData = () => {
 const postNewUser = (user_data) => {
   return postWithToken(USERS_ROUTE, user_data)
 }
-// const postNewUser = (user_data) => {
-//   return fetch(`${API_ROOT}/users`, {
-//     method: 'POST',
-//     headers: HEADERS,
-//     body: JSON.stringify(user_data)
-//   }).then(resp => resp.json())
-// }
 
 const postUserImage = (file) => {
-  const token = localStorage.getItem('token')
-  return fetch(`${API_ROOT}/user_data`, {
+  return patchFileWithToken(USER_DATA, file)
+}
+
+//Below is everything for a band
+const postNewBand = band_data => {
+  return postWithToken(BANDS_ROUTE, band_data)
+}
+
+const updateBandImage = (file, id) => {
+  return fetch(`${API_ROOT}/bands/${id}`, {
     method: 'PATCH',
-    headers: { 'Authorization': token },
     body: file
   }).then(resp => resp.json())
 }
 
+const deleteBandServer = id => {
+  return fetch(`${API_ROOT}/bands/${id}`, {
+    method: 'DELETE'
+  }).then(resp => resp.json())
+}
 
 //Below is everything for a song
 const postNewSong = (file) => {
-  // console.log(song_data)
-  return fetch(`${API_ROOT}/songs`, {
-    method: 'POST',
-    body: file
-  }).then(resp => resp.json())
+  return postFileWithToken(SONGS_ROUTE, file)
 }
+// const postNewSong = (file) => {
+//   return fetch(`${API_ROOT}/songs`, {
+//     method: 'POST',
+//     body: file
+//   }).then(resp => resp.json())
+// }
 
 const updateNotes = (notes, songId) => {
   return fetch(`${API_ROOT}/songs/${songId}`, {
@@ -81,24 +117,6 @@ const updateVideo = (video, songId) => {
 
 const deleteSongServer = id => {
   return fetch(`${API_ROOT}/songs/${id}`, {
-    method: 'DELETE'
-  }).then(resp => resp.json())
-}
-
-//Below is everything for a band
-const postNewBand = band_data => {
-  return postWithToken('/bands', band_data)
-}
-
-const updateBandImage = (file, id) => {
-  return fetch(`${API_ROOT}/bands/${id}`, {
-    method: 'PATCH',
-    body: file
-  }).then(resp => resp.json())
-}
-
-const deleteBandServer = id => {
-  return fetch(`${API_ROOT}/bands/${id}`, {
     method: 'DELETE'
   }).then(resp => resp.json())
 }
@@ -140,6 +158,7 @@ const updateSetSongOrder = (set_song_data) => {
   }).then(resp => resp.json())
 }
 
+//abstract this
 const fetchYouTube = (song_search_data) => {
   return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOU_TUBE_API_KEY}&q=${song_search_data}&type=video`).then(resp => resp.json())
 }
