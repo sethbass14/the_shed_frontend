@@ -1,4 +1,4 @@
-import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE } from '../constants';
+import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE, SET_LISTS_ROUTE } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
 const token = ()  => localStorage.getItem('token')
@@ -89,7 +89,6 @@ const updateBandImage = (file, id) => {
   return patchFileWithToken(BANDS_ROUTE + '/' + id, file)
 }
 
-
 const deleteBandServer = id => {
   return deleteServer(BANDS_ROUTE + '/' + id)
 }
@@ -102,27 +101,34 @@ const postNewSong = (file) => {
 const updateNotes = (notes, songId) => {
   return patchWithToken(SONGS_ROUTE + '/' + songId, notes)
 }
+
+//Test this function
 const updateVideo = (video, songId) => {
-  return fetch(`${API_ROOT}/songs/${songId}`, {
-    method: 'PATCH',
-    headers: HEADERS,
-    body: JSON.stringify(video)
-  }).then(resp => resp.json())
+  return patchWithToken(SONGS_ROUTE + '/' + songId, video)
 }
 
+// const updateVideo = (video, songId) => {
+//   return fetch(`${API_ROOT}/songs/${songId}`, {
+//     method: 'PATCH',
+//     headers: HEADERS,
+//     body: JSON.stringify(video)
+//   }).then(resp => resp.json())
+// }
+
+//Test this
 const deleteSongServer = id => {
-  return fetch(`${API_ROOT}/songs/${id}`, {
-    method: 'DELETE'
-  }).then(resp => resp.json())
+  return deleteServer(SONGS_ROUTE + '/' + id)
 }
+
+// const deleteSongServer = id => {
+//   return fetch(`${API_ROOT}/songs/${id}`, {
+//     method: 'DELETE'
+//   }).then(resp => resp.json())
+// }
 
 //Below is everything about a set list
 const postNewSetList = (set_list_data) => {
-  return fetch(`${API_ROOT}/set_lists`, {
-    method: 'POST',
-    headers: HEADERS,
-    body: JSON.stringify(set_list_data)
-  }).then(resp => resp.json())
+  return postWithToken(SET_LISTS_ROUTE, set_list_data)
 }
 
 const deleteSetListServer = (id) => {
