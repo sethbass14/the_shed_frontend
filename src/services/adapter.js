@@ -2,12 +2,12 @@ import { API_ROOT, HEADERS } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
 const token = ()  => localStorage.getItem('token')
-const headersWithToken = {...HEADERS, 'Authorization': token()}
+const headersWithToken = () => { return {...HEADERS, 'Authorization': token()} }
 
 const getWithToken = route => {
   // debugger
   return fetch(API_ROOT + route , {
-    headers: headersWithToken
+    headers: headersWithToken()
   }).then(res => res.json());
 }
 
@@ -15,7 +15,7 @@ const getWithToken = route => {
 const postWithToken = (route, data) => {
   return fetch(API_ROOT + route, {
     method: 'POST',
-    headers: headersWithToken,
+    headers: headersWithToken(),
     body: JSON.stringify(data)
   }).then(res => res.json())
 }
