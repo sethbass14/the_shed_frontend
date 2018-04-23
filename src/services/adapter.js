@@ -21,7 +21,6 @@ const req = method =>
 
 const postReqFile = reqWithFile('POST')
 const patchReqFile = reqWithFile('PATCH')
-
 const postReq = req('POST')
 const patchReq = req('PATCH')
 const putReq = req('PUT')
