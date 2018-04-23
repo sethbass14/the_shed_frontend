@@ -1,5 +1,6 @@
 export const API_ROOT = 'http://localhost:3000/api/v1'
 export const YOU_TUBE_ROOT = `https://www.youtube.com/embed/`
+export const YOU_TUBE_QUERY_ROOT = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=`
 
 //Adapter and routes
 export const HEADERS = {

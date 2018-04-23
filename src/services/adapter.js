@@ -1,4 +1,4 @@
-import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE, SET_LISTS_ROUTE, SET_SONGS_ROUTE } from '../constants';
+import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE, SET_LISTS_ROUTE, SET_SONGS_ROUTE, YOU_TUBE_QUERY_ROOT } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
 const token = ()  => localStorage.getItem('token')
@@ -108,29 +108,13 @@ const updateNotes = (notes, songId) => {
   return patchWithToken(SONGS_ROUTE + '/' + songId, notes)
 }
 
-//Test this function
 const updateVideo = (video, songId) => {
   return patchWithToken(SONGS_ROUTE + '/' + songId, video)
 }
-
-// const updateVideo = (video, songId) => {
-//   return fetch(`${API_ROOT}/songs/${songId}`, {
-//     method: 'PATCH',
-//     headers: HEADERS,
-//     body: JSON.stringify(video)
-//   }).then(resp => resp.json())
-// }
-
 //Test this
 const deleteSongServer = id => {
   return deleteServer(SONGS_ROUTE + '/' + id)
 }
-
-// const deleteSongServer = id => {
-//   return fetch(`${API_ROOT}/songs/${id}`, {
-//     method: 'DELETE'
-//   }).then(resp => resp.json())
-// }
 
 //Below is everything about a set list
 const postNewSetList = (set_list_data) => {
@@ -155,7 +139,7 @@ const updateSetSongOrder = (set_song_data) => {
 
 //abstract this
 const fetchYouTube = (song_search_data) => {
-  return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOU_TUBE_API_KEY}&q=${song_search_data}&type=video`).then(resp => resp.json())
+  return fetch(YOU_TUBE_QUERY_ROOT + YOU_TUBE_API_KEY + '&q=' + song_search_data + '&type=video').then(resp => resp.json())
 }
 
 export default {
