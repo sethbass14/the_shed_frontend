@@ -136,7 +136,6 @@ const updateSetSongOrder = (set_song_data) => {
   return putWithToken(SET_SONGS_ROUTE + '/' + set_song_data.id, set_song_data)
 }
 
-//abstract this
 const fetchYouTube = (song_search_data) => {
   return fetch(YOU_TUBE_QUERY_ROOT + YOU_TUBE_API_KEY + '&q=' + song_search_data + '&type=video').then(resp => resp.json())
 }
