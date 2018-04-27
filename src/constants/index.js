@@ -8,6 +8,7 @@ export const HEADERS = {
   'Accepts': 'application/json',
 };
 export const LOGIN_ROUTE = '/login'
+export const CURRENT_USER_ROUTE = '/current_user'
 export const USERS_ROUTE = '/users'
 export const USER_DATA = '/user_data'
 export const BANDS_ROUTE = '/bands'

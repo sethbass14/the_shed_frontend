@@ -1,4 +1,4 @@
-import { API_ROOT, HEADERS, LOGIN_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE, SET_LISTS_ROUTE, SET_SONGS_ROUTE, YOU_TUBE_QUERY_ROOT } from '../constants';
+import { API_ROOT, HEADERS, LOGIN_ROUTE, CURRENT_USER_ROUTE, USERS_ROUTE, USER_DATA, SONGS_ROUTE , BANDS_ROUTE, SET_LISTS_ROUTE, SET_SONGS_ROUTE, YOU_TUBE_QUERY_ROOT } from '../constants';
 import { YOU_TUBE_API_KEY } from './api-key';
 
 const token = ()  => localStorage.getItem('token')
@@ -69,7 +69,7 @@ const login = (user_data) => {
 }
 
 const getCurrentUser = () => {
-  return getWithToken('/current_user')
+  return getWithToken(CURRENT_USER_ROUTE)
 }
 
 const getUserData = () => {
