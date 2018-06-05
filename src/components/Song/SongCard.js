@@ -30,7 +30,7 @@ class SongCard extends React.Component {
             null
           ) : (
             <div className="extra content">
-              {this.props.setSong? (
+              {this.props.setSong ? (
                 <SetSongExtraContent
                   setSong={this.props.setSong}
                   handleOrderChange={this.props.handleOrderChange}

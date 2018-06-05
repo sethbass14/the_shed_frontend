@@ -1,4 +1,5 @@
 import React from 'react';
+import { YOU_TUBE_ROOT } from '../../constants'
 import { Embed } from 'semantic-ui-react';
 
 const VideoPlayer = props => {

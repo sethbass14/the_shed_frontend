@@ -6,7 +6,7 @@ import { bandsReducer } from './bands';
 import { setListReducer } from './setList';
 import { setSongsReducer } from './setSong';
 import { loadingReducer } from './loading';
-import {  youTubeReducer } from './youTubeReducer'
+import { youTubeReducer } from './youTubeReducer'
 
 
 export const rootReducer = combineReducers({
