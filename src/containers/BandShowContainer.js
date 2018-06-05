@@ -62,7 +62,7 @@ class BandShowContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const user = state.user.id
+  const user = state.user.username
   const band = state.bands.find(band => band.slug === ownProps.match.params.bandSlug)
   let redirect = user && !band ? true : false
   if (band) {
